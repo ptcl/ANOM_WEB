@@ -19,14 +19,7 @@ ANOM Protocol OS est une application web interactive qui simule un système d'ex
 
 ### ✨ Fonctionnalités principales
 
-- 🎮 **Authentification Bungie.net** - Connexion sécurisée avec OAuth2
-- 👨‍💻 **Système d'agents** - Profils personnalisables avec espèces (Human, EXO, Awoken)
-- 🎯 **Système de défis** - Challenges interactifs avec progression
-- 💻 **Interface Desktop** - Simulation d'OS avec fenêtres redimensionnables
-- 🎭 **Effets visuels** - Animations de typing, glitch effects, barres de progression
-- 🌙 **Thèmes adaptatifs** - Support dark/light mode avec couleurs d'accent
-- � **Responsive Design** - Compatible desktop, tablette et mobile
-
+- BIENTÔT DISPONIBLE
 ## 🛠️ Stack technique
 
 ### Frontend
@@ -118,27 +111,7 @@ L'application sera accessible sur `http://localhost:3001`
 
 ## 🎯 Fonctionnalités détaillées
 
-### 🔐 Authentification
-- OAuth2 avec Bungie.net
-- JWT avec refresh automatique
-- Gestion des sessions sécurisée
-
-### 👤 Système d'agents
-- Génération automatique de noms d'agent (Human/EXO)
-- Profils personnalisables avec statistiques
-- Système de clearance et rôles
-
-### 💻 Interface Desktop
-- Fenêtres redimensionnables et déplaçables
-- Applications intégrées (Dashboard, DataDestiny)
-- Barre des tâches avec applications épinglées
-- Sélection multiple et gestion des icônes
-
-### 🎭 Effets visuels
-- **TypingEffect** : Effet machine à écrire configurable
-- **GlitchText** : Effet de corruption de texte
-- **ProgressBar** : Barres de progression animées
-- Transitions fluides et animations CSS
+- BIENTÔT DISPONIBLE 
 
 ## 🔧 Scripts disponibles
 
@@ -182,7 +155,7 @@ Les contributions sont les bienvenues ! Rejoignez notre communauté :
 ### 💬 Discord Community
 Rejoignez notre Discord pour discuter du projet, poser des questions et collaborer avec l'équipe :
 
-[![Discord](https://img.shields.io/badge/Discord-Rejoindre-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/votre-invite)
+[![Discord](https://img.shields.io/badge/Discord-Rejoindre-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/pTnqbQtgKn)
 
 ### Guidelines de développement
 
@@ -220,6 +193,6 @@ Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
   
 **Fait avec ❤️ pour la communauté Destiny**
 
-[Documentation](./docs) • [Web](https://anom-archives.net) • [Signaler un bug](https://github.com/ptcl/ANOM_WEB/issues)
+[Documentation soon](./docs) • [Web](https://anom-archives.net) • [Signaler un bug](https://github.com/ptcl/ANOM_WEB/issues)
 
 </div>
