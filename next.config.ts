@@ -6,7 +6,7 @@ const nextConfig = {
   },
   async headers() {
     // Récupération des URLs depuis les variables d'environnement
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || ''
     const clarityApiUrl = process.env.NEXT_PUBLIC_CLARITY_API_URL || 'http://localhost:3001'
     
     return [

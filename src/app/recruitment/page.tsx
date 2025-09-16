@@ -3,8 +3,7 @@
 import { useEffect, useState, useCallback, useMemo } from 'react'
 import { useRouter } from 'next/navigation'
 import { useUserStore } from '@/store/userStore'
-import { useAuth } from '@/lib/useAuth'
-import ProtectedRoute from '@/components/provider/ProtectedRoute'
+import { useAuth } from '@/hooks/useAuth'
 import GlitchText from '@/components/effect/GlitchText'
 import TypingEffect, { PresetTypingEffect } from '@/components/effect/TypingEffect'
 import { PresetProgressBar } from '@/components/effect/ProgressBar'
@@ -24,7 +23,7 @@ interface Step {
 export default function RecruitmentPage() {
     const router = useRouter()
     const { isLoading } = useAuth()
-    const { updateProtocol, agent } = useUserStore()
+    const { agent, updateAgentProfile } = useUserStore()
 
     const [currentStepIndex, setCurrentStepIndex] = useState(0)
     const [completedSteps, setCompletedSteps] = useState<Step[]>([])
@@ -247,33 +246,40 @@ export default function RecruitmentPage() {
 
         const updateUserProtocol = async () => {
             try {
-                const protocolForStore = {
-                    agentName: agentName,
-                    species: agentName.includes('-') ? 'EXO' as const : 'HUMAN' as const,
-                    clearanceLevel: 1 as const,
-                    role: 'AGENT' as const,
-                    hasSeenRecruitment: true,
-                    protocolJoinedAt: new Date(),
-                    settings: {
-                        notifications: true,
-                        publicProfile: false,
-                        protocolOSTheme: 'DEFAULT' as const,
-                        protocolSounds: true
+                // ✅ CORRECTION: Utiliser la nouvelle méthode updateAgentProfile
+                const protocolUpdates = {
+                    protocol: {
+                        hasSeenRecruitment: true,
+                        customName: agentName,
+                        species: agentName.includes('-') ? 'EXO' as const : 'HUMAN' as const,
+                        settings: {
+                            notifications: true,
+                            publicProfile: false,
+                            protocolOSTheme: 'DEFAULT' as const,
+                            protocolSounds: true
+                        }
                     }
                 }
 
-                updateProtocol(protocolForStore)
+                console.log('🔄 Mise à jour du profil agent avec:', protocolUpdates)
+                await updateAgentProfile(protocolUpdates)
+                console.log('✅ Recrutement terminé avec succès !')
 
-                // setTimeout(() => {
-                //     router.push('/desktop')
-                // }, 2000)
+                // Redirection vers le desktop après un délai
+                setTimeout(() => {
+                    router.push('/desktop')
+                }, 2000)
             } catch (error) {
-                console.error('❌ Erreur lors de la mise à jour:', error)
+                console.error('❌ Erreur lors de la mise à jour du recrutement:', error)
+                // En cas d'erreur, rediriger quand même vers le desktop
+                setTimeout(() => {
+                    router.push('/desktop')
+                }, 2000)
             }
         }
 
         updateUserProtocol()
-    }, [currentStepIndex, recruitmentSteps.length, agentName, updateProtocol, router])
+    }, [currentStepIndex, recruitmentSteps.length, agentName, updateAgentProfile, router])
 
     // Fonction pour obtenir la couleur du texte
     const getTextColor = (text: string) => {
@@ -299,7 +305,7 @@ export default function RecruitmentPage() {
     }
 
     return (
-        <ProtectedRoute>
+        <>
             <section className='w-full h-screen flex items-center justify-center p-8'>
                 <WindowContainerStatic
                     height={500}
@@ -379,6 +385,6 @@ export default function RecruitmentPage() {
                     </section>
                 </WindowContainerStatic>
             </section>
-        </ProtectedRoute>
+        </>
     )
 }

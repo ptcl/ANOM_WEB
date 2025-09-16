@@ -1,8 +1,19 @@
+/**
+ * 🚀 OPTIMISÉ: LogoutButton ultra-rapide
+ * 
+ * Optimisations appliquées:
+ * - ❌ Pas de useAuth() lourd (économie de ressources)
+ * - ❌ Pas de router.push() + setTimeout (plus de race conditions)
+ * - ✅ Redirection directe window.location.href (plus rapide)
+ * - ✅ Nettoyage immédiat et complet des tokens
+ * - ✅ Hook dédié useLogout() optimisé
+ * 
+ * Résultat: Déconnexion instantanée, 0 délai, plus fiable
+ */
 'use client'
 
-import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
-import { useAuth } from '../provider/AuthProvider'
+import { useLogout } from '@/hooks/useLogout'
 
 interface LogoutButtonProps {
     variant?: 'default' | 'outline' | 'ghost'
@@ -12,13 +23,12 @@ interface LogoutButtonProps {
 }
 
 export const LogoutButton = ({ variant = 'outline', children, className }: LogoutButtonProps) => {
-    const { logout } = useAuth()
-    const router = useRouter()
+    // ✅ OPTIMISÉ: Hook dédié ultra-rapide pour la déconnexion
+    const { logout } = useLogout()
 
     const handleLogout = () => {
-        logout()
-        router.push('/')
-        // console.log('👋 User logged out successfully')
+        // ✅ IMMÉDIAT: Nettoyage + redirection instantanée (plus de setTimeout!)
+        logout('/')
     }
 
     return (
@@ -33,17 +43,12 @@ export const LogoutButton = ({ variant = 'outline', children, className }: Logou
 }
 
 export const LogoutButtonWithConfirm = ({ variant = 'outline', children, className }: LogoutButtonProps) => {
-    const { logout } = useAuth()
-    const router = useRouter()
+    // ✅ OPTIMISÉ: Hook dédié avec confirmation intégrée
+    const { logoutWithConfirm } = useLogout()
 
     const handleLogout = () => {
-        const confirmed = window.confirm('Êtes-vous sûr de vouloir vous déconnecter ?')
-
-        if (confirmed) {
-            logout()
-            router.push('/')
-            // console.log('👋 User logged out successfully')
-        }
+        // ✅ SIMPLE: Confirmation + déconnexion en une seule fonction
+        logoutWithConfirm('Êtes-vous sûr de vouloir vous déconnecter ?', '/')
     }
 
     return (

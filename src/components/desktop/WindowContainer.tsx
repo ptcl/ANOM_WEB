@@ -3,10 +3,10 @@
 import { useState, useEffect, useRef, ReactNode, useCallback } from 'react'
 import Image from 'next/image'
 import { X, Minus, Square } from 'lucide-react'
-import { useAuth } from '@/components/provider/AuthProvider'
 import { useWindowsStore } from '@/store/useWindowsStore'
 import { useResize } from '../provider/ResizeProvider'
 import { useDrag } from '../provider/DragProvider'
+import { useAuth } from '@/hooks'
 
 interface WindowContainerProps {
   id?: string

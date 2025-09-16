@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useCallback, useRef } from 'react'
-import ProtectedRoute from '@/components/provider/ProtectedRoute'
 import SelectionArea from '@/components/desktop/SelectionArea'
 import Dashboard from '@/components/desktop/applications/Dashboard'
 import DataDestiny from '@/components/desktop/applications/DataDestiny'
@@ -62,7 +61,7 @@ export default function DesktopPage() {
     }, [])
 
     return (
-        <ProtectedRoute>
+        <>
             <section className="desktop-page h-full flex flex-col">
                 <div className="flex-1 p-4 relative overflow-hidden" onClick={handleDesktopClick}>
 
@@ -77,8 +76,7 @@ export default function DesktopPage() {
                         </div>
                     </div>
                 </div>
-
             </section>
-        </ProtectedRoute>
+        </>
     )
 }

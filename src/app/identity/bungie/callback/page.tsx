@@ -12,13 +12,22 @@ export default function BungieCallbackPage() {
     const [message, setMessage] = useState('Authentification en cours...')
     const [username, setUsername] = useState('')
     const [errorMessage, setErrorMessage] = useState('')
+    const [processed, setProcessed] = useState(false) // ✅ Garde-fou contre les exécutions multiples
     const router = useRouter()
 
-    // Utiliser le store
-    const { verifyAuthentication } = useUserStore()
+    // ✅ Utiliser les méthodes du store simplifié
+    const { initialize } = useUserStore()
 
     useEffect(() => {
+        // ✅ Protection contre les exécutions multiples
+        if (processed) return
+
+        let redirectTimer: NodeJS.Timeout | null = null
+        let aborted = false
+
         const processAuth = async () => {
+            if (aborted) return
+            setProcessed(true) // ✅ Marquer comme traité immédiatement
             try {
                 // Récupérer les paramètres de l'URL
                 const urlParams = new URLSearchParams(window.location.search)
@@ -28,40 +37,75 @@ export default function BungieCallbackPage() {
                 if (error) {
                     setStatus('error')
                     setErrorMessage(`Erreur d'authentification: ${error}`)
-                    setTimeout(() => router.push('/'), 3000)
+                    redirectTimer = setTimeout(() => {
+                        if (!aborted) router.push('/')
+                    }, 3000)
                     return
                 }
 
                 if (!token) {
                     setStatus('error')
                     setErrorMessage('Token manquant dans la réponse')
-                    setTimeout(() => router.push('/'), 3000)
+                    redirectTimer = setTimeout(() => {
+                        if (!aborted) router.push('/')
+                    }, 3000)
                     return
                 }
+
+                // ✅ Vérification basique du format du token
+                if (token.length < 10 || !token.includes('.')) {
+                    setStatus('error')
+                    setErrorMessage('Token invalide reçu')
+                    redirectTimer = setTimeout(() => {
+                        if (!aborted) router.push('/')
+                    }, 3000)
+                    return
+                }
+
+                console.log('🔑 Token valide reçu dans callback')
 
                 // Stocker le token TEMPORAIREMENT dans sessionStorage
                 sessionStorage.setItem('temp_auth_token', token)
 
-                setMessage('Vérification de l\'authentification...')
+                setMessage('Récupération du profil agent...')
 
-                // Vérifier l'authentification via l'API
-                const isAuthenticated = await verifyAuthentication()
+                // ✅ Initialiser le store avec le nouveau token
+                await initialize()
 
-                if (!isAuthenticated) {
+                // ✅ Petite attente pour s'assurer que le store est bien mis à jour
+                await new Promise(resolve => setTimeout(resolve, 200))
+
+                // Vérifier que l'authentification a réussi
+                const userState = useUserStore.getState()
+
+                if (!userState.isAuthenticated || !userState.agent) {
+                    console.error('❌ État après initialisation:', {
+                        isAuthenticated: userState.isAuthenticated,
+                        hasAgent: !!userState.agent,
+                        error: userState.error
+                    })
+
                     setStatus('error')
-                    setErrorMessage('Échec de vérification du token')
-                    setTimeout(() => router.push('/'), 3000)
+                    setErrorMessage(userState.error || 'Échec de récupération du profil agent')
+                    redirectTimer = setTimeout(() => {
+                        if (!aborted) router.push('/')
+                    }, 3000)
                     return
                 }
 
-                // Authentification réussie
+                // ✅ Authentification réussie
+                console.log('✅ Authentification réussie:', {
+                    agentName: userState.agent.protocol?.agentName,
+                    displayName: userState.agent.bungieUser?.displayName,
+                    hasSeenRecruitment: userState.agent.protocol?.hasSeenRecruitment,
+                    membershipId: userState.agent.bungieUser?.membershipId
+                })
+
                 setStatus('success')
                 setMessage('Authentification réussie ! Redirection...')
 
                 // Récupérer l'utilisateur pour afficher son nom
-                const userState = useUserStore.getState()
-                setUsername(userState.agent?.protocol.agentName || 'Agent')
-                // console.log('Données utilisateur complètes:', JSON.stringify(userState, null, 2))
+                setUsername(userState.agent?.protocol?.agentName || userState.agent?.bungieUser?.displayName || 'Agent')
 
                 // Nettoyer l'URL (pour ne pas exposer le token)
                 window.history.replaceState({}, document.title, window.location.pathname)
@@ -72,25 +116,40 @@ export default function BungieCallbackPage() {
                 // Si l'utilisateur n'a pas encore vu la page de recrutement, le rediriger vers celle-ci
                 if (userState.agent?.protocol?.hasSeenRecruitment !== true) {
                     redirectUrl = '/recruitment'
+                    console.log('🎯 Redirection vers recruitment (premier accès)')
                 } else {
                     // Sinon, utiliser la redirection par défaut ou celle stockée
                     redirectUrl = sessionStorage.getItem('bungie_auth_redirect') || '/desktop'
+                    console.log('🎯 Redirection vers:', redirectUrl)
                 }
 
                 sessionStorage.removeItem('bungie_auth_redirect')
 
-                // Rediriger l'utilisateur
-                setTimeout(() => router.push(redirectUrl), 1500)
+                // ✅ Redirection immédiate et sécurisée
+                redirectTimer = setTimeout(() => {
+                    if (!aborted) router.push(redirectUrl)
+                }, 1500)
+
             } catch (error) {
-                console.error('Erreur lors du traitement du callback:', error)
+                console.error('❌ Erreur lors du traitement du callback:', error)
                 setStatus('error')
                 setErrorMessage(`Erreur: ${error instanceof Error ? error.message : 'Erreur inconnue'}`)
-                setTimeout(() => router.push('/'), 3000)
+                redirectTimer = setTimeout(() => {
+                    if (!aborted) router.push('/')
+                }, 3000)
             }
         }
 
         processAuth()
-    }, [router, verifyAuthentication])
+
+        // ✅ Cleanup function pour annuler les timers et prévenir les fuites mémoire
+        return () => {
+            aborted = true
+            if (redirectTimer) {
+                clearTimeout(redirectTimer)
+            }
+        }
+    }, [router, initialize, processed]) // ✅ Ajouter processed dans les dépendances
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50">
