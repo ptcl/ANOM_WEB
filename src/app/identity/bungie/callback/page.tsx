@@ -22,11 +22,7 @@ export default function BungieCallbackPage() {
         // ✅ Protection contre les exécutions multiples
         if (processed) return
 
-        let redirectTimer: NodeJS.Timeout | null = null
-        let aborted = false
-
         const processAuth = async () => {
-            if (aborted) return
             setProcessed(true) // ✅ Marquer comme traité immédiatement
             try {
                 // Récupérer les paramètres de l'URL
@@ -37,18 +33,14 @@ export default function BungieCallbackPage() {
                 if (error) {
                     setStatus('error')
                     setErrorMessage(`Erreur d'authentification: ${error}`)
-                    redirectTimer = setTimeout(() => {
-                        if (!aborted) router.push('/')
-                    }, 3000)
+                    setTimeout(() => router.push('/'), 3000)
                     return
                 }
 
                 if (!token) {
                     setStatus('error')
                     setErrorMessage('Token manquant dans la réponse')
-                    redirectTimer = setTimeout(() => {
-                        if (!aborted) router.push('/')
-                    }, 3000)
+                    setTimeout(() => router.push('/'), 3000)
                     return
                 }
 
@@ -56,9 +48,7 @@ export default function BungieCallbackPage() {
                 if (token.length < 10 || !token.includes('.')) {
                     setStatus('error')
                     setErrorMessage('Token invalide reçu')
-                    redirectTimer = setTimeout(() => {
-                        if (!aborted) router.push('/')
-                    }, 3000)
+                    setTimeout(() => router.push('/'), 3000)
                     return
                 }
 
@@ -87,9 +77,7 @@ export default function BungieCallbackPage() {
 
                     setStatus('error')
                     setErrorMessage(userState.error || 'Échec de récupération du profil agent')
-                    redirectTimer = setTimeout(() => {
-                        if (!aborted) router.push('/')
-                    }, 3000)
+                    setTimeout(() => router.push('/'), 3000)
                     return
                 }
 
@@ -106,6 +94,14 @@ export default function BungieCallbackPage() {
 
                 // Récupérer l'utilisateur pour afficher son nom
                 setUsername(userState.agent?.protocol?.agentName || userState.agent?.bungieUser?.displayName || 'Agent')
+
+                // ✅ DEBUG : État de l'agent
+                console.log('🔍 État agent pour redirection:', {
+                    hasSeenRecruitment: userState.agent?.protocol?.hasSeenRecruitment,
+                    agentName: userState.agent?.protocol?.agentName,
+                    currentPath: window.location.pathname,
+                    storedRedirect: sessionStorage.getItem('bungie_auth_redirect')
+                })
 
                 // Nettoyer l'URL (pour ne pas exposer le token)
                 window.history.replaceState({}, document.title, window.location.pathname)
@@ -125,31 +121,23 @@ export default function BungieCallbackPage() {
 
                 sessionStorage.removeItem('bungie_auth_redirect')
 
-                // ✅ Redirection immédiate et sécurisée
-                redirectTimer = setTimeout(() => {
-                    if (!aborted) router.push(redirectUrl)
+                // ✅ Redirection simple qui fonctionne (comme avant)
+                console.log('🔄 Programmation de la redirection vers:', redirectUrl, 'dans 1.5s')
+                setTimeout(() => {
+                    console.log('🚀 Exécution de la redirection vers:', redirectUrl)
+                    router.push(redirectUrl)
                 }, 1500)
 
             } catch (error) {
                 console.error('❌ Erreur lors du traitement du callback:', error)
                 setStatus('error')
                 setErrorMessage(`Erreur: ${error instanceof Error ? error.message : 'Erreur inconnue'}`)
-                redirectTimer = setTimeout(() => {
-                    if (!aborted) router.push('/')
-                }, 3000)
+                setTimeout(() => router.push('/'), 3000)
             }
         }
 
         processAuth()
-
-        // ✅ Cleanup function pour annuler les timers et prévenir les fuites mémoire
-        return () => {
-            aborted = true
-            if (redirectTimer) {
-                clearTimeout(redirectTimer)
-            }
-        }
-    }, [router, initialize, processed]) // ✅ Ajouter processed dans les dépendances
+    }, [router, initialize, processed]) // ✅ Garde-fou contre les exécutions multiples
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -175,6 +163,7 @@ export default function BungieCallbackPage() {
                         <h2 className="text-xl font-semibold mb-2 text-green-800">Connexion réussie !</h2>
                         <p className="text-gray-600 mb-2">Bienvenue, <strong>{username}</strong></p>
                         <p className="text-sm text-gray-500">{message}</p>
+
                     </div>
                 )}
 
