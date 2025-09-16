@@ -80,7 +80,33 @@ export default function DashboardPage() {
     }
     
     if (isLoading) return <div>Récupération des données...</div>
-    if (error) return <div>Erreur: {error}</div>
+    if (error) {
+        return (
+            <div style={{ padding: '20px', border: '2px solid red', margin: '20px' }}>
+                <h2>🚨 ERREUR DE CHARGEMENT DES DONNÉES</h2>
+                <p><strong>Erreur détaillée :</strong> {error}</p>
+                <div style={{ marginTop: '15px' }}>
+                    <button onClick={verifyToken} style={{ marginRight: '10px' }}>
+                        🔍 Vérifier le token
+                    </button>
+                    <button onClick={handleRefresh} style={{ marginRight: '10px' }}>
+                        🔄 Reessayer
+                    </button>
+                    <button onClick={() => {
+                        console.log('🔑 Token actuel:', sessionStorage.getItem('temp_auth_token'))
+                        console.log('📊 État authData:', authData)
+                        console.log('👤 État profile:', profile)
+                        console.log('🔐 Verification token:', tokenVerification)
+                    }}>
+                        🐛 Debug console
+                    </button>
+                </div>
+                <pre style={{ background: '#f8f8f8', padding: '10px', marginTop: '10px', fontSize: '12px' }}>
+                    {JSON.stringify({ error, authDebug }, null, 2)}
+                </pre>
+            </div>
+        )
+    }
     
     if (!isAuthenticated || !authData?.isAuthenticated) {
         return (

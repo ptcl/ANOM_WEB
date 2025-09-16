@@ -424,12 +424,20 @@ export function useTokenVerification() {
 
         try {
             const token = sessionStorage.getItem('temp_auth_token')
+            console.log('🔍 Vérification token:', { 
+                tokenPresent: !!token, 
+                tokenLength: token?.length,
+                apiUrl: `${API_BASE_URL}/api/identity/verify`
+            })
+            
             if (!token) {
+                console.log('❌ Pas de token à vérifier')
                 setVerificationData({ isValid: false })
                 return
             }
 
             // ✅ Envoyer le token dans le body comme attendu par l'API
+            console.log('📡 Envoi requête de vérification...')
             const response = await axios.post(`${API_BASE_URL}/api/identity/verify`, {
                 token: token
             }, {
@@ -439,8 +447,15 @@ export function useTokenVerification() {
                 }
             })
 
+            console.log('📥 Réponse vérification token:', {
+                status: response.status,
+                success: response.data.success,
+                data: response.data.data
+            })
+
             // ✅ Gérer les différents types de réponse de ton API
             if (response.data.success) {
+                console.log('✅ Token valide côté serveur')
                 setVerificationData({
                     isValid: true,
                     tokenData: response.data.data
@@ -448,13 +463,21 @@ export function useTokenVerification() {
             } else {
                 // Ton API peut retourner success:false avec data.valid:false
                 const isValid = response.data.data?.valid === true
+                console.log('⚠️ Token invalide côté serveur:', { isValid, data: response.data.data })
                 setVerificationData({ 
                     isValid,
                     tokenData: isValid ? response.data.data : null
                 })
             }
         } catch (err) {
-            console.error('❌ Erreur verifyToken:', err)
+            const axiosError = err as { response?: { status?: number; statusText?: string; data?: unknown }; config?: unknown }
+            console.error('❌ Erreur verifyToken complète:', {
+                message: err instanceof Error ? err.message : 'Erreur inconnue',
+                status: axiosError.response?.status,
+                statusText: axiosError.response?.statusText,
+                responseData: axiosError.response?.data,
+                config: axiosError.config
+            })
             setError(err instanceof Error ? err.message : 'Erreur inconnue')
             setVerificationData({ isValid: false })
         } finally {
