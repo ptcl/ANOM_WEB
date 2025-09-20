@@ -2,7 +2,7 @@
 
 import { ReactNode, createContext, useContext, useEffect, useCallback } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
-import { useAuth as useAuthHook } from '@/hooks/useAuth'
+import { useAuthentication } from '@/hooks/useAuthentication'
 
 const PUBLIC_ROUTES = ['/', '/identity/login', '/identity/bungie/callback']
 
@@ -27,9 +27,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const router = useRouter()
     const pathname = usePathname()
 
-    // Utiliser notre hook useAuth centralisé
-    const auth = useAuthHook()
-    const { isAuthenticated, isLoading, logout: authLogout } = auth
+    // Utiliser notre hook d'authentification unifié
+    const { isAuthenticated, isLoading, logout: authLogout } = useAuthentication()
 
     const checkAuth = useCallback(async (): Promise<boolean> => {
         const token = sessionStorage.getItem('temp_auth_token')

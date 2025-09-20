@@ -6,7 +6,7 @@ import { X, Minus, Square } from 'lucide-react'
 import { useWindowsStore } from '@/store/useWindowsStore'
 import { useResize } from '../provider/ResizeProvider'
 import { useDrag } from '../provider/DragProvider'
-import { useAuth } from '@/hooks'
+import { useAuthentication } from '@/hooks/useAuthentication'
 
 interface WindowContainerProps {
   id?: string
@@ -21,8 +21,8 @@ interface WindowContainerProps {
 }
 
 export default function WindowContainer({ id = Math.random().toString(36).substr(2, 9), title, icon = '/file.svg', isOpen, onClose, children, width = 800, height = 600, requireAuth = false }: WindowContainerProps) {
-  const { isAuthenticated, isLoading } = useAuth()
-  const authCheckedRef = useRef(false)
+  // ✅ Appel simple et direct du hook - pas de logique complexe
+  const { isAuthenticated, isLoading } = useAuthentication()
   const { openWindows, addWindow, removeWindow, minimizeWindow, updateWindowState } = useWindowsStore()
   const windowInfo = openWindows.find(w => w.id === id)
   const [isMinimized, setIsMinimized] = useState(windowInfo?.isMinimized || false)
@@ -30,10 +30,6 @@ export default function WindowContainer({ id = Math.random().toString(36).substr
   const [size, setSize] = useState(windowInfo?.size || { width, height })
   const { isResizing, startResize } = useResize()
   const { isDragging, startDrag } = useDrag()
-  const [authState, setAuthState] = useState({
-    isAuthenticated: false,
-    isLoading: true
-  })
   const windowRef = useRef<HTMLDivElement>(null)
 
   const handleMinimize = useCallback((e?: React.MouseEvent) => {
@@ -140,19 +136,10 @@ export default function WindowContainer({ id = Math.random().toString(36).substr
     };
   }, [id, handleMaximise]);
 
-  useEffect(() => {
-    if (!authCheckedRef.current) {
-      authCheckedRef.current = true
-      setAuthState({
-        isAuthenticated,
-        isLoading
-      })
-    }
-  }, [isAuthenticated, isLoading]);
-
   const renderContent = () => {
+    // ✅ Vérification auth simplifiée - pas de state complexe
     if (requireAuth) {
-      if (authState.isLoading) {
+      if (isLoading) {
         return (
           <div className="h-full flex items-center justify-center">
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
@@ -160,7 +147,7 @@ export default function WindowContainer({ id = Math.random().toString(36).substr
         )
       }
 
-      if (!authState.isAuthenticated) {
+      if (!isAuthenticated) {
         return (
           <div className="h-full flex flex-col items-center justify-center p-4">
             <div className="text-red-500 mb-4">Vous devez être connecté pour accéder à ce contenu.</div>

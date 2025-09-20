@@ -1,21 +1,19 @@
 'use client'
 
-import { useMinimalAuth } from '@/hooks/useOptimizedData'
+import { useAuthentication } from '@/hooks/useAuthentication'
 
 export default function SimpleAuthCheck() {
-    // ✅ OPTIMISÉ: Récupère seulement le statut d'authentification (pas toutes les données agent)
-    const { authData, isLoading, error } = useMinimalAuth()
+    // ✅ SIMPLIFIÉ: Vérification auth basique avec nouveau hook
+    const { isAuthenticated, isLoading, token } = useAuthentication()
 
     if (isLoading) return <div>Vérification auth...</div>
-    if (error) return <div>Erreur auth: {error}</div>
-    if (!authData?.isAuthenticated) return <div>Non connecté</div>
+    if (!isAuthenticated) return <div>Non connecté</div>
 
     return (
         <div style={{ padding: '10px', border: '1px solid #ddd', borderRadius: '8px' }}>
             <h4>🔐 Statut d&apos;authentification</h4>
             <p>✅ Connecté</p>
-            <p>📋 Permissions: {authData.permissions.length}</p>
-            <p>👁️ Recrutement vu: {authData.hasSeenRecruitment ? 'Oui' : 'Non'}</p>
+            <p>� Token: {token ? 'Présent' : 'Absent'}</p>
             
             <div style={{ marginTop: '10px', fontSize: '12px', color: '#666' }}>
                 💡 Ce composant utilise <code>useMinimalAuth()</code> - seulement 1 requête légère !

@@ -14,7 +14,7 @@
 
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { useLoginAuth } from '@/hooks/useLoginAuth'
+import { useAuthentication } from '@/hooks/useAuthentication'
 import axios from 'axios'
 
 interface AuthResponse {
@@ -32,14 +32,14 @@ interface ErrorResponse {
 }
 
 export const BungieLoginButton = () => {
-    const [isLoading, setIsLoading] = useState(false)
+    const [isConnecting, setIsConnecting] = useState(false)
     const [loginError, setLoginError] = useState<string | null>(null)
 
     // ✅ ULTRA-LÉGER: Hook optimisé pour les pages de login (0 requête API)
-    const { isAuthenticated, isChecking } = useLoginAuth()
+    const { isAuthenticated, isLoading: isCheckingAuth } = useAuthentication()
 
     // État de chargement initial
-    if (isChecking) {
+    if (isCheckingAuth) {
         return (
             <div className="flex justify-center items-center p-4">
                 <div className="w-6 h-6 border-2 border-gray-300 border-t-blue-600 rounded-full animate-spin" />
@@ -64,7 +64,7 @@ export const BungieLoginButton = () => {
 
     const handleLogin = async () => {
         try {
-            setIsLoading(true)
+            setIsConnecting(true)
             setLoginError(null)
 
             // console.log('🎮 Initiating Bungie login...')
@@ -119,7 +119,7 @@ export const BungieLoginButton = () => {
                 setLoginError('Une erreur est survenue')
             }
         } finally {
-            setIsLoading(false)
+            setIsConnecting(false)
         }
     }
 
@@ -134,11 +134,11 @@ export const BungieLoginButton = () => {
         <div className="flex flex-col items-center space-y-4">
             <Button
                 onClick={handleLogin}
-                disabled={isLoading}
+                disabled={isConnecting}
                 size={'lg'}
                 className='text-[var(--white_accent1)] bg-[var(--ThemeColorAccent)] hover:bg-[var(--ThemeColorAccent2)] transition-colors cursor-pointer disabled:opacity-50'
             >
-                {isLoading ? (
+                {isConnecting ? (
                     <div className="flex items-center space-x-2">
                         <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
                         <span>Connexion...</span>

@@ -1,16 +1,24 @@
-// Export de tous les hooks d'authentification et de protocole
-export { 
-  useAuth, 
-  useRequireAuth, 
-  useAgent, 
-  useAuthStatus 
-} from './useAuth'
+/**
+ * 🎯 Hooks principaux - Interface simple et claire
+ * 
+ * Organisation logique:
+ * - useAuthentication: Gestion auth complète
+ * - useDashboard: Données dashboard agent
+ * - useProtocolData: Données protocol générales
+ */
 
-export { 
-  useProtocol, 
-  useAgentDisplayName, 
-  useBungieProfile 
-} from './useProtocol'
+// 🔐 Authentification
+export { useAuthentication } from './useAuthentication'
 
-// Types pour faciliter l'utilisation
+// 📊 Données Dashboard
+export { useDashboard } from './useDashboard'
+
+// 🎯 Données Protocol
+export { 
+    useProtocolData,
+    useProfileOnly,
+    useChallengesOnly 
+} from './useProtocolData'
+
+// 📝 Types
 export type { IAgent } from '@/types/agent'

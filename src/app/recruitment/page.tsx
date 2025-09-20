@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback, useMemo } from 'react'
 import { useRouter } from 'next/navigation'
 import { useUserStore } from '@/store/userStore'
-import { useAuth } from '@/hooks/useAuth'
+import { useAuthentication } from '@/hooks/useAuthentication'
 import GlitchText from '@/components/effect/GlitchText'
 import TypingEffect, { PresetTypingEffect } from '@/components/effect/TypingEffect'
 import { PresetProgressBar } from '@/components/effect/ProgressBar'
@@ -22,7 +22,7 @@ interface Step {
 
 export default function RecruitmentPage() {
     const router = useRouter()
-    const { isLoading } = useAuth()
+    const { isLoading } = useAuthentication()
     const { agent, updateAgentProfile } = useUserStore()
 
     const [currentStepIndex, setCurrentStepIndex] = useState(0)
