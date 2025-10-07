@@ -110,12 +110,7 @@ interface PresetProgressBarProps {
     glitchEffect?: boolean
 }
 
-export function PresetProgressBar({
-    type = 'loading',
-    progress,
-    className = '',
-    glitchEffect = true
-}: PresetProgressBarProps) {
+export function PresetProgressBar({ type = 'loading', progress, className = '', glitchEffect = true }: PresetProgressBarProps) {
     const presets = {
         scan: { width: 8, progress: 67, chars: { filled: '█', empty: '░' } },
         loading: { width: 10, progress: 45, chars: { filled: '▓', empty: '▒' } },

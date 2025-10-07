@@ -109,10 +109,9 @@ export default function DesktopIcon({ id, name, icon, onClick, onDoubleClick, pi
         })
       }
       setTimeout(() => {
-        const isPinnedNow = useWindowsStore.getState().isPinned(id)
-        const pinnedApps = useWindowsStore.getState().pinnedApps
-        // console.log(`DesktopIcon: After toggle, ${id} isPinned: ${isPinnedNow}`)
-        // console.log(`DesktopIcon: Current pinned apps:`, pinnedApps)
+        // Variables supprimées car non utilisées pour le debug
+        // console.log(`DesktopIcon: After toggle, ${id} isPinned`)
+        // console.log(`DesktopIcon: Current pinned apps`)
       }, 0)
     }
   }

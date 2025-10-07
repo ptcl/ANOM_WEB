@@ -1,7 +1,5 @@
 import Container from '@/components/commun/container'
 import React from 'react'
-import Image from 'next/image';
-import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import ImageLueur from '@/components/commun/ImageLueur';
 export default function DocPage() {

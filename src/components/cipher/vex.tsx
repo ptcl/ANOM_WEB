@@ -4,7 +4,7 @@ import vexOff from '../../../public/svg/vex/vex_off.svg'
 import '../../css/cipherLangage.css'
 import WindowContainerStatic from '../desktop/WindowContainerStatic';
 import vex from '../../../public/svg/vex/vex.svg'
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Copy, Clock } from 'lucide-react';
 import Image from 'next/image'
 import { motion } from 'framer-motion'
@@ -23,31 +23,8 @@ export default function VexCustomFont() {
     const [timeKey, setTimeKey] = useState(1);
     const [mode, setMode] = useState('encrypt');
     const [copied, setCopied] = useState(false);
-    const [timeFlux, setTimeFlux] = useState(0);
-    const [fontLoaded, setFontLoaded] = useState(false);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setTimeFlux(prev => (prev + 1) % 360);
-        }, 100);
-        return () => clearInterval(interval);
-    }, []);
-
-    useEffect(() => {
-        const checkFont = () => {
-            if (document.fonts && document.fonts.check) {
-                const loaded = document.fonts.check('1em Vex') || document.fonts.check('1em VexFont');
-                setFontLoaded(loaded);
-            } else {
-                setFontLoaded(true);
-            }
-        };
-
-        checkFont();
-
-        const timer = setTimeout(checkFont, 1000);
-        return () => clearTimeout(timer);
-    }, []);
+    // Effets supprimés car les variables timeFlux et fontLoaded ne sont pas utilisées
 
     const vexEncrypt = (text: string) => {
         const upperText = text.toUpperCase();

@@ -17,7 +17,7 @@ export default function DataDestiny({ position, selected = false, onRegister, on
     const APP_NAME = 'Data Destiny';
     const APP_ICON = '/svg/dataDestiny.svg';
 
-    const { openWindows, updateWindow, removeWindow, addPinnedApp, isPinned } = useWindowsStore()
+    const { openWindows, updateWindow, removeWindow, isPinned } = useWindowsStore()
 
     const [isWindowOpen, setIsWindowOpen] = useState(() => {
         const existingWindow = openWindows.find(w => w.id === APP_ID);
