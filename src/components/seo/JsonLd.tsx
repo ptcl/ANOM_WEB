@@ -26,7 +26,7 @@ export function WebSiteJsonLd() {
     <JsonLd
       type="WebSite"
       data={{
-        name: 'ANOM Archives',
+        name: 'Anom-Archives',
         alternateName: 'ANOM-ARCHIVES',
         url: baseUrl,
         description: 'Expérience ARG communautaire immersive dans l\'univers de Destiny 2. Résolvez des mystères, plongez dans le lore de Bungie et débloquez des emblèmes exclusifs gratuits.',
@@ -41,7 +41,7 @@ export function WebSiteJsonLd() {
         },
         publisher: {
           '@type': 'Organization',
-          name: 'ANOM Archives',
+          name: 'Anom-Archives',
           url: baseUrl,
           logo: {
             '@type': 'ImageObject',
@@ -82,7 +82,7 @@ export function ArticleJsonLd({ article, locale, baseUrl }: {
         },
         publisher: {
           '@type': 'Organization',
-          name: 'ANOM Archives',
+          name: 'Anom-Archives',
           logo: {
             '@type': 'ImageObject',
             url: `${baseUrl}/img/anom_soon.webp`
@@ -97,7 +97,7 @@ export function ArticleJsonLd({ article, locale, baseUrl }: {
         inLanguage: locale,
         isPartOf: {
           '@type': 'WebSite',
-          name: 'ANOM Archives',
+          name: 'Anom-Archives',
           url: baseUrl
         }
       }}
@@ -112,7 +112,7 @@ export function OrganizationJsonLd() {
     <JsonLd
       type="Organization"
       data={{
-        name: 'ANOM Archives',
+        name: 'Anom-Archives',
         alternateName: 'ANOM-ARCHIVES',
         url: baseUrl,
         logo: `${baseUrl}/img/anom-archives.png`,

@@ -9,6 +9,7 @@ import Footer from '@/components/commun/Footer';
 
 export default function HomePage() {
   const MAINTENANCE_MODE = process.env.NEXT_PUBLIC_MAINTENANCE_MODE === 'true';
+  console.log('NEXT_PUBLIC_ENVIRONMENT:', process.env.NEXT_PUBLIC_ENVIRONMENT);
 
   if (MAINTENANCE_MODE) {
 

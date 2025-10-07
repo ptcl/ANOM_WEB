@@ -3,13 +3,13 @@ import './globals.css'
 
 export const metadata: Metadata = {
     title: {
-        default: 'ANOM Archives',
-        template: '%s | ANOM Archives'
+        default: 'Anom-Archives',
+        template: '%s | Anom-Archives'
     },
-    description: 'ANOM-ARCHIVES est une expérience ARG communautaire immersive dans l\'univers de Destiny 2. Résolvez des mystères, plongez dans le lore de Bungie et débloquez des emblèmes exclusifs gratuits.',
-    keywords: ['Destiny 2', 'ARG', 'ANOM Archives', 'Bungie', 'Community', 'Mystères', 'Emblèmes', 'Guardiens', 'Lore', 'Gaming', 'Vex', 'Cabal', 'Fallen', 'Hive', 'Exclusif', 'Gratuit', 'Événements', 'Jeux vidéo'],
+    description: 'Anom-Archives est une expérience ARG communautaire immersive dans l\'univers de Destiny 2. Résolvez des mystères, plongez dans le lore de Bungie et débloquez des emblèmes exclusifs gratuits.',
+    keywords: ['Destiny 2', 'ARG', 'Anom-Archives', 'Bungie', 'Community', 'Mystères', 'Emblèmes', 'Guardiens', 'Lore', 'Gaming', 'Vex', 'Cabal', 'Fallen', 'Hive', 'Exclusif', 'Gratuit', 'Événements', 'Jeux vidéo'],
     authors: [{ name: 'Lucas Raffalli' }],
-    creator: 'Lucas Raffa',
+    creator: 'Lucas Raffalli',
     publisher: 'Anom-Archives',
     formatDetection: {
         email: false,
