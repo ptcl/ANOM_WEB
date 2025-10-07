@@ -20,7 +20,7 @@ const nextConfig = {
       "img-src 'self' data: https: https://images.bungie.net",
       "font-src 'self' data: https:",
       `connect-src 'self' https://www.bungie.net ${apiUrl} ${clarityApiUrl} https://vitals.vercel-insights.com https://cloudflareinsights.com https://*.vercel-analytics.com https://*.vercel-insights.com ws: wss:`,
-      "frame-src 'self' https://www.bungie.net/7 https://www.bungie.net/7/fr/Destiny https://data.destinysets.com https://www.openstreetmap.org https://www.youtube.com/",
+      "frame-src 'self' https://www.bungie.net/7 https://www.bungie.net/7/fr/Destiny https://data.destinysets.com https://www.openstreetmap.org https://www.youtube.com/ https://vercel.live https://*.vercel.live",
       "object-src 'none'",
       "form-action 'self'",
       "base-uri 'self'"
@@ -31,7 +31,7 @@ const nextConfig = {
       "img-src 'self' data: https: https://images.bungie.net",
       "font-src 'self' data:",
       `connect-src 'self' https://www.bungie.net ${apiUrl} ${clarityApiUrl} ws: wss:`,
-      "frame-src 'self' https://www.bungie.net/7 https://www.bungie.net/7/fr/Destiny https://data.destinysets.com https://www.openstreetmap.org https://www.youtube.com/",
+      "frame-src 'self' https://www.bungie.net/7 https://www.bungie.net/7/fr/Destiny https://data.destinysets.com https://www.openstreetmap.org https://www.youtube.com/ https://vercel.live https://*.vercel.live",
       "object-src 'none'",
       "form-action 'self'",
       "base-uri 'self'"

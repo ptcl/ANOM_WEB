@@ -2,6 +2,19 @@ import Container from '@/components/commun/container'
 import React from 'react'
 import { useTranslations } from 'next-intl';
 import ImageLueur from '@/components/commun/ImageLueur';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Documentation et Ressources',
+    description: 'Découvrez toutes les ressources et documentations nécessaires pour participer à l\'expérience ARG Anom-Archives de Destiny 2. Guides, mystères et indices pour débloquer des emblèmes exclusifs.',
+    keywords: ['Documentation', 'Ressources', 'Guide', 'ARG', 'Destiny 2', 'Anom-Archives', 'Mystères', 'Emblèmes', 'Tutoriel'],
+    openGraph: {
+        title: 'Documentation et Ressources - Anom-Archives',
+        description: 'Toutes les ressources pour participer à l\'ARG Anom-Archives de Destiny 2.',
+        type: 'website',
+    },
+};
+
 export default function DocPage() {
     const t = useTranslations();
 

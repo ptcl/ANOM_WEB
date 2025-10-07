@@ -36,6 +36,10 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: 'anthropic-ai',
         disallow: '/',
       },
+      {
+        userAgent: 'Claude-Web',
+        disallow: '/',
+      },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
     host: baseUrl,
