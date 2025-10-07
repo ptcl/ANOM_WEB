@@ -23,12 +23,13 @@ export default async function LocaleLayout({ children, params }: { children: Rea
         <OrganizationJsonLd />
       </head>
       <body>
-      
         <NextIntlClientProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
             {children}
           </ThemeProvider>
         </NextIntlClientProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

@@ -1,4 +1,4 @@
-// next.config.ts
+
 /** @type {import('next').NextConfig} */
 import createNextIntlPlugin from 'next-intl/plugin';
 import type { Configuration as WebpackConfiguration } from 'webpack';
@@ -25,11 +25,11 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://static.cloudflareinsights.com https://va.vercel-scripts.com",
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' data: https: https://images.bungie.net",
               "font-src 'self' data:",
-              `connect-src 'self' https://www.bungie.net ${apiUrl} ${clarityApiUrl} ws: wss:`,
+              `connect-src 'self' https://www.bungie.net ${apiUrl} ${clarityApiUrl} https://vitals.vercel-insights.com https://cloudflareinsights.com ws: wss:`,
               "frame-src 'self' https://www.bungie.net/7 https://www.bungie.net/7/fr/Destiny https://data.destinysets.com https://www.openstreetmap.org https://www.youtube.com/",
               "object-src 'none'",
               "form-action 'self'",
@@ -41,7 +41,6 @@ const nextConfig = {
     ]
   },
   webpack(config: WebpackConfiguration) {
-    // Grab the existing rule that handles SVG imports
     const fileLoaderRule = config.module?.rules?.find((rule) => {
       if (typeof rule !== 'object' || rule === null) return false;
       const ruleWithTest = rule as { test?: RegExp };
@@ -58,24 +57,21 @@ const nextConfig = {
     }
 
     config.module?.rules?.push(
-      // Reapply the existing rule, but only for svg imports ending in ?url
       {
         ...fileLoaderRule,
         test: /\.svg$/i,
-        resourceQuery: /url/, // *.svg?url
+        resourceQuery: /url/,
       },
-      // Convert all other *.svg imports to React components
       {
         test: /\.svg$/i,
         issuer: fileLoaderRule.issuer,
         resourceQuery: {
           not: [...(fileLoaderRule.resourceQuery?.not || []), /url/]
-        }, // exclude if *.svg?url
+        },
         use: ['@svgr/webpack'],
       }
     );
 
-    // Modify the file loader rule to ignore *.svg, since we have it handled now.
     fileLoaderRule.exclude = /\.svg$/i;
 
     return config;
