@@ -48,8 +48,8 @@ const nextConfig = {
       return ruleWithTest.test?.test?.('.svg');
     }) as {
       test?: RegExp;
-      issuer?: unknown;
-      resourceQuery?: { not?: unknown[] };
+      issuer?: string | RegExp | ((value: string) => boolean);
+      resourceQuery?: { not?: (string | RegExp)[] };
       exclude?: RegExp;
     } | undefined;
 
