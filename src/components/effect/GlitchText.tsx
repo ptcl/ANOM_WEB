@@ -1,132 +1,125 @@
 'use client'
-
+import { DEFAULT_GLITCH_CHARS, IGlitchChar, IGlitchTextProps } from '@/types/effect'
 import { useState, useEffect, useMemo, useCallback } from 'react'
 
-interface GlitchTextProps {
-    text: string
-    glitchChars?: string[]
-    glitchProbability?: number
-    glitchDuration?: number
-    glitchInterval?: number
-    className?: string
+interface IExtendedGlitchTextProps extends IGlitchTextProps {
+    glitchMode?: 'chars' | 'font';
+    primaryFont?: string;
+    glitchFont?: string;
 }
 
-interface GlitchChar {
-    index: number
-    originalChar: string
-    isGlitching: boolean
-    glitchChar: string
-    nextGlitchTime: number
+interface IExtendedGlitchChar extends IGlitchChar {
+    useGlitchFont?: boolean;
 }
 
-const DEFAULT_GLITCH_CHARS = [
-    '█', '▓', '▒', '░', '▄', '▌', '▐', '▀', '■', '□', '▪', '▫',
-    '◆', '◇', '◈', '◉', '◎', '●', '○', '◦', '⬛', '⬜', '◾', '◽',
-    '▲', '▼', '◀', '▶', '◤', '◥', '◣', '◢', '╱', '╲', '╳', '╬',
-    '@', '#', '$', '%', '&', '*', '+', '=', '~', '^', '<', '>',
-    '0', '1', 'X', 'Y', 'Z', 'Ø', 'Ξ', 'Δ', 'Λ', 'Ω', 'Φ', 'Ψ'
-]
+export default function GlitchText({ text, glitchChars = DEFAULT_GLITCH_CHARS, glitchProbability = 0.02, glitchDuration = 150, glitchInterval = 50, className = '', langage = '', size, glitchMode = 'chars', primaryFont, glitchFont }: IExtendedGlitchTextProps) {
+    const [glitchState, setGlitchState] = useState<IExtendedGlitchChar[]>([])
 
-export default function GlitchText({
-    text,
-    glitchChars = DEFAULT_GLITCH_CHARS,
-    glitchProbability = 0.02, // 2% de chance par caractère
-    glitchDuration = 150, // Durée du glitch en ms
-    glitchInterval = 50, // Intervalle de vérification en ms
-    className = ''
-}: GlitchTextProps) {
-    const [glitchState, setGlitchState] = useState<GlitchChar[]>([])
-
-    // Initialise l'état des caractères
     const initializeGlitchState = useCallback(() => {
-        return text.split('').map((char, index) => ({
+        return String(text).split('').map((char: string, index: number) => ({
             index,
             originalChar: char,
             isGlitching: false,
             glitchChar: char,
-            nextGlitchTime: Date.now() + Math.random() * 2000 // Délai initial aléatoire
+            useGlitchFont: false,
+            nextGlitchTime: Date.now() + Math.random() * 2000
         }))
     }, [text])
 
-    // Initialise l'état au montage et quand le texte change
     useEffect(() => {
         setGlitchState(initializeGlitchState())
     }, [initializeGlitchState])
 
-    // Choisit un caractère de glitch aléatoire
     const getRandomGlitchChar = useCallback(() => {
         return glitchChars[Math.floor(Math.random() * glitchChars.length)]
     }, [glitchChars])
 
-    // Effet principal de glitch
     useEffect(() => {
         const interval = setInterval(() => {
             const now = Date.now()
 
             setGlitchState(prevState =>
                 prevState.map(charState => {
-                    // Si le caractère est en train de glitch, vérifie s'il faut l'arrêter
                     if (charState.isGlitching) {
                         if (now >= charState.nextGlitchTime) {
                             return {
                                 ...charState,
                                 isGlitching: false,
                                 glitchChar: charState.originalChar,
-                                nextGlitchTime: now + Math.random() * 3000 + 1000 // Prochain glitch dans 1-4s
+                                useGlitchFont: false,
+                                nextGlitchTime: now + Math.random() * 3000 + 1000
                             }
                         }
-                        // Continue le glitch avec un nouveau caractère aléatoire
-                        return {
-                            ...charState,
-                            glitchChar: getRandomGlitchChar()
+
+                        if (glitchMode === 'font') {
+                            return {
+                                ...charState,
+                                glitchChar: charState.originalChar,
+                                useGlitchFont: true
+                            }
+                        } else {
+                            return {
+                                ...charState,
+                                glitchChar: getRandomGlitchChar(),
+                                useGlitchFont: false
+                            }
                         }
                     }
 
-                    // Si le caractère n'est pas en glitch, vérifie s'il faut commencer
                     if (now >= charState.nextGlitchTime && Math.random() < glitchProbability) {
-                        // Ne glitch que les caractères visibles (pas les espaces)
                         if (charState.originalChar !== ' ' && charState.originalChar !== '\t') {
                             return {
                                 ...charState,
                                 isGlitching: true,
-                                glitchChar: getRandomGlitchChar(),
+                                glitchChar: glitchMode === 'font' ? charState.originalChar : getRandomGlitchChar(),
+                                useGlitchFont: glitchMode === 'font',
                                 nextGlitchTime: now + glitchDuration
                             }
                         }
                     }
-
                     return charState
                 })
             )
         }, glitchInterval)
 
         return () => clearInterval(interval)
-    }, [glitchProbability, glitchDuration, glitchInterval, getRandomGlitchChar])
+    }, [glitchProbability, glitchDuration, glitchInterval, getRandomGlitchChar, glitchMode])
 
-    // Rendu du texte avec glitch
-    const renderedText = useMemo(() => {
-        return glitchState.map(charState => charState.glitchChar).join('')
-    }, [glitchState])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const baseStyle = {
+        ...(langage === 'vex' ? { fontFamily: 'Vex' } : primaryFont ? { fontFamily: primaryFont } : {}),
+        ...(size ? { fontSize: typeof size === 'number' ? `${size}px` : size } : {})
+    }
+
+    const renderedContent = useMemo(() => {
+        return glitchState.map((charState, index) => {
+            const shouldUseGlitchFont = glitchMode === 'font' && charState.useGlitchFont && glitchFont
+
+            const charStyle = shouldUseGlitchFont
+                ? { ...baseStyle, fontFamily: glitchFont }
+                : baseStyle
+
+            return (
+                <span key={index} style={charStyle} className={shouldUseGlitchFont ? 'text_color_vex' : ''}>
+                    {charState.glitchChar}
+                </span>
+            )
+        })
+    }, [glitchState, baseStyle, glitchFont, glitchMode])
 
     return (
         <span className={`${className} ${glitchState.some(c => c.isGlitching) ? 'animate-pulse' : ''}`}>
-            {renderedText}
+            {renderedContent}
         </span>
     )
 }
 
-// Hook personnalisé pour utiliser GlitchText avec les recruitmentSteps
 export function useGlitchRecruitmentSteps(originalSteps: Array<{ text: string; duration: number }>) {
     return useMemo(() =>
         originalSteps.map(step => ({
             ...step,
             glitchText: (
-                <GlitchText
-                    text={step.text}
-                    glitchProbability={0.015}
-                    glitchDuration={200}
-                    glitchInterval={20}
-                />
+                <GlitchText text={step.text} glitchProbability={0.015} glitchDuration={200} glitchInterval={20} />
             )
         })),
         [originalSteps]

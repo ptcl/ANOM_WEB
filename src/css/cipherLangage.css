@@ -1,0 +1,72 @@
+/*! vex */
+.vex-font {
+    font-family: 'Vex', monospace;
+}
+
+.classic-font {
+    font-family: 'Grotesk', Helvetica, sans-serif;
+}
+
+/* Transparent scrollbar */
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.0);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    background: var(--vex-3);
+    /* couleur du thumb */
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    border: 2px solid var(--vex-1);
+}
+
+.scrollbar-transparent {
+    scrollbar-width: thin;
+    scrollbar-color: transparent;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: rgb(220, 38, 38);
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: rgb(220, 38, 38);
+    cursor: pointer;
+    border-radius: 50%;
+    border: none;
+}

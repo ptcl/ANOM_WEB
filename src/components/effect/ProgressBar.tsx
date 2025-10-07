@@ -21,7 +21,6 @@ export default function ProgressBar({ progress, duration = 3000, width = 10, fil
 
     useEffect(() => {
         if (progress !== undefined) {
-            // Mode progression fixe
             setCurrentProgress(progress)
             return
         }
@@ -36,7 +35,6 @@ export default function ProgressBar({ progress, duration = 3000, width = 10, fil
             const elapsed = Date.now() - startTime
             const progressRatio = Math.min(elapsed / duration, 1)
 
-            // Courbe d'animation non-linéaire pour plus de réalisme
             const easeProgress = progressRatio < 0.5
                 ? 2 * progressRatio * progressRatio
                 : 1 - Math.pow(-2 * progressRatio + 2, 3) / 2
@@ -55,7 +53,6 @@ export default function ProgressBar({ progress, duration = 3000, width = 10, fil
         requestAnimationFrame(animate)
     }, [progress, duration, autoStart, onComplete])
 
-    // Effet de glitch sur certaines positions
     useEffect(() => {
         if (!glitchEffect) return
 
@@ -72,7 +69,6 @@ export default function ProgressBar({ progress, duration = 3000, width = 10, fil
         return () => clearInterval(interval)
     }, [glitchEffect, width])
 
-    // Génération de la barre visuelle
     const progressBar = useMemo(() => {
         const glitchChars = ['▓', '▒', '░', '▄', '▌', '▐', '▀', '■', '□']
         const filledCount = Math.round((currentProgress / 100) * width)

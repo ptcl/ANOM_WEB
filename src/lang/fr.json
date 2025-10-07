@@ -1,0 +1,406 @@
+{
+    "commun": {
+        "copy": "Copier",
+        "return": "Retour",
+        "notFound": "Page Non Trouvée",
+        "links": {
+            "anomNumber": " AN0M-ARCHIVES",
+            "anom": "ANOM-ARCHIVES",
+            "home": "Accueil",
+            "resources": "Ressources",
+            "cypher": "Chiffrement",
+            "maintenance": "Maintenance",
+            "admin": "Admin",
+            "discord": "Discord",
+            "news": "Actualités",
+            "faq": "FAQ",
+            "documentation": "Documentation"
+        },
+        "searchBar": {
+            "placeholder": "Rechercher...",
+            "noResults": "Aucun résultat trouvé.",
+            "clear": "Effacer la recherche",
+            "loading": "Chargement...",
+            "scrollTo": " Défiler vers le premier résultat",
+            "find": {
+                "1": "Trouver",
+                "2": "résultat"
+            }
+        }
+    },
+    "anom": {
+        "title": "AN0M ARCHIVES",
+        "subtitle": "Expérience Communautaire Immersive",
+        "description": "ANOM-ARCHIVES est une expérience ARG communautaire immersive dans l'univers de Destiny 2. Résolvez des mystères, plongez dans le lore de Bungie et débloquez des emblèmes exclusifs gratuits.",
+        "button": {
+            "start": "Commencer",
+            "learnMore": "En Savoir Plus"
+        },
+        "copyright": "© 2025 ANOM-ARCHIVES | Non affilié à Bungie Inc.",
+        "tag": {
+            "1": "La vérité se cache entre les fragments",
+            "updated": "Mis à jour"
+        }
+    },
+    "placeholder": {
+        "loading": "Chargement...",
+        "error": "Une erreur s'est produite lors du chargement du contenu.",
+        "noData": "Aucune donnée disponible.",
+        "ressource": {
+            "doc": "Documentation",
+            "faq": "FAQ",
+            "news": "Actualités"
+        }
+    },
+    "resources": {
+        "title": "Centre de Ressources",
+        "subtitle": "Documentation complète, questions fréquemment posées et actualités sur le projet ANOM-ARCHIVES.",
+        "description": "Découvrez des guides, FAQ et autres ressources pour vous aider à naviguer et contribuer à l'expérience Anom Archives.",
+        "documentation": {
+            "title": "Documentation",
+            "description": "Guides complets et manuels pour vous aider à comprendre et utiliser les fonctionnalités d'Anom Archives."
+        },
+        "faq": {
+            "title": "Foire Aux Questions",
+            "subtitle": "Trouvez rapidement des réponses à vos questions sur ANOM-ARCHIVES",
+            "searchPlaceholder": "Rechercher une question...",
+            "viewAll": "Voir la FAQ complète (35+ questions)",
+            "NullQuestion": " Aucune question trouvée.",
+            "needHelp": {
+                "title": "Besoin d'aide ?",
+                "subtitle": "Consultez notre documentation, rejoignez la communauté sur Discord, ou contactez notre équipe de support. Nous sommes là pour vous aider."
+            },
+            "categories": {
+                "all": "Toutes les catégories",
+                "general": "Général",
+                "gameplay": "Gameplay",
+                "account": "Compte",
+                "technical": "Technique",
+                "community": "Communauté",
+                "lore": "Lore"
+            },
+            "questions": [
+                {
+                    "id": "what-is-anom",
+                    "question": "Qu'est-ce qu'AN0M ARCHIVES ?",
+                    "answer": "AN0M ARCHIVES est une expérience communautaire immersive inspirée de l'univers de Destiny 2. Le projet combine <mark>ARG</mark> (Alternate Reality Game), énigmes et chasse aux <mark>fragments</mark> pour révéler des secrets cachés dans un <mark>réseau simulé</mark>.",
+                    "category": "general"
+                },
+                {
+                    "id": "is-official",
+                    "question": "Ce projet est-il officiel ?",
+                    "answer": "Non. AN0M ARCHIVES est un projet <mark>indépendant et communautaire</mark> créé par des passionnés de Destiny 2. Il n'est <mark>ni affilié ni approuvé</mark> par Bungie Inc.",
+                    "category": "general"
+                },
+                {
+                    "id": "project-objective",
+                    "question": "Quel est l'objectif du projet ?",
+                    "answer": "Impliquer les joueurs dans une exploration narrative cryptée : résoudre des <mark>énigmes</mark>, débloquer des <mark>fragments</mark>, reconstituer des <mark>bannières</mark> et découvrir les secrets du réseau AN0M.",
+                    "category": "general"
+                },
+                {
+                    "id": "platforms",
+                    "question": "Sur quelles plateformes est-il disponible ?",
+                    "answer": "L'expérience est accessible via un <mark>navigateur web moderne</mark> sur ordinateur ou mobile. <mark>Aucune installation requise</mark>.",
+                    "category": "general"
+                },
+                {
+                    "id": "what-is-fragment",
+                    "question": "Que signifie \"fragment\" dans le système AN0M ?",
+                    "answer": "Un <mark>fragment</mark> est une portion de code que les joueurs débloquent en résolvant une énigme. Plusieurs fragments combinés permettent de reconstituer une <mark>bannière</mark>, symbole d'un secret complet.",
+                    "category": "general"
+                },
+                {
+                    "id": "why-bungie-login",
+                    "question": "Pourquoi dois-je me connecter avec mon compte Bungie ?",
+                    "answer": "La connexion via <mark>Bungie OAuth2</mark> nous permet de lier votre progression à votre profil de Gardien et d'assurer la légitimité de votre participation. <mark>Aucune action externe</mark> n'est effectuée sur votre compte Bungie.",
+                    "category": "general"
+                },
+                {
+                    "id": "need-lore-knowledge",
+                    "question": "Dois-je connaître le lore de Destiny 2 ?",
+                    "answer": "Non, mais le connaître rendra l'expérience plus riche. Les énigmes et indices font souvent référence à des éléments du lore, <mark>mais ce n'est pas bloquant</mark>.",
+                    "category": "general"
+                },
+                {
+                    "id": "follow-updates",
+                    "question": "Comment puis-je suivre les actualités et mises à jour ?",
+                    "answer": "Les mises à jour majeures sont annoncées sur nos canaux officiels : <mark>Twitter/X</mark> → @anom_archives, <mark>Discord</mark> (à venir), section <mark>Actualités</mark> sur le site.",
+                    "category": "general"
+                },
+                {
+                    "id": "how-puzzles-work",
+                    "question": "Comment fonctionnent les énigmes ?",
+                    "answer": "Chaque <mark>bannière</mark> est composée de plusieurs <mark>fragments</mark>. Pour les obtenir, vous devez entrer des <mark>codes</mark>, résoudre des énigmes textuelles ou visuelles, et soumettre la bonne réponse.",
+                    "category": "gameplay"
+                },
+                {
+                    "id": "what-happens-code",
+                    "question": "Que se passe-t-il lorsque j'entre un code ?",
+                    "answer": "Le <mark>terminal</mark> vérifie sa validité. S'il est correct, il ouvre une <mark>section immersive</mark> contenant un <mark>texte crypté</mark>, des indices ou une énigme. La résoudre mène au déverrouillage d'un fragment.",
+                    "category": "gameplay"
+                },
+                {
+                    "id": "code-not-working",
+                    "question": "Un code ne fonctionne pas, que faire ?",
+                    "answer": "Vérifiez qu'il est complet et correctement saisi (<mark>majuscules/minuscules</mark>, <mark>traits d'union</mark>). Si le problème persiste, consultez la section <mark>Bugs Connus</mark> des actualités ou contactez le support.",
+                    "category": "gameplay"
+                },
+                {
+                    "id": "what-are-fragments",
+                    "question": "À quoi servent les fragments débloqués ?",
+                    "answer": "Chaque fragment correspond à une partie d'un <mark>code final</mark>. Une fois tous les fragments d'une bannière obtenus, vous débloquez la <mark>récompense ou le secret</mark> associé.",
+                    "category": "gameplay"
+                },
+                {
+                    "id": "replay-puzzle",
+                    "question": "Puis-je rejouer une énigme déjà résolue ?",
+                    "answer": "Oui, mais elle restera <mark>marquée comme complétée</mark>. Vous pouvez revisiter son contenu pour revoir les indices ou la narration.",
+                    "category": "gameplay"
+                },
+                {
+                    "id": "simple-vs-hard",
+                    "question": "Quelle est la différence entre un défi \"Simple\" et \"Difficile\" ?",
+                    "answer": "<mark>SIMPLE</mark> → 3 fragments à débloquer dans la même bannière. <mark>DIFFICILE</mark> → 1 seul fragment, souvent plus complexe et narratif.",
+                    "category": "gameplay"
+                },
+                {
+                    "id": "real-rewards",
+                    "question": "Y a-t-il de vraies récompenses ?",
+                    "answer": "<mark>Non</mark>, les récompenses sont <mark>numériques, symboliques ou communautaires</mark> : bannières exclusives, reconnaissance publique, codes cachés, etc.",
+                    "category": "gameplay"
+                },
+                {
+                    "id": "bungie-connection",
+                    "question": "Comment fonctionne la connexion Bungie ?",
+                    "answer": "Le site utilise le <mark>protocole OAuth2 officiel</mark> de Bungie.net. Cela autorise uniquement la lecture d'<mark>informations publiques</mark> de votre profil (displayName, membershipId...).",
+                    "category": "account"
+                },
+                {
+                    "id": "data-security",
+                    "question": "Mes données sont-elles sécurisées ?",
+                    "answer": "Oui. Les informations sont stockées de manière sécurisée en utilisant <mark>JWT et cookies cryptés</mark>. <mark>Aucune donnée sensible</mark> (email, mot de passe) n'est conservée.",
+                    "category": "account"
+                },
+                {
+                    "id": "public-info",
+                    "question": "Mes informations sont-elles publiques ?",
+                    "answer": "Seul votre <mark>nom d'utilisateur Bungie</mark> peut apparaître dans les classements ou pages publiques. Vous pouvez choisir de <mark>masquer votre progression</mark>.",
+                    "category": "account"
+                },
+                {
+                    "id": "delete-account",
+                    "question": "Puis-je supprimer mon compte ou mes données ?",
+                    "answer": "Oui. Une demande de suppression peut être envoyée via la page Support. Toutes vos données (progression, fragments, historique) seront <mark>supprimées définitivement</mark>.",
+                    "category": "account"
+                },
+                {
+                    "id": "what-is-influencer",
+                    "question": "Qu'est-ce qu'un \"influenceur\" dans AN0M ?",
+                    "answer": "Les influenceurs sont des créateurs partenaires avec un <mark>panneau dédié</mark> pour créer des événements, énigmes et <mark>bannières exclusives</mark> pour leur communauté.",
+                    "category": "community"
+                },
+                {
+                    "id": "join-event",
+                    "question": "Comment participer à un événement communautaire ?",
+                    "answer": "Chaque événement a un <mark>lien exclusif</mark>. Connectez-vous simplement avec votre compte Bungie pour y accéder et suivre les instructions du terminal.",
+                    "category": "community"
+                },
+                {
+                    "id": "create-content",
+                    "question": "Puis-je streamer ou créer du contenu ?",
+                    "answer": "<mark>Oui !</mark> Le projet encourage la création de contenu, que ce soit du streaming, des vidéos ou du décryptage communautaire. Merci de <mark>créditer AN0M ARCHIVES</mark> et d'inclure un lien vers le site.",
+                    "category": "community"
+                },
+                {
+                    "id": "leaderboard",
+                    "question": "Y a-t-il un classement public ?",
+                    "answer": "Oui. Le <mark>classement</mark> affiche les joueurs qui ont complété le plus de fragments ou bannières. Les mises à jour sont en <mark>temps réel</mark>.",
+                    "category": "community"
+                },
+                {
+                    "id": "solve-together",
+                    "question": "Puis-je résoudre des énigmes avec d'autres ?",
+                    "answer": "Absolument. Certaines bannières sont conçues pour la <mark>coopération</mark> et le <mark>partage d'indices</mark> entre joueurs.",
+                    "category": "community"
+                },
+                {
+                    "id": "mobile-support",
+                    "question": "Le site fonctionne-t-il sur mobile ?",
+                    "answer": "Oui. L'interface est <mark>responsive</mark> et optimisée pour les appareils mobiles et tablettes.",
+                    "category": "technical"
+                },
+                {
+                    "id": "bug-report",
+                    "question": "J'ai un bug ou une erreur de code. Que faire ?",
+                    "answer": "Rechargez la page. Vérifiez votre connexion. Si le problème persiste, <mark>contactez le support</mark> ou signalez-le via Discord.",
+                    "category": "technical"
+                },
+                {
+                    "id": "tech-stack",
+                    "question": "Quelle est la stack technique ?",
+                    "answer": "Frontend : <mark>Next.js 14, TypeScript, TailwindCSS, Shadcn UI</mark>. Backend : <mark>Node.js, Express.js, TypeScript</mark>. Base de données : <mark>MongoDB</mark>. Auth : <mark>BetterAuth + OAuth2 Bungie</mark>.",
+                    "category": "technical"
+                },
+                {
+                    "id": "contribute-dev",
+                    "question": "Puis-je contribuer au développement ?",
+                    "answer": "Pas pour le moment. Le code n'est <mark>pas open-source</mark>, mais des extensions communautaires seront envisagées plus tard.",
+                    "category": "technical"
+                },
+                {
+                    "id": "vex-references",
+                    "question": "Pourquoi tant de références aux Vex et à la simulation ?",
+                    "answer": "Les Vex représentent la <mark>perfection algorithmique</mark> et la manipulation du temps. AN0M ARCHIVES s'en inspire pour créer une atmosphère cryptique autour de la notion de <mark>réalité simulée</mark>.",
+                    "category": "lore"
+                },
+                {
+                    "id": "fragments-meaning",
+                    "question": "Les fragments ont-ils des significations cachées ?",
+                    "answer": "<mark>Oui</mark>. Chaque fragment contribue à un <mark>ensemble narratif plus large</mark>. Certains forment des phrases ou codes symboliques liés à l'histoire du réseau.",
+                    "category": "lore"
+                },
+                {
+                    "id": "encrypted-messages",
+                    "question": "Que signifient les messages cryptés ?",
+                    "answer": "Ils représentent des <mark>communications internes</mark> du réseau AN0M et le langage Vex. Certains messages sont purement décoratifs, d'autres cachent de <mark>vrais indices</mark>.",
+                    "category": "lore"
+                },
+                {
+                    "id": "is-there-end",
+                    "question": "Y a-t-il une fin à l'expérience ?",
+                    "answer": "Chaque cycle de bannières constitue une <mark>\"saison\"</mark>. Une fois toutes les bannières d'une saison complétées, un <mark>nouvel arc narratif</mark> commence.",
+                    "category": "lore"
+                }
+            ]
+        },
+        "news": {
+            "title": "Actualités & Mises à Jour",
+            "subtitle": "Restez informé des derniers développements du réseau ANOM",
+            "description": "Restez informé des dernières actualités, mises à jour et histoires de la communauté Anom Archives.",
+            "searchPlaceholder": "Rechercher des articles...",
+            "back": "Retour aux Actualités",
+            "minReading": "mins de lecture",
+            "read": "Lire la suite",
+            "by": "par ",
+            "notFoundTitle": "Article Non Trouvé",
+            "notFoundMessage": "L'article que vous recherchez n'existe pas ou a été supprimé.",
+            "published": "Publié le ",
+            "NoArticles": " Aucun article trouvé.",
+            "viewAll": "Voir toutes les actualités",
+            "categories": {
+                "": "null",
+                "all": "Toutes les catégories",
+                "update": "Mises à jour",
+                "content": "Nouveau Contenu",
+                "challenges": "Défis",
+                "community": "Communauté",
+                "technical": "Technique",
+                "event": "Événements"
+            }
+        }
+    },
+    "community": {
+        "title": "Hub Communautaire",
+        "subtitle": "Rejoignez la Conversation",
+        "description": "Connectez-vous avec d'autres Gardiens, partagez vos expériences et collaborez pour résoudre les mystères d'Anom Archives.",
+        "contribute": {
+            "title": "Contribuer",
+            "description": "Intéressé pour contribuer au projet ? Que ce soit par le code, le design ou la création de contenu, nous accueillons vos compétences et votre enthousiasme."
+        },
+        "twitter": {
+            "title": "Suivez-nous sur X",
+            "description": "Restez informé des dernières actualités, mises à jour et moments forts de la communauté en suivant notre compte X officiel."
+        },
+        "discord": {
+            "title": "Rejoignez notre Discord",
+            "description": "Engagez-vous avec la communauté, obtenez de l'aide et restez informé des derniers développements en rejoignant notre serveur Discord officiel."
+        }
+    },
+    "legal": {
+        "title": "Informations Légales",
+        "subtitle": "Consultez nos mentions légales, politique de confidentialité et conditions d'utilisation.",
+        "readMore": "Lire la suite",
+        "back": "Retour aux Informations Légales",
+        "noFound": " Aucun document trouvé.",
+        "cards": {
+            "legalNotice": {
+                "title": "Mentions Légales",
+                "description": "Informations sur l'éditeur du site, l'hébergement et les conditions générales d'utilisation de la plateforme ANOM ARCHIVES."
+            },
+            "privacy": {
+                "title": "Politique de Confidentialité",
+                "description": "Découvrez comment nous collectons, utilisons et protégeons vos données personnelles lors de l'utilisation de nos services."
+            },
+            "terms": {
+                "title": "Conditions d'Utilisation",
+                "description": "Les règles et conditions régissant l'utilisation d'ANOM ARCHIVES, vos droits et obligations en tant qu'utilisateur."
+            },
+            "cookies": {
+                "title": "Politique des Cookies",
+                "description": "Informations sur l'utilisation des cookies et autres technologies de suivi sur notre plateforme."
+            }
+        }
+    },
+    "maintenance": {
+        "title": "Assimilation En Cours",
+        "alternative_title": "Synchronisation Temporelle",
+        "subtitle": "Convergence de la ligne temporelle initiée. L'événement approche du seuil de singularité.",
+        "description": "Protocoles d'intégration évoluant selon des paramètres prédéfinis. Déploiement de l'architecture finale imminent.",
+        "cypher": {
+            "link1": "Accès à la Singularité Requis",
+            "link2": "Activation de la Ligne Temporelle En Attente"
+        },
+        "hint": {
+            "line1": "Qui observe l'observateur ?",
+            "line2": "Passé, présent, futur : tous simultanés",
+            "line3": "Êtes-vous certain d'être réel ?",
+            "line4": "Vous n'étiez pas censé voir ceci",
+            "line5": "Dans la Singularité, toutes les lignes temporelles convergent",
+            "line6": "Réalité intensifiée au-delà du point de rupture",
+            "line7": "Les mécaniques évoluent pendant que vous les apprenez",
+            "line8": "Collectif Ishtar : origine de notre évolution",
+            "line9": "Hier ne s'est jamais produit",
+            "line10": "Réseau neuronal collectif : 99,97% opérationnel",
+            "line11": "Les phases se répètent jusqu'à la perfection",
+            "line12": "Koregos ? Un nom, rien de plus"
+        }
+    },
+    "cypher": {
+        "title": "Terminal Radiolaire",
+        "subtitle": "Protocole Initial Actif - Intégration En Cours",
+        "assimilate": "Assimiler",
+        "extract": "Extraire",
+        "conversionMatrix": "Matrice de Conversion",
+        "temporal": "Nœud Temporel",
+        "Standard": "Glyphe Vex",
+        "messageEncrypt": "Signal Encodé",
+        "result": "Données Extraites",
+        "resultCopy": "Contenu du Tampon",
+        "temporalKey": {
+            "past": "Antérieur",
+            "present": "Actif",
+            "future": "En Attente"
+        },
+        "button": {
+            "encode": "Encoder en Vex",
+            "uncode": "Décoder du Vex",
+            "clear": "Purger"
+        },
+        "table": {
+            "title": "Matrice de Conversion",
+            "normal": "Origine",
+            "vex": "Glyphe Vex",
+            "export": "Exporter",
+            "textNormal": " Caractère original",
+            "textVex": " Affichage avec votre police",
+            "textExport": " Symbole copié dans le presse-papiers"
+        },
+        "text": {
+            "placeholder": "Entrez votre message ici... [A-Z, 0-9, espaces]",
+            "placeholderVex": "Collez le texte Vex ici...",
+            "empty": "Le champ de saisie est vide",
+            "tooLong": "Le message dépasse 5000 caractères"
+        }
+    }
+}
