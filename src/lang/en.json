@@ -55,10 +55,10 @@
     "resources": {
         "title": "Resource Center",
         "subtitle": "Complete documentation, frequently asked questions and news about the ANOM-ARCHIVES project.",
-        "description": "Discover guides, FAQs, and other resources to help you navigate and contribute to the Anom Archives experience.",
+        "description": "Discover guides, FAQs, and other resources to help you navigate and contribute to the Anom-Archives experience.",
         "documentation": {
             "title": "Documentation",
-            "description": "Comprehensive guides and manuals to help you understand and utilize the features of Anom Archives."
+            "description": "Comprehensive guides and manuals to help you understand and utilize the features of Anom-Archives."
         },
         "faq": {
             "title": "Frequently Asked Questions",
@@ -276,8 +276,8 @@
         },
         "news": {
             "title": "News & Updates",
-            "subtitle": "Stay updated with the latest developments from the ANOM network",
-            "description": "Stay updated with the latest news, updates, and stories from the Anom Archives community.",
+            "subtitle": "Stay updated with the latest developments from the Anom-Archives network",
+            "description": "Stay updated with the latest news, updates, and stories from the Anom-Archives community.",
             "searchPlaceholder": "Search articles...",
             "back": "Back to News",
             "minReading": "mins reading",
@@ -303,7 +303,7 @@
     "community": {
         "title": "Community Hub",
         "subtitle": "Join the Conversation",
-        "description": "Connect with fellow Guardians, share your experiences, and collaborate on solving the mysteries of Anom Archives.",
+        "description": "Connect with fellow Guardians, share your experiences, and collaborate on solving the mysteries of Anom-Archives.",
         "contribute": {
             "title": "Contribute",
             "description": "Interested in contributing to the project? Whether through coding, design, or content creation, we welcome your skills and enthusiasm."
@@ -326,7 +326,7 @@
         "cards": {
             "legalNotice": {
                 "title": "Legal Notice",
-                "description": "Information about the site publisher, hosting, and general terms of use for the ANOM ARCHIVES platform."
+                "description": "Information about the site publisher, hosting, and general terms of use for the Anom-Archives platform."
             },
             "privacy": {
                 "title": "Privacy Policy",
@@ -334,7 +334,7 @@
             },
             "terms": {
                 "title": "Terms of Use",
-                "description": "The rules and conditions governing the use of ANOM ARCHIVES, your rights and obligations as a user."
+                "description": "The rules and conditions governing the use of Anom-Archives, your rights and obligations as a user."
             },
             "cookies": {
                 "title": "Cookie Policy",

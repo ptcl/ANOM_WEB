@@ -55,10 +55,10 @@
     "resources": {
         "title": "Centre de Ressources",
         "subtitle": "Documentation complète, questions fréquemment posées et actualités sur le projet ANOM-ARCHIVES.",
-        "description": "Découvrez des guides, FAQ et autres ressources pour vous aider à naviguer et contribuer à l'expérience Anom Archives.",
+        "description": "Découvrez des guides, FAQ et autres ressources pour vous aider à naviguer et contribuer à l'expérience Anom-Archives.",
         "documentation": {
             "title": "Documentation",
-            "description": "Guides complets et manuels pour vous aider à comprendre et utiliser les fonctionnalités d'Anom Archives."
+            "description": "Guides complets et manuels pour vous aider à comprendre et utiliser les fonctionnalités d'Anom-Archives."
         },
         "faq": {
             "title": "Foire Aux Questions",
@@ -277,7 +277,7 @@
         "news": {
             "title": "Actualités & Mises à Jour",
             "subtitle": "Restez informé des derniers développements du réseau ANOM",
-            "description": "Restez informé des dernières actualités, mises à jour et histoires de la communauté Anom Archives.",
+            "description": "Restez informé des dernières actualités, mises à jour et histoires de la communauté Anom-Archives.",
             "searchPlaceholder": "Rechercher des articles...",
             "back": "Retour aux Actualités",
             "minReading": "mins de lecture",
@@ -303,7 +303,7 @@
     "community": {
         "title": "Hub Communautaire",
         "subtitle": "Rejoignez la Conversation",
-        "description": "Connectez-vous avec d'autres Gardiens, partagez vos expériences et collaborez pour résoudre les mystères d'Anom Archives.",
+        "description": "Connectez-vous avec d'autres Gardiens, partagez vos expériences et collaborez pour résoudre les mystères d'Anom-Archives.",
         "contribute": {
             "title": "Contribuer",
             "description": "Intéressé pour contribuer au projet ? Que ce soit par le code, le design ou la création de contenu, nous accueillons vos compétences et votre enthousiasme."
@@ -326,7 +326,7 @@
         "cards": {
             "legalNotice": {
                 "title": "Mentions Légales",
-                "description": "Informations sur l'éditeur du site, l'hébergement et les conditions générales d'utilisation de la plateforme ANOM ARCHIVES."
+                "description": "Informations sur l'éditeur du site, l'hébergement et les conditions générales d'utilisation de la plateforme Anom-Archives."
             },
             "privacy": {
                 "title": "Politique de Confidentialité",
@@ -334,7 +334,7 @@
             },
             "terms": {
                 "title": "Conditions d'Utilisation",
-                "description": "Les règles et conditions régissant l'utilisation d'ANOM ARCHIVES, vos droits et obligations en tant qu'utilisateur."
+                "description": "Les règles et conditions régissant l'utilisation d'Anom-Archives, vos droits et obligations en tant qu'utilisateur."
             },
             "cookies": {
                 "title": "Politique des Cookies",

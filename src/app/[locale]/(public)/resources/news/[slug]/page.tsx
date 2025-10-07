@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: article.excerpt,
     keywords: [
       ...article.tags,
-      'ANOM Archives',
+      'Anom-Archives',
       'Destiny 2',
       'News',
       'Gaming',
@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: article.title,
       description: article.excerpt,
       url: articleUrl,
-      siteName: 'ANOM Archives',
+      siteName: 'Anom-Archives',
       publishedTime: article.date,
       authors: [article.author],
       tags: article.tags,

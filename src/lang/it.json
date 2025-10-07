@@ -55,10 +55,10 @@
     "resources": {
         "title": "Centro Risorse",
         "subtitle": "Documentazione completa, domande frequenti e notizie sul progetto ANOM-ARCHIVES.",
-        "description": "Scopri guide, FAQ e altre risorse per aiutarti a navigare e contribuire all'esperienza di Anom Archives.",
+        "description": "Scopri guide, FAQ e altre risorse per aiutarti a navigare e contribuire all'esperienza di Anom-Archives.",
         "documentation": {
             "title": "Documentazione",
-            "description": "Guide e manuali completi per aiutarti a comprendere e utilizzare le funzionalità di Anom Archives."
+            "description": "Guide e manuali completi per aiutarti a comprendere e utilizzare le funzionalità di Anom-Archives."
         },
         "faq": {
             "title": "Domande Frequenti",
@@ -277,7 +277,7 @@
         "news": {
             "title": "Notizie e Aggiornamenti",
             "subtitle": "Rimani aggiornato con gli ultimi sviluppi dalla rete ANOM",
-            "description": "Rimani aggiornato con le ultime notizie, aggiornamenti e storie dalla community di Anom Archives.",
+            "description": "Rimani aggiornato con le ultime notizie, aggiornamenti e storie dalla community di Anom-Archives.",
             "searchPlaceholder": "Cerca articoli...",
             "back": "Torna alle Notizie",
             "minReading": "minuti di lettura",
@@ -303,7 +303,7 @@
     "community": {
         "title": "Hub della Community",
         "subtitle": "Unisciti alla Conversazione",
-        "description": "Connettiti con altri Guardiani, condividi le tue esperienze e collabora per risolvere i misteri di Anom Archives.",
+        "description": "Connettiti con altri Guardiani, condividi le tue esperienze e collabora per risolvere i misteri di Anom-Archives.",
         "contribute": {
             "title": "Contribuisci",
             "description": "Interessato a contribuire al progetto? Che sia tramite codifica, design o creazione di contenuti, diamo il benvenuto alle tue competenze ed entusiasmo."
@@ -326,7 +326,7 @@
         "cards": {
             "legalNotice": {
                 "title": "Avviso Legale",
-                "description": "Informazioni sull'editore del sito, l'hosting e i termini generali di utilizzo della piattaforma ANOM ARCHIVES."
+                "description": "Informazioni sull'editore del sito, l'hosting e i termini generali di utilizzo della piattaforma Anom-Archives."
             },
             "privacy": {
                 "title": "Informativa sulla Privacy",
@@ -334,7 +334,7 @@
             },
             "terms": {
                 "title": "Termini di Utilizzo",
-                "description": "Le regole e condizioni che regolano l'uso di ANOM ARCHIVES, i tuoi diritti e obblighi come utente."
+                "description": "Le regole e condizioni che regolano l'uso di Anom-Archives, i tuoi diritti e obblighi come utente."
             },
             "cookies": {
                 "title": "Policy sui Cookie",
