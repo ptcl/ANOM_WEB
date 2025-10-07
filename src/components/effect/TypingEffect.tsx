@@ -4,16 +4,16 @@ import { useState, useEffect, useMemo, useCallback } from 'react'
 
 interface TypingEffectProps {
     text: string
-    speed?: number // Vitesse de frappe (ms par caractère)
-    startDelay?: number // Délai avant de commencer
-    cursor?: string // Caractère du curseur
-    showCursor?: boolean // Afficher le curseur
-    cursorBlinkSpeed?: number // Vitesse de clignotement du curseur
-    onComplete?: () => void // Callback à la fin
+    speed?: number
+    startDelay?: number
+    cursor?: string
+    showCursor?: boolean
+    cursorBlinkSpeed?: number
+    onComplete?: () => void
     className?: string
-    pauseOnSpaces?: boolean // Pause plus longue sur les espaces
-    randomSpeed?: boolean // Vitesse de frappe variable
-    naturalPauses?: boolean // Pauses naturelles sur la ponctuation
+    pauseOnSpaces?: boolean
+    randomSpeed?: boolean
+    naturalPauses?: boolean
 }
 
 export default function TypingEffect({
@@ -35,7 +35,6 @@ export default function TypingEffect({
     const [showCursorChar, setShowCursorChar] = useState(true)
     const [isComplete, setIsComplete] = useState(false)
 
-    // Animation du curseur clignotant
     useEffect(() => {
         if (!showCursor) return
 
@@ -46,18 +45,15 @@ export default function TypingEffect({
         return () => clearInterval(interval)
     }, [showCursor, cursorBlinkSpeed])
 
-    // Calcul du délai selon le caractère
     const getCharacterDelay = useCallback((char: string, index: number) => {
         let delay = speed
 
         if (randomSpeed) {
-            // Variation aléatoire de ±30%
             const variation = (Math.random() - 0.5) * 0.6
             delay *= (1 + variation)
         }
 
         if (naturalPauses) {
-            // Pauses plus longues sur la ponctuation
             if (['.', '!', '?'].includes(char)) {
                 delay *= 3
             } else if ([',', ';', ':'].includes(char)) {
@@ -67,10 +63,9 @@ export default function TypingEffect({
             }
         }
 
-        return Math.max(delay, 10) // Minimum 10ms
+        return Math.max(delay, 10)
     }, [speed, randomSpeed, naturalPauses, pauseOnSpaces])
 
-    // Effet de frappe principal
     useEffect(() => {
         if (currentIndex >= text.length) {
             setIsTyping(false)
@@ -103,7 +98,6 @@ export default function TypingEffect({
         }
     }, [currentIndex, text, getCharacterDelay, onComplete, startDelay])
 
-    // Méthodes de contrôle
     const restart = useCallback(() => {
         setDisplayedText('')
         setCurrentIndex(0)
@@ -119,7 +113,6 @@ export default function TypingEffect({
         onComplete?.()
     }, [text, onComplete])
 
-    // Rendu du texte avec curseur
     const renderedText = useMemo(() => {
         const textToShow = displayedText
         const cursorToShow = showCursor && showCursorChar && (!isComplete || isTyping) ? cursor : ''
@@ -137,7 +130,6 @@ export default function TypingEffect({
     )
 }
 
-// Composant avec presets pour différents styles
 interface PresetTypingEffectProps {
     text: string
     preset?: 'fast' | 'normal' | 'slow' | 'glitch' | 'terminal' | 'human'
@@ -201,11 +193,6 @@ export function PresetTypingEffect({
     const config = presets[preset]
 
     return (
-        <TypingEffect
-            text={text}
-            onComplete={onComplete}
-            className={className}
-            {...config}
-        />
+        <TypingEffect text={text} onComplete={onComplete} className={className}{...config} />
     )
 }

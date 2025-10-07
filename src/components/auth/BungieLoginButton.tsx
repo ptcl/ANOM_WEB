@@ -78,8 +78,6 @@ export const BungieLoginButton = () => {
             // Appel à ton endpoint /api/identity/bungie/login avec axios
             const response = await axios.get(loginUrl, {
                 headers: {
-                    // Header requis pour ngrok
-                    'ngrok-skip-browser-warning': 'true'
                 },
             })
 

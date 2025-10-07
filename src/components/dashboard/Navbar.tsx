@@ -13,13 +13,13 @@ export default function Navbar() {
   // Image Bungie depuis le store
   const bungieProfilePicture = agent?.bungieUser?.profilePicturePath
   const bungieImageUrl = bungieProfilePicture 
-    ? `https://www.bungie.net/${bungieProfilePicture}.jpg`
+    ? `https://www.bungie.net${bungieProfilePicture}.jpg`
     : null
 
   // Ou depuis le hook dashboard
   const profilePicture = profile?.bungieUser.profilePicture
   const profileImageUrl = profilePicture
-    ? `https://www.bungie.net/${profilePicture}`
+    ? `https://www.bungie.net${profilePicture}`
     : null
 
   return (

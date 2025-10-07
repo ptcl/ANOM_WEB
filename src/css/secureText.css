@@ -1,0 +1,17 @@
+.secure-text {
+    position: relative;
+    overflow: hidden;
+}
+
+.secure-text::after {
+    content: var(--display-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-family: var(--cipher-font);
+    color: var(--original-color, white);
+    pointer-events: none;
+    white-space: pre;
+    transform-origin: left top;
+    transform: scaleX(var(--scale-ratio, 1));
+}

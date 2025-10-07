@@ -1,10 +1,77 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import '../css/allFont.css';
+
+html {
+  scroll-behavior: smooth;
+  /* Améliore les performances de scroll sur mobile */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Scroll fluide pour tous les éléments scrollables */
+* {
+  scroll-behavior: smooth;
+}
+
+.user-event-none {
+  pointer-events: none;
+}
 
 * {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'Grotesk', monospace;
   box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
 }
+
+.font-vex {
+  font-family: 'Vex', monospace;
+}
+
+.font-ibm {
+  font-family: 'IBM', monospace;
+}
+
+.font-grotesk {
+  font-family: 'Grotesk', Helvetica, sans-serif;
+}
+
+.text_color_vex {
+  color: var(--light-dark);
+}
+
+#page_wrapper {
+  position: relative;
+  z-index: 2;
+
+}
+
+.page_content {
+  overflow: hidden;
+}
+
+.spaceScroll {
+  height: 760px !important;
+}
+
+.page__container__base {
+  background-color: var(--background);
+  overflow: hidden;
+  width: 100%;
+  height: fit-content;
+  /* height: 100vh; */
+  position: relative;
+}
+
+footer {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+
+
 
 .os__container {
   position: absolute;
@@ -146,10 +213,10 @@
   --color-accent2: #4D94FE;
   --color-accent3: #00112F;
   --color-accent4: #020512;
-  --white_accent1: #E5EFFF;
+  --white-accent1: #E5EFFF;
   --white_accent2: #EBF2FF;
   --white_accent3: #DBE8FF;
-  --black_accent1: #141414;
+  --black-accent1: #141414;
   --black_accent2: #1C1C1C;
   --black_accent3: #1A1A1A;
   --grey-accent1: #333333;
@@ -157,6 +224,13 @@
   --error: #7980FF;
   --success: #53D13A;
   --alerte: #D1B33A;
+
+
+  --vex-0: #CDD2CC;
+  --vex-1: #C79866;
+  --vex-2: #B77F43;
+  --vex-3: #B77F43;
+  --vex-4: #926535;
 }
 
 /* Classes d'accent qui redéfinissent --accent */
@@ -177,8 +251,8 @@
 
 
 .dark {
-  --background: var(--black_accent1);
-  --foreground: var(--white_accent1);
+  --background: var(--black-1);
+  --foreground: var(--white-1);
   --card: oklch(0.21 0.006 285.885);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.21 0.006 285.885);
@@ -210,19 +284,36 @@
   --sidebar-ring: oklch(0.552 0.016 285.938);
 
   /*$ PROTOCOL */
+
+  --black-1: #141414;
+  --black-2: #1F1F1F;
+  --black-3: #1A1A1A;
+  --black-4: #333333;
+  --black-5: #1c1c1c;
+  --white-1: #E5EFFF;
   --bg-card-agent: var(--black_accent3);
   --bg-placeholder: var(--black_accent2);
-  --border-1: var(--grey-accent1);
+  --border-1: var(--black-1);
   --window: #141414;
   --window-inner: #0A0A0A;
   --windows-icon: #333333;
   --window-border: var(--black_accent3);
-  --small-text: #666666;
+  --light-dark: #4F4F4F;
+  --light-dark-2: #808080;
+  --light-dark-3: #737373;
+
 }
 
 .light {
   --background: var(--white_accent1);
-  --foreground: var(--black_accent1);
+  --foreground: var(--black-1);
+  --window: #FFFFFF;
+  --window-inner: #d4d4d4;
+  --windows-icon: #B3B3B3;
+  --window-border: var(--grey-accent1);
+  --light-dark: #B3B3B3;
+  --light-dark-2: #808080;
+  --card: oklch(1 0 0);
 }
 
 @layer base {
@@ -232,5 +323,257 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .mask-radial-top {
+    -webkit-mask-image: radial-gradient(circle at top, black 15%, transparent 70%);
+    mask-image: radial-gradient(circle at top, black 5%, transparent 70%);
+  }
+}
+
+.gradient__title,
+.gradient__vex,
+.gradient__danger {
+  font-family: 'Grotesk', Arial, sans-serif;
+  position: relative;
+}
+
+.gradient__title::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: transparent;
+  background: linear-gradient(30deg, transparent 30%, rgba(255, 255, 255, 0.75) 75%);
+  background-size: 100% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-stroke: 1.5px transparent;
+}
+
+.gradient__title::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  color: transparent;
+  background: linear-gradient(to top, #3D3D3D, #CCCCCC 95%);
+  background-size: 100% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-stroke: 0px transparent;
+}
+
+.gradient__vex::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: transparent;
+  background: linear-gradient(to top, transparent 30%, #FFAF5B 75%);
+  background-size: 100% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-stroke: 1.5px transparent;
+}
+
+.gradient__vex::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  color: transparent;
+  background: linear-gradient(to top, var(--foreground), #FDD2A4 90%);
+  background-size: 100% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-stroke: 0px transparent;
+}
+.gradient__danger::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: transparent;
+  background: linear-gradient(to top, transparent 30%, #FF5B5B 75%);
+  background-size: 100% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-stroke: 1.5px transparent;
+}
+
+.gradient__danger::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  color: transparent;
+  background: linear-gradient(to top, var(--foreground), #D13A3A 90%);
+  background-size: 100% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-stroke: 0px transparent;
+}
+
+.hover__underline {
+  z-index: 4;
+  cursor: pointer;
+  position: relative;
+  width: fit-content;
+  transition: 0.3s ease-in-out;
+  text-decoration: none;
+  color: var(--light-dark);
+  ;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: fit-content;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--light-dark);
+    transition: width 0.3s;
+  }
+
+  &:hover {
+    color: var(--light-dark-2);
+
+    &::after {
+      background-color: var(--light-dark-2);
+      width: 100%;
+    }
+  }
+}
+
+.hover__underline__2 {
+  z-index: 4;
+  cursor: pointer;
+  position: relative;
+  width: fit-content;
+  transition: 0.3s ease-in-out;
+  text-decoration: none;
+  color: var(--light-dark-3);
+  ;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: fit-content;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--light-dark-3);
+    transition: width 0.3s;
+  }
+
+  &:hover {
+    color: var(--light-dark);
+
+    &::after {
+      background-color: var(--light-dark);
+      width: 100%;
+    }
+  }
+}
+
+.hover__underline__2_1 {
+  z-index: 4;
+  cursor: pointer;
+  position: relative;
+  width: fit-content;
+  transition: 0.3s ease-in-out;
+  text-decoration: none;
+  color: var(--black-1);
+  ;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: fit-content;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--black-1);
+    transition: width 0.3s;
+  }
+
+  &:hover {
+    color: var(--light-dark);
+
+    &::after {
+      background-color: var(--light-dark);
+      width: 100%;
+    }
+  }
+}
+
+.hover__underline__3 {
+  z-index: 4;
+  cursor: pointer;
+  position: relative;
+  width: fit-content;
+  transition: 0.3s ease-in-out;
+  text-decoration: none;
+  opacity: .5;
+  color: var(--foreground);
+  ;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: fit-content;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--black-1);
+    transition: width 0.3s;
+  }
+
+  &:hover {
+    color: var(--foreground);
+    opacity: 1;
+
+    &::after {
+      background-color: var(--foreground);
+      width: 100%;
+    }
+  }
+}
+
+.hover__underline__neutre {
+  z-index: 4;
+  cursor: pointer;
+  position: relative;
+  width: fit-content;
+  transition: 0.3s ease-in-out;
+  text-decoration: none;
+  opacity: 1;
+  color: var(--foreground);
+  ;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: fit-content;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--black-1);
+    transition: width 0.3s;
+  }
+
+  &:hover {
+    color: var(--foreground);
+    opacity: 1;
+
+    &::after {
+      background-color: var(--foreground);
+      width: 100%;
+    }
   }
 }
