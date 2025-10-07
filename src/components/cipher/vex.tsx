@@ -1,19 +1,15 @@
 'use client';
 
-import vexOff from '../../../public/svg/vex/vex_off.svg'
-import '../../css/cipherLangage.css'
 import WindowContainerStatic from '../desktop/WindowContainerStatic';
-import vex from '../../../public/svg/vex/vex.svg'
 import React, { useState } from 'react';
 import { Copy, Clock } from 'lucide-react';
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl';
+import '../../css/cipherLangage.css'
 
 const CHAR_MAP = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 ';
-
 const CIPHER_MAP = '◇◈◉◎○●△▲▽▼◁▷⬟⬠⬢⬣⟡⟢⟣⟤⟥⟦⟧⟨⟩⟪⟫◐◑◒◓◔◕◖◗▣⬡⬢⬣⟊⟐⟞⟠⌬ ';
-
 const VEX_DISPLAY_MAP = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghij ';
 
 export default function VexCustomFont() {
@@ -24,7 +20,6 @@ export default function VexCustomFont() {
     const [mode, setMode] = useState('encrypt');
     const [copied, setCopied] = useState(false);
 
-    // Effets supprimés car les variables timeFlux et fontLoaded ne sont pas utilisées
 
     const vexEncrypt = (text: string) => {
         const upperText = text.toUpperCase();
@@ -108,12 +103,12 @@ export default function VexCustomFont() {
                             <div className="lg:col-span-2 flex flex-col gap-8">
                                 <div className="flex gap-2 p-1 bg-black/20 rounded-lg">
                                     <button onClick={() => setMode('encrypt')} className={`flex-1 py-2 px-4 rounded font-medium transition-all flex items-center justify-center gap-2 ${mode === 'encrypt' ? 'bg-[var(--vex-3)] text-white' : 'text-[var(--vex-2)] hover:bg-[var(--vex-2)]/30'} hover:cursor-pointer`}>
-                                        <Image src={vex} alt="Cat with gradient" width={24} height={24} quality={100} className='w-5 h-5 sm:w-6 sm:h-6 brightness-110 transition-all' />
+                                        <Image src="/svg/vex/vex.svg" alt="Vex on" width={24} height={24} quality={100} className='w-5 h-5 sm:w-6 sm:h-6 brightness-110 transition-all' />
                                         {t('cypher.assimilate')}
                                     </button>
 
                                     <button onClick={() => setMode('decrypt')} className={`flex-1 py-2 px-4 rounded font-medium transition-all flex items-center justify-center gap-2 ${mode === 'decrypt' ? 'bg-[var(--vex-3)] text-white' : 'text-[var(--vex-2)] hover:bg-[var(--vex-2)]/30'} hover:cursor-pointer`}>
-                                        <Image src={vexOff} alt="Cat with gradient" width={24} height={24} quality={100} className='w-5 h-5  transition-all' />
+                                        <Image src="/svg/vex/vex_off.svg" alt="Vex off" width={24} height={24} quality={100} className='w-5 h-5  transition-all' />
                                         {t('cypher.extract')}
                                     </button>
                                 </div>
@@ -123,7 +118,7 @@ export default function VexCustomFont() {
                                         <Clock size={16} />
                                         {t('cypher.temporal')}: <span>{timeKey}</span>
                                     </label>
-                                    <input type="range" value={timeKey} onChange={(e) => setTimeKey(parseInt(e.target.value))} className="w-full h-2 bg-black/50 rounded appearance-none cursor-pointer slider" min="1" max="100" />
+                                    <input type="range" value={timeKey} onChange={(e) => setTimeKey(parseInt(e.target.value))} className="input-range w-full h-2 bg-black/50 rounded appearance-none cursor-pointer slider" min="1" max="100" />
                                     <div className="flex justify-between text-xs text-[var(--vex-2)]">
                                         <span className='text-base'> {t('cypher.temporalKey.past')}</span>
                                         <span className='text-base'> {t('cypher.temporalKey.present')}</span>
@@ -131,8 +126,8 @@ export default function VexCustomFont() {
                                     </div>
                                 </div>
 
-                                <div className="space-y-2">
-                                    <label className="text-[var(--vex-2)] font-medium">
+                                <div className="space-y-2 flex flex-col w-full">
+                                    <label className="text-[var(--vex-2)] font-medium text-start">
                                         {mode === 'encrypt' ? `${t('cypher.messageEncrypt')}:` : 'Texte Vex à déchiffrer:'}
                                     </label>
                                     <textarea value={input} onChange={(e) => setInput(e.target.value)} placeholder={mode === 'encrypt' ? ` ${t('cypher.text.placeholder')}` : ` ${t('cypher.text.placeholderVex')}`} className="rounded w-full h-24 p-4 bg-[var(--vex-2)]/2 border border-[var(--vex-2)]/50 text-white resize-none font-grotesk focus:outline-none transition-colors" />
@@ -150,7 +145,7 @@ export default function VexCustomFont() {
                                 {output.display && (
                                     <div className="space-y-2 animate-fadeIn ">
                                         <div className="flex items-center justify-between">
-                                            <span className="text-[var(--vex-2)] font-medium">{t('cypher.result')}:</span>
+                                            <span className="text-[var(--vex-2)] font-medium w-full">{t('cypher.result')}:</span>
                                             <button onClick={copyResult} className={`flex items-center gap-2 px-3 py-1 rounded transition-all ${copied ? 'bg-green-600 text-white' : 'text-[var(--vex-2)] hover:bg-[var(--vex-2)]/30'}`}>
                                                 <Copy size={16} />
                                                 <span>{t('commun.copy')}</span>
