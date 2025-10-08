@@ -17,10 +17,9 @@ interface WindowContainerStaticProps {
     enableAnimation?: boolean
     animationDelay?: number
     animationType?: 'scale' | 'fade' | 'slideUp' | 'scaleAndFade'
-    classname?: string
 }
 
-export default function WindowContainerStatic({ title, icon = '/file.svg', children, width = 900, height = 600, fitContentWidth = false, fitContentHeight = false, responsiveMode = 'scale', mobileBreakpoint = 768, enableAnimation = true, animationDelay = 0, animationType = 'scaleAndFade', classname = "" }: WindowContainerStaticProps) {
+export default function WindowContainerStatic({ title, icon = '/file.svg', children, width = 900, height = 600, fitContentWidth = false, fitContentHeight = false, responsiveMode = 'scale', mobileBreakpoint = 768, enableAnimation = true, animationDelay = 0, animationType = 'scaleAndFade' }: WindowContainerStaticProps) {
     const windowStaticRef = useRef<HTMLDivElement>(null)
     const [isMobile, setIsMobile] = useState(false)
 

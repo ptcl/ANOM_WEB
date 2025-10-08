@@ -1,8 +1,7 @@
 'use client';
 import React, { useState, useRef, useEffect } from 'react';
-import {Copy, Lock, Unlock, AlertCircle } from 'lucide-react';
+import { Copy, Lock, Unlock } from 'lucide-react';
 
-// Configuration Vex
 const VEX_CONFIG = {
     CHAR_MAP: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 ',
     CIPHER_MAP: '◇◈◉◎○●△▲▽▼◁▷⬟⬠⬢⬣⟡⟢⟣⟤⟥⟦⟧⟨⟩⟪⟫◐◑◒◓◔◕◖◗▣⬡⬢⬣⟊⟐⟞⟠⌬ ',
@@ -31,7 +30,6 @@ export default function CypherConvert({
     const [fontLoaded, setFontLoaded] = useState(false);
     const inputRef = useRef(null);
 
-    // Vérification police
     useEffect(() => {
         const checkFont = () => {
             if (document.fonts && document.fonts.check) {
@@ -44,7 +42,6 @@ export default function CypherConvert({
         setTimeout(checkFont, 1000);
     }, []);
 
-    // Fonction de chiffrement
     const encryptToVex = (text: string) => {
         const upperText = text.toUpperCase();
         if (!upperText) return { display: '', cipher: '' };
@@ -67,7 +64,6 @@ export default function CypherConvert({
         return { display: displayResult, cipher: cipherResult };
     };
 
-    // Fonction de déchiffrement
     const decryptFromCipher = (cipherText: string) => {
         if (!cipherText) return '';
 
@@ -88,10 +84,8 @@ export default function CypherConvert({
         }).join('');
     };
 
-    // Calcul des données Vex
     const vexData = encryptToVex(normalText);
 
-    // Gestion de la frappe
     const handleInputChange = (e: { target: { value: string; }; }) => {
         const value = e.target.value.toUpperCase();
         const filteredValue = value.split('').filter(char =>
@@ -108,7 +102,6 @@ export default function CypherConvert({
         }
     };
 
-    // Gestion de la copie
     const handleCopy = async () => {
         try {
             const textToCopy = displayMode === 'vex' ? vexData.cipher : normalText;
@@ -120,24 +113,20 @@ export default function CypherConvert({
         }
     };
 
-    // Gestion du collage
     const handlePaste = async () => {
         try {
             const clipboardText = await navigator.clipboard.readText();
 
-            // Détecter si c'est des symboles Vex
             const isVexSymbols = clipboardText.split('').every(char =>
                 VEX_CONFIG.CIPHER_MAP.includes(char) || char === ' '
             );
 
             if (isVexSymbols && clipboardText.trim()) {
-                // Déchiffrer les symboles
                 const decryptedText = decryptFromCipher(clipboardText);
                 setNormalText(decryptedText);
                 setPasted(true);
                 setTimeout(() => setPasted(false), 2000);
             } else {
-                // Texte normal, filtrer et utiliser
                 const filteredText = clipboardText.toUpperCase().split('').filter(char =>
                     VEX_CONFIG.CHAR_MAP.includes(char)
                 ).join('');
@@ -158,13 +147,7 @@ export default function CypherConvert({
         <div className={`space-y-3 ${className}`}>
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                    <button
-                        onClick={toggleDisplayMode}
-                        className={`flex items-center gap-2 px-3 py-2 rounded-lg font-medium transition-all ${displayMode === 'vex'
-                            ? 'bg-red-600 text-white'
-                            : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
-                            }`}
-                    >
+                    <button onClick={toggleDisplayMode} className={`flex items-center gap-2 px-3 py-2 rounded-lg font-medium transition-all ${displayMode === 'vex' ? 'bg-red-600 text-white' : 'bg-gray-700 text-gray-300 hover:bg-gray-600'}`}>
                         {displayMode === 'vex' ? (
                             <>
                                 <Lock size={16} />
@@ -184,25 +167,12 @@ export default function CypherConvert({
                 </div>
 
                 <div className="flex items-center gap-2">
-                    <button
-                        onClick={handlePaste}
-                        className={`flex items-center gap-2 px-3 py-2 rounded-lg font-medium transition-all ${pasted
-                            ? 'bg-green-600 text-white'
-                            : 'bg-blue-600 hover:bg-blue-700 text-white'
-                            }`}
-                    >
+                    <button onClick={handlePaste} className={`flex items-center gap-2 px-3 py-2 rounded-lg font-medium transition-all ${pasted ? 'bg-green-600 text-white' : 'bg-blue-600 hover:bg-blue-700 text-white'}`}>
                         📥
                         {pasted ? 'Collé!' : 'Coller'}
                     </button>
 
-                    <button
-                        onClick={handleCopy}
-                        disabled={!normalText}
-                        className={`flex items-center gap-2 px-3 py-2 rounded-lg font-medium transition-all ${copied
-                            ? 'bg-green-600 text-white'
-                            : 'bg-red-600 hover:bg-red-700 text-white disabled:bg-gray-600 disabled:cursor-not-allowed'
-                            }`}
-                    >
+                    <button onClick={handleCopy} disabled={!normalText} className={`flex items-center gap-2 px-3 py-2 rounded-lg font-medium transition-all ${copied ? 'bg-green-600 text-white' : 'bg-red-600 hover:bg-red-700 text-white disabled:bg-gray-600 disabled:cursor-not-allowed'}`}>
                         <Copy size={16} />
                         {copied ? 'Copié!' : `Copier ${displayMode === 'vex' ? 'Symboles' : 'Texte'}`}
                     </button>
@@ -210,29 +180,9 @@ export default function CypherConvert({
             </div>
 
             <div className="relative">
-                <textarea
-                    ref={inputRef}
-                    value={displayText}
-                    onChange={displayMode === 'normal' ? handleInputChange : undefined}
-                    placeholder={displayMode === 'normal' ? placeholder : ''}
-                    readOnly={displayMode === 'vex'}
-                    className={`
-                        w-full p-4 rounded-lg border-2 resize-none transition-all duration-300
-                        ${displayMode === 'vex'
-                            ? 'bg-black/80 border-red-500/50 text-red-200 cursor-default vex-font text-xl tracking-wider'
-                            : 'bg-gray-900 border-gray-600 text-white focus:border-blue-500'
-                        }
-                        ${displayMode === 'vex' && !fontLoaded ? 'font-mono' : ''}
-                        focus:outline-none focus:ring-2 focus:ring-opacity-50
-                        ${displayMode === 'vex' ? 'focus:ring-red-500' : 'focus:ring-blue-500'}
-                    `}
-                    rows={4}
-                />
+                <textarea ref={inputRef} value={displayText} onChange={displayMode === 'normal' ? handleInputChange : undefined} placeholder={displayMode === 'normal' ? placeholder : ''} readOnly={displayMode === 'vex'} className={`w-full p-4 rounded-lg border-2 resize-none transition-all duration-300${displayMode === 'vex' ? 'bg-black/80 border-red-500/50 text-red-200 cursor-default vex-font text-xl tracking-wider' : 'bg-gray-900 border-gray-600 text-white focus:border-blue-500'}${displayMode === 'vex' && !fontLoaded ? 'font-mono' : ''} focus:outline-none focus:ring-2 focus:ring-opacity-50${displayMode === 'vex' ? 'focus:ring-red-500' : 'focus:ring-blue-500'}`} rows={4} />
 
-                <div className={`absolute top-2 right-2 px-2 py-1 rounded text-xs font-bold ${displayMode === 'vex'
-                    ? 'bg-red-900/80 text-red-300 border border-red-700/50'
-                    : 'bg-gray-800/80 text-gray-400 border border-gray-600/50'
-                    }`}>
+                <div className={`absolute top-2 right-2 px-2 py-1 rounded text-xs font-bold ${displayMode === 'vex' ? 'bg-red-900/80 text-red-300 border border-red-700/50' : 'bg-gray-800/80 text-gray-400 border border-gray-600/50'}`}>
                     {displayMode === 'vex' ? 'VEX' : 'TXT'}
                 </div>
             </div>
@@ -253,20 +203,12 @@ export default function CypherConvert({
                 </div>
             )}
 
-            {/* Instructions */}
             <div className="text-sm text-gray-500 space-y-1">
                 <div>💡 <strong>Mode Normal:</strong> Tapez votre texte normalement</div>
                 <div>🔐 <strong>Mode Vex:</strong> Affichage crypté avec votre police (lecture seule)</div>
                 <div>📋 <strong>Copie:</strong> {displayMode === 'vex' ? 'Symboles secrets' : 'Texte normal'}</div>
                 <div>📥 <strong>Collage:</strong> Auto-détection et déchiffrement des symboles Vex</div>
             </div>
-
-            <style jsx>{`
-                .vex-font {
-                    font-family: 'Vex', monospace;
-                    font-feature-settings: 'liga' off;
-                }
-            `}</style>
         </div>
     );
 };

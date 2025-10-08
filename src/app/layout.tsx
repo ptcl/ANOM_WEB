@@ -34,7 +34,7 @@ export const metadata: Metadata = {
         siteName: 'Anom-Archives',
         images: [
             {
-                url: '/img/anom-archives.png',
+                url: '/img/anom_soon',
                 width: 1200,
                 height: 630,
                 alt: 'Anom-Archives - Destiny 2 ARG Experience',
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
         description: 'Expérience ARG communautaire immersive dans l\'univers de Destiny 2. Résolvez des mystères et débloquez des emblèmes exclusifs.',
         site: '@AnomArchives',
         creator: '@Luclarity',
-        images: ['/img/anom-archives.png'],
+        images: ['/img/anom_soon'],
     },
     robots: {
         index: true,

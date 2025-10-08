@@ -20,9 +20,7 @@ export const useWindowsStore = create<WindowsStore>((set, get) => ({
     pinnedApps: [],
 
     addWindow: (window) => {
-        // console.log(`Store: Ajout/mise à jour de la fenêtre ${window.id}`, window)
         set((state) => {
-            // Si la fenêtre existe déjà, mettre à jour son état
             const windowExists = state.openWindows.some(w => w.id === window.id)
 
             if (windowExists) {
@@ -41,14 +39,12 @@ export const useWindowsStore = create<WindowsStore>((set, get) => ({
     },
 
     removeWindow: (id) => {
-        // console.log(`Store: Suppression de la fenêtre ${id}`)
         set((state) => ({
             openWindows: state.openWindows.filter(w => w.id !== id)
         }))
     },
 
     updateWindow: (id, updates) => {
-        // console.log(`Store: Mise à jour de la fenêtre ${id}`, updates)
         set((state) => {
             const windowExists = state.openWindows.some(w => w.id === id)
 
@@ -59,7 +55,6 @@ export const useWindowsStore = create<WindowsStore>((set, get) => ({
                     )
                 }
             } else {
-                // Si la fenêtre n'existe pas encore, on la crée avec les valeurs par défaut
                 const newWindow: WindowInfo = {
                     id,
                     title: updates.title || id,
@@ -75,24 +70,18 @@ export const useWindowsStore = create<WindowsStore>((set, get) => ({
     },
 
     minimizeWindow: (id, minimized) => {
-        
+
         const currentState = get().openWindows.find(w => w.id === id);
         console.log(`État actuel de la fenêtre ${id}:`, currentState);
-        
+
         set((state) => ({
             openWindows: state.openWindows.map(w =>
                 w.id === id ? { ...w, isMinimized: minimized } : w
             )
         }))
-        
-        // Pour déboguer, affichons le nouvel état
-        setTimeout(() => {
-            const newState = get().openWindows.find(w => w.id === id);
-            // console.log(`Nouvel état de la fenêtre ${id} après minimisation:`, newState);
-        }, 0);
+
     },
     addPinnedApp: (app) => set((state) => {
-        // Éviter les doublons
         if (state.pinnedApps.some(a => a.id === app.id)) {
             return state
         }
@@ -109,7 +98,6 @@ export const useWindowsStore = create<WindowsStore>((set, get) => ({
         set((state) => ({
             openWindows: state.openWindows.map(w => {
                 if (w.id === id) {
-                    // On ne met à jour que les propriétés fournies
                     const updates: Partial<WindowInfo> = {};
                     if (position) updates.position = position;
                     if (size) updates.size = size;

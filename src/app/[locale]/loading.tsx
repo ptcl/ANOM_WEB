@@ -5,10 +5,10 @@ import { IBM_Plex_Mono } from 'next/font/google';
 import Loader from "@/components/lottie/loader/loader";
 
 const ibmPlexMono = IBM_Plex_Mono({
-    weight: ['400', '500', '700'], // Choisissez les poids dont vous avez besoin
+    weight: ['400', '500', '700'],
     subsets: ['latin'],
     display: 'swap',
-    variable: '--font-ibm-plex-mono', // Nom de la variable CSS
+    variable: '--font-ibm-plex-mono',
 });
 
 export default function InitialLoadingScreen() {
@@ -17,7 +17,7 @@ export default function InitialLoadingScreen() {
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsLoading(false);
-        }, 2500); // 2.5 secondes
+        }, 2500);
 
         return () => clearTimeout(timer);
     }, []);

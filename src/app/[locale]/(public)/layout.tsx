@@ -2,7 +2,6 @@
 
 import Footer from "@/components/commun/Footer";
 import ScrollEffectProvider from "@/components/provider/ScrollEffectProvider";
-import { InversedThemeProvider } from "@/components/provider/inversedTheme";
 import Navbar from "@/components/commun/Navbar";
 
 

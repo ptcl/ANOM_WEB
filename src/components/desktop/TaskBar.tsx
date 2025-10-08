@@ -1,5 +1,4 @@
 import { useWindowsStore } from '@/store/useWindowsStore'
-import { ChevronUp, Volume2, Wifi } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 import DesktopIconTaskbar from './DesktopIconTaskbar'
 import { ModeToggle } from '../ModeToggle'
@@ -87,12 +86,9 @@ export default function TaskBar() {
                 </section>
                 <section className='task__controls flex items-center justify-end gap-4 w-[250px]'>
                     <section className='task__controls__left flex items-center gap-2'>
-                        {/* <ChevronUp size={18} /> */}
-                       <LogoutButton/>
+                        <LogoutButton />
                         <AccentSwitcher />
                         <ModeToggle />
-                        {/* <Volume2 size={18} /> */}
-                        {/* <Wifi size={18} /> */}
                     </section>
                     <section className='task__clock flex flex-col items-center justify-center  select-none'>
                         <div className='task__clock__time flex gap-2 text-sm'>

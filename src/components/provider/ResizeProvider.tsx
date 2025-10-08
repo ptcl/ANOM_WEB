@@ -40,6 +40,7 @@ export function ResizeProvider({ children }: ResizeProviderProps) {
         initialSize: { width: 0, height: 0 },
         initialPosition: { x: 0, y: 0 },
         direction: { x: 0, y: 0 },
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         onUpdate: (_position: Position, _size: Size) => { },
         elementId: ''
     })

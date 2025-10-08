@@ -34,14 +34,15 @@ interface DragProviderProps {
 export function DragProvider({ children }: DragProviderProps) {
   const [isDragging, setIsDragging] = useState(false)
   const [currentDragId, setCurrentDragId] = useState<string | null>(null)
-  
+
   const dragRef = useRef({
     active: false,
     rafId: 0,
     newPosition: { x: 0, y: 0 },
     initialPosition: { x: 0, y: 0 },
     dragOffset: { x: 0, y: 0 },
-    onUpdate: (_position: Position) => {},
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    onUpdate: (_position: Position) => { },
     onComplete: null as ((position: Position) => void) | null,
     elementId: '',
     constraints: {
@@ -52,27 +53,16 @@ export function DragProvider({ children }: DragProviderProps) {
     }
   })
 
-  const startDrag = useCallback((
-    e: React.PointerEvent,
-    elementId: string,
-    initialPosition: Position,
-    onUpdate: (newPosition: Position) => void,
-    onComplete?: (finalPosition: Position) => void,
-    constraints = {}
-  ) => {
-    // Empêcher le drag si c'est un clic droit (pour le menu contextuel)
+  const startDrag = useCallback((e: React.PointerEvent, elementId: string, initialPosition: Position, onUpdate: (newPosition: Position) => void, onComplete?: (finalPosition: Position) => void, constraints = {}) => {
     if (e.button === 2) return;
-    
-    // Pour les fenêtres, vérifier si l'événement provient d'un bouton
+
     if ((e.target as HTMLElement).closest('button')) {
       return;
     }
 
-    // Pour les fenêtres, vérifier si c'est la barre de titre
     const isWindowTitleBar = (e.target as HTMLElement).closest('.bg-gray-800');
     const isDesktopIcon = (e.currentTarget as HTMLElement).classList.contains('flex');
-    
-    // Ne démarrer le drag que si c'est une icône du bureau ou la barre de titre d'une fenêtre
+
     if (!isDesktopIcon && !isWindowTitleBar && e.target !== e.currentTarget) {
       return;
     }
@@ -82,7 +72,7 @@ export function DragProvider({ children }: DragProviderProps) {
 
     setIsDragging(true);
     setCurrentDragId(elementId);
-    
+
     const dragOffset = {
       x: e.clientX - initialPosition.x,
       y: e.clientY - initialPosition.y
@@ -110,16 +100,14 @@ export function DragProvider({ children }: DragProviderProps) {
 
     const target = e.currentTarget as HTMLElement;
     target.setPointerCapture(e.pointerId);
-    
-    // Ajouter une classe pour indiquer le drag
+
     target.classList.add('dragging');
-    
+
     const handlePointerMove = (moveEvent: PointerEvent) => {
       moveEvent.preventDefault();
 
       const { minX, minY, maxX, maxY } = dragRef.current.constraints;
 
-      // Calculer la nouvelle position avec les contraintes
       dragRef.current.newPosition = {
         x: Math.min(maxX, Math.max(minX, moveEvent.clientX - dragRef.current.dragOffset.x)),
         y: Math.min(maxY, Math.max(minY, moveEvent.clientY - dragRef.current.dragOffset.y))
@@ -146,20 +134,18 @@ export function DragProvider({ children }: DragProviderProps) {
         target.releasePointerCapture(e.pointerId);
       }
 
-      // Exécuter le callback de complétion si fourni
       if (dragRef.current.onComplete) {
         dragRef.current.onComplete(dragRef.current.newPosition);
       }
 
       setIsDragging(false);
       setCurrentDragId(null);
-      
-      // Réinitialiser l'état de dragging pour l'élément
+
       target.classList.remove('dragging');
 
       document.body.classList.remove('dragging');
       document.body.style.userSelect = '';
-      
+
       target.removeEventListener('pointermove', handlePointerMove);
       target.removeEventListener('pointerup', handlePointerUp);
       target.removeEventListener('pointercancel', handlePointerUp);

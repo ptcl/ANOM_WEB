@@ -9,7 +9,6 @@ import CategoryFilter from '@/components/ui/category-filter';
 import { useStickyOnNavbar } from '@/hooks/useStickyOnNavbar';
 import { showNavbarSearch, hideNavbarSearch } from '@/lib/navbar-search-events';
 import { useEffect } from 'react';
-import Image from 'next/image';
 import ImageLueur from '@/components/commun/ImageLueur';
 
 interface FAQQuestion {

@@ -1,6 +1,9 @@
 .custom-font {
     font-family: 'Grotesk', Arial, sans-serif;
     position: relative;
+    will-change: auto;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
 }
 
 
@@ -20,6 +23,7 @@ input[type="range"]::-moz-range-thumb {
     background: linear-gradient(30deg, transparent 30%, rgba(255, 255, 255, 0.75) 75%);
     background-size: 100% 100%;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-stroke: 1.5px transparent;
 }
 
@@ -33,6 +37,7 @@ input[type="range"]::-moz-range-thumb {
     background: linear-gradient(to top, #3D3D3D, #CCCCCC 95%);
     background-size: 100% 100%;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-stroke: 0px transparent;
 }
 
@@ -43,6 +48,54 @@ input[type="range"]::-moz-range-thumb {
     z-index: 5;
     position: relative;
     top: 100%;
+    will-change: transform, opacity;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+}
+
+.fade-in-delayed {
+    animation: fadeInDelayed 0.8s ease-out 2.2s both;
+}
+
+.fade-in-title {
+    animation: fadeInTitle 1s ease-out 1s both;
+}
+
+.fade-in-link {
+    animation: fadeInLink 1s ease-out 2s both;
+    transform: translate3d(0, 20px, 0);
+}
+
+@keyframes fadeInDelayed {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInTitle {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInLink {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 20px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
 }
 
 
@@ -53,7 +106,7 @@ input[type="range"]::-moz-range-thumb {
     left: 110rem;
     rotate: -6deg;
     scale: 2;
-    opacity: .2;
+    opacity: .6;
     filter: blur(60px);
     mix-blend-mode: color-dodge;
 }
@@ -64,7 +117,7 @@ input[type="range"]::-moz-range-thumb {
     top: -38rem;
     left: -60rem;
     scale: 1.6;
-    opacity: .15;
+    opacity: .3;
     rotate: -5deg;
 
     filter: blur(30px);
@@ -89,12 +142,12 @@ input[type="range"]::-moz-range-thumb {
 .smooth__glow__2::before {
     content: '';
     position: absolute;
-    top: -38rem;
+    top: -42rem;
     left: 90rem;
     rotate: 2deg;
     scale: 1.6;
-    opacity: 0.25;
-    filter: blur(15px);
+    opacity: 0.8;
+    filter: blur(10px);
     mix-blend-mode: lighten;
 }
 
