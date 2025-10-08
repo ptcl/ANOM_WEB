@@ -26,7 +26,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
       </head>
       <body>
         <NextIntlClientProvider>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
             {children}
           </ThemeProvider>
         </NextIntlClientProvider>
