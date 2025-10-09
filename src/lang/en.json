@@ -2,7 +2,7 @@
     "commun": {
         "copy": "Copy",
         "return": "Return",
-        "notFound": "Page Not Found",
+        "notFound": "Page Not Found2",
         "links": {
             "anomNumber": " AN0M-ARCHIVES",
             "anom": "ANOM-ARCHIVES",
@@ -79,11 +79,15 @@
                 "community": "Community",
                 "lore": "Lore"
             },
+            "intro": {
+                "title": "AN0M ARCHIVES UNIVERSE",
+                "description": "<bold>AN0M ARCHIVES</bold> is not just a puzzle game. It is the reactivation of an <bold>experimental network forgotten from the Golden Age</bold>, once designed by the <bold>Protocol division</bold>, long before BrayTech. This terminal — silent for centuries beneath Europa’s ice — has <bold>awakened</bold>. It now transmits <bold>data fragments</bold>, <bold>corrupted messages</bold>, and <bold>codes</bold> that the Guardian community is once again trying to decipher. Each player becomes a <bold>digital explorer</bold>, an <bold>archivist of the impossible</bold>. The goal: to <bold>reconstruct the history of Project AN0M</bold>, understand what caused its erasure, and <bold>uncover what truly lies within the network</bold>."
+            },
             "questions": [
                 {
                     "id": "what-is-anom",
                     "question": "What is AN0M ARCHIVES?",
-                    "answer": "AN0M ARCHIVES is an immersive community experience inspired by the Destiny 2 universe. The project combines <mark>ARG</mark> (Alternate Reality Game), puzzles, and <mark>fragment</mark> hunts to reveal secrets hidden within a <mark>simulated network</mark>.",
+                    "answer": "AN0M ARCHIVES is an immersive community experience inspired by the Destiny 2 universe. It represents the reactivation of an <mark>ancient experimental network</mark> from the Golden Age, originally developed by the Protocol division. The project combines <mark>ARG</mark> (Alternate Reality Game), puzzles, and <mark>fragment hunts</mark> to uncover the lost secrets of the <mark>AN0M terminal</mark> buried beneath Europa.",
                     "category": "general"
                 },
                 {
@@ -125,7 +129,7 @@
                 {
                     "id": "follow-updates",
                     "question": "How can I follow news and updates?",
-                    "answer": "Major updates are announced on our official channels: <mark>Twitter/X</mark> → @anom_archives, <mark>Discord</mark> (coming soon), <mark>News</mark> section on the site.",
+                    "answer": "Major updates are announced on our official channels: <mark>Twitter/X</mark> → @AnomArchives, <mark>Discord</mark> (coming soon), <mark>News</mark> section on the site.",
                     "category": "general"
                 },
                 {
@@ -239,7 +243,7 @@
                 {
                     "id": "tech-stack",
                     "question": "What's the technical stack?",
-                    "answer": "Frontend: <mark>Next.js 14, TypeScript, TailwindCSS, Shadcn UI</mark>. Backend: <mark>Node.js, Express.js, TypeScript</mark>. Database: <mark>MongoDB</mark>. Auth: <mark>BetterAuth + OAuth2 Bungie</mark>.",
+                    "answer": "Frontend: <mark>Next.js 14, TypeScript, TailwindCSS, Shadcn UI</mark>. Backend: <mark>Node.js, Express.js, TypeScript</mark>. Database: <mark>MongoDB</mark>. Auth: <mark>OAuth2 Bungie</mark>.",
                     "category": "technical"
                 },
                 {
@@ -247,6 +251,24 @@
                     "question": "Can I contribute to development?",
                     "answer": "Not at the moment. The code is <mark>not open-source</mark>, but community extensions will be considered later.",
                     "category": "technical"
+                },
+                {
+                    "id": "project-origin",
+                    "question": "Where does the AN0M project come from?",
+                    "answer": "AN0M was originally a <mark>Golden Age research program</mark> led by Dr. Alexander Moreau within the Protocol division. Its AI was designed to analyze parallel realities using <mark>Vex radiolarian technology</mark>. After a catastrophic experiment, the project was <mark>erased by Clovis Bray</mark>—but the terminal continued to emit fragmented signals for centuries.",
+                    "category": "lore"
+                },
+                {
+                    "id": "why-terminal-speaks",
+                    "question": "Why does the terminal sometimes speak in a cryptic language?",
+                    "answer": "Because the remaining AN0M system still carries fragments of its former consciousness, interwoven with <mark>Vex code</mark>. The cryptic messages are <mark>remnants of its simulations</mark>—some are meaningless echoes, others contain <mark>hidden instructions</mark>.",
+                    "category": "lore"
+                },
+                {
+                    "id": "network-revival",
+                    "question": "What triggered the reactivation of AN0M?",
+                    "answer": "After the reactivation of the <mark>Crypt of Stone</mark> on Europa, dormant Protocol Exos regained partial functionality. Among the recovered systems was the <mark>AN0M terminal</mark>, which began transmitting anomalies again, calling Guardians to decode its remaining data.",
+                    "category": "lore"
                 },
                 {
                     "id": "vex-references",
@@ -289,7 +311,7 @@
             "NoArticles": " No articles found.",
             "viewAll": "View all news",
             "categories": {
-                "":"null",
+                "": "null",
                 "all": "All categories",
                 "update": "Updates",
                 "content": "New Content",
@@ -322,7 +344,7 @@
         "subtitle": "Review our legal notices, privacy policy, and terms of use.",
         "readMore": "Read more",
         "back": "Back to Legal Information",
-        "noFound":" No document found.",
+        "noFound": " No document found.",
         "cards": {
             "legalNotice": {
                 "title": "Legal Notice",

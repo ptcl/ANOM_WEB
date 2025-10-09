@@ -148,6 +148,20 @@ export default function FAQPage() {
 
       </Container>
       <Container height='fit' pb textAlign='left'>
+        <section className='w-full max-w-4xl mx-auto mb-12 z-10 relative '>
+          <div className="border border-white/10 rounded-lg bg-black/20 backdrop-blur-sm p-6 text-center">
+            <h2 className="text-white font-semibold text-lg mb-2">
+              {t('resources.faq.intro.title')}
+            </h2>
+            <p className="text-[var(--light-dark-3)] text-base">
+              {t.rich('resources.faq.intro.description', {
+                bold: (chunks) => <strong className="font-medium">{chunks}</strong>
+              })}
+            </p>
+          </div>
+        </section>
+
+
         <section className='w-full max-w-4xl mx-auto z-10 relative'>
           {filteredQuestions.length > 0 ? (
             <div className="space-y-8">
@@ -203,18 +217,16 @@ export default function FAQPage() {
           )}
         </section>
 
-        {t('resources.faq.needHelp.title') && (
-          <section className='w-full max-w-4xl mx-auto mt-12 z-10 relative '>
-            <div className="border border-white/10 rounded-lg bg-black/20 backdrop-blur-sm p-6 text-center">
-              <h3 className="text-white font-semibold text-lg mb-2">
-                {t('resources.faq.needHelp.title')}
-              </h3>
-              <p className="text-[var(--light-dark-3)] text-sm">
-                {t('resources.faq.needHelp.subtitle')}
-              </p>
-            </div>
-          </section>
-        )}
+        <section className='w-full max-w-4xl mx-auto mt-12 z-10 relative '>
+          <div className="border border-white/10 rounded-lg bg-black/20 backdrop-blur-sm p-6 text-center">
+            <h3 className="text-white font-semibold text-lg mb-2">
+              {t('resources.faq.needHelp.title')}
+            </h3>
+            <p className="text-[var(--light-dark-3)] text-sm">
+              {t('resources.faq.needHelp.subtitle')}
+            </p>
+          </div>
+        </section>
       </Container>
     </>
   )
