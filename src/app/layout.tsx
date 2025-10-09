@@ -1,12 +1,20 @@
 import type { Metadata } from 'next'
 import './globals.css'
 
+const isDevelopment = process.env.NODE_ENV === 'development'
+const faviconPath = isDevelopment ? '/favicon-dev.ico' : '/favicon.ico'
+
 export const metadata: Metadata = {
     title: {
         default: 'Anom-Archives',
         template: '%s | Anom-Archives'
     },
     description: 'Anom-Archives est une expérience ARG communautaire immersive dans l\'univers de Destiny 2. Résolvez des mystères, plongez dans le lore de Bungie et débloquez des emblèmes exclusifs gratuits.',
+    icons: {
+        icon: faviconPath,
+        shortcut: faviconPath,
+        apple: faviconPath,
+    },
     keywords: ['Destiny 2', 'ARG', 'Anom-Archives', 'Bungie', 'Community', 'Mystères', 'Emblèmes', 'Guardiens', 'Lore', 'Gaming', 'Vex', 'Cabal', 'Fallen', 'Hive', 'Exclusif', 'Gratuit', 'Événements', 'Jeux vidéo'],
     authors: [{ name: 'Lucas Raffalli' }],
     creator: 'Lucas Raffalli',

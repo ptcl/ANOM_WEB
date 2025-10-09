@@ -79,11 +79,15 @@
                 "community": "Community",
                 "lore": "Lore"
             },
+            "intro": {
+                "title": "UNIVERSO AN0M ARCHIVES",
+                "description": "<bold>AN0M ARCHIVES</bold> non è solo un gioco di puzzle. È la riattivazione di una <bold>rete sperimentale dimenticata dell'Età dell'Oro</bold>, un tempo progettata dalla <bold>divisione Protocollo</bold>, molto prima di BrayTech. Questo terminale — silenzioso per secoli sotto il ghiaccio di Europa — si è <bold>risvegliato</bold>. Ora trasmette <bold>frammenti di dati</bold>, <bold>messaggi corrotti</bold> e <bold>codici</bold> che la comunità dei Guardiani sta nuovamente cercando di decifrare. Ogni giocatore diventa un <bold>esploratore digitale</bold>, un <bold>archivista dell'impossibile</bold>. L'obiettivo: <bold>ricostruire la storia del Progetto AN0M</bold>, capire cosa ha causato la sua cancellazione e <bold>scoprire cosa si nasconde realmente nella rete</bold>."
+            },
             "questions": [
                 {
                     "id": "what-is-anom",
                     "question": "Cos'è AN0M ARCHIVES?",
-                    "answer": "AN0M ARCHIVES è un'esperienza comunitaria immersiva ispirata all'universo di Destiny 2. Il progetto combina <mark>ARG</mark> (Alternate Reality Game), enigmi e cacce ai <mark>frammenti</mark> per rivelare segreti nascosti all'interno di una <mark>rete simulata</mark>.",
+                    "answer": "AN0M ARCHIVES è un'esperienza comunitaria immersiva ispirata all'universo di Destiny 2. Rappresenta la riattivazione di un'<mark>antica rete sperimentale</mark> dell'Età dell'Oro, originariamente sviluppata dalla divisione Protocollo. Il progetto combina <mark>ARG</mark> (Alternate Reality Game), puzzle e <mark>cacce ai frammenti</mark> per scoprire i segreti perduti del <mark>terminale AN0M</mark> sepolto sotto Europa.",
                     "category": "general"
                 },
                 {
@@ -125,7 +129,7 @@
                 {
                     "id": "follow-updates",
                     "question": "Come posso seguire notizie e aggiornamenti?",
-                    "answer": "Gli aggiornamenti principali sono annunciati sui nostri canali ufficiali: <mark>Twitter/X</mark> → @anom_archives, <mark>Discord</mark> (prossimamente), sezione <mark>Notizie</mark> sul sito.",
+                    "answer": "Gli aggiornamenti principali sono annunciati sui nostri canali ufficiali: <mark>Twitter/X</mark> → @AnomArchives, <mark>Discord</mark> (prossimamente), sezione <mark>Notizie</mark> sul sito.",
                     "category": "general"
                 },
                 {
@@ -239,7 +243,7 @@
                 {
                     "id": "tech-stack",
                     "question": "Qual è lo stack tecnico?",
-                    "answer": "Frontend: <mark>Next.js 14, TypeScript, TailwindCSS, Shadcn UI</mark>. Backend: <mark>Node.js, Express.js, TypeScript</mark>. Database: <mark>MongoDB</mark>. Auth: <mark>BetterAuth + OAuth2 Bungie</mark>.",
+                    "answer": "Frontend: <mark>Next.js 14, TypeScript, TailwindCSS, Shadcn UI</mark>. Backend: <mark>Node.js, Express.js, TypeScript</mark>. Database: <mark>MongoDB</mark>. Auth: <mark>OAuth2 Bungie</mark>.",
                     "category": "technical"
                 },
                 {
@@ -247,6 +251,24 @@
                     "question": "Posso contribuire allo sviluppo?",
                     "answer": "Non al momento. Il codice <mark>non è open-source</mark>, ma estensioni della community saranno considerate in seguito.",
                     "category": "technical"
+                },
+                {
+                    "id": "project-origin",
+                    "question": "Da dove nasce il progetto AN0M?",
+                    "answer": "AN0M era originariamente un <mark>programma di ricerca dell'Età dell'Oro</mark> guidato dal Dr. Alexander Moreau all'interno della divisione Protocollo. La sua IA era progettata per analizzare realtà parallele utilizzando la <mark>tecnologia radiolare Vex</mark>. Dopo un esperimento catastrofico, il progetto è stato <mark>cancellato da Clovis Bray</mark>—ma il terminale ha continuato a emettere segnali frammentati per secoli.",
+                    "category": "lore"
+                },
+                {
+                    "id": "why-terminal-speaks",
+                    "question": "Perché il terminale a volte parla in un linguaggio criptico?",
+                    "answer": "Perché il sistema AN0M rimasto porta ancora frammenti della sua antica coscienza, intrecciati con <mark>codice Vex</mark>. I messaggi criptici sono <mark>resti delle sue simulazioni</mark>—alcuni sono echi privi di significato, altri contengono <mark>istruzioni nascoste</mark>.",
+                    "category": "lore"
+                },
+                {
+                    "id": "network-revival",
+                    "question": "Cosa ha innescato la riattivazione di AN0M?",
+                    "answer": "Dopo la riattivazione della <mark>Cripta di Pietra</mark> su Europa, gli Exo del Protocollo dormienti hanno riacquistato funzionalità parziale. Tra i sistemi recuperati c'era il <mark>terminale AN0M</mark>, che ha ricominciato a trasmettere anomalie, chiamando i Guardiani a decodificare i suoi dati rimanenti.",
+                    "category": "lore"
                 },
                 {
                     "id": "vex-references",

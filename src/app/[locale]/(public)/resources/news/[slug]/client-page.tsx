@@ -57,8 +57,8 @@ export default function NewsArticleClientPage() {
                     <p className='Grotesk text-[var(--light-dark-3)] text-sm md:text-lg max-w-xl z-10 mx-auto text-white mt-4'>
                         {t('resources.news.notFoundTitle')}
                     </p>
-                    <Link 
-                        href="/resources/news" 
+                    <Link
+                        href="/resources/news"
                         className='mt-6 px-6 py-3 bg-white/10 hover:bg-white/20 rounded-lg transition-colors duration-200 text-white'
                     >
                         {t('common.backToNews')}
@@ -73,12 +73,10 @@ export default function NewsArticleClientPage() {
     return (
         <Container className="bg-[#141414] overflow-hidden w-full min-h-screen relative flex flex-col">
             <ArticleJsonLd article={article} locale={locale} baseUrl={baseUrl} />
-            <ImageLueur lueurImage='/img/glow/news.png' />
-            
-            {/* Header de l'article */}
+            <ImageLueur />
+
             <section className="relative z-10 py-20">
                 <div className="max-w-4xl mx-auto px-6">
-                    {/* Breadcrumb */}
                     <nav className="mb-8">
                         <div className="flex items-center space-x-2 text-sm text-gray-400">
                             <Link href="/resources" className="hover:text-white transition-colors">
@@ -93,7 +91,6 @@ export default function NewsArticleClientPage() {
                         </div>
                     </nav>
 
-                    {/* Métadonnées de l'article */}
                     <div className="mb-8">
                         <div className="flex flex-wrap items-center gap-4 mb-4 text-sm text-gray-400">
                             <time dateTime={article.date}>
@@ -112,8 +109,7 @@ export default function NewsArticleClientPage() {
                                 </>
                             )}
                         </div>
-                        
-                        {/* Tags */}
+
                         <div className="flex flex-wrap gap-2 mb-6">
                             <Badge variant="secondary">
                                 {article.category}
@@ -126,19 +122,16 @@ export default function NewsArticleClientPage() {
                         </div>
                     </div>
 
-                    {/* Titre de l'article */}
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
                         {article.title}
                     </h1>
 
-                    {/* Excerpt */}
                     <p className="text-xl text-gray-300 mb-8 leading-relaxed">
                         {article.excerpt}
                     </p>
                 </div>
             </section>
 
-            {/* Contenu de l'article */}
             <section className="relative z-10 pb-20">
                 <div className="max-w-4xl mx-auto px-6">
                     <div className="prose prose-invert prose-lg max-w-none">
@@ -147,11 +140,10 @@ export default function NewsArticleClientPage() {
                 </div>
             </section>
 
-            {/* Navigation entre articles */}
             <section className="relative z-10 pb-20">
                 <div className="max-w-4xl mx-auto px-6">
                     <div className="border-t border-white/10 pt-8">
-                        <Link 
+                        <Link
                             href="/resources/news"
                             className="inline-flex items-center px-6 py-3 bg-white/10 hover:bg-white/20 rounded-lg transition-colors duration-200 text-white"
                         >

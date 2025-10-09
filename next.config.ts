@@ -7,6 +7,18 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     domains: ['www.bungie.net', 'images.bungie.net', 'data.destinysets.com'],
+    formats: ['image/webp' as const, 'image/avif' as const],
+    minimumCacheTTL: 31536000,
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+  },
+  experimental: {
+    globalNotFound: true,
+    optimizeCss: true,
+    optimizePackageImports: ['@radix-ui/react-accordion', '@radix-ui/react-avatar', '@radix-ui/react-dropdown-menu', '@radix-ui/react-slot', 'lucide-react'],
+  },
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
   },
   async headers() {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL || ''
