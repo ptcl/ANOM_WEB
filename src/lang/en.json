@@ -1,8 +1,35 @@
 {
     "commun": {
+        "title": "title",
+        "subtitle": "subtitle",
+        "description": "description",
+        "loading": "Loading...",
         "copy": "Copy",
         "return": "Return",
-        "notFound": "Page Not Found2",
+        "notFound": "Page Not Found",
+        "buttons": {
+            "bungie":"Connect with bungie",
+            "back": "Back to Home",
+            "home": "Home",
+            "resources": "Resources",
+            "cypher": "Cypher",
+            "maintenance": "Maintenance",
+            "admin": "Admin",
+            "login": "Login with Bungie",
+            "logout": "Logout",
+            "viewAll": "View all",
+            "viewMore": "View more",
+            "viewLess": "View less",
+            "readMore": "Read more",
+            "readLess": "Read less",
+            "submit": "Submit",
+            "cancel": "Cancel",
+            "delete": "Delete",
+            "edit": "Edit",
+            "save": "Save",
+            "confirm": "Confirm",
+            "close": "Close"
+        },
         "links": {
             "anomNumber": " AN0M-ARCHIVES",
             "anom": "ANOM-ARCHIVES",
@@ -30,7 +57,9 @@
     },
     "anom": {
         "title": "AN0M ARCHIVES",
+        "titleClassic": "ANOM-ARCHIVES",
         "subtitle": "Immersive Community Experience",
+        "description2": "The network has reactivated. Connect with your Bungie account to access the simulation.",
         "description": "ANOM-ARCHIVES is an immersive community ARG experience set in the Destiny 2 universe. Solve mysteries, dive into Bungie's lore, and unlock exclusive free emblems.",
         "button": {
             "start": "Get Started",

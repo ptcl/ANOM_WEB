@@ -16,6 +16,7 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { useAuthentication } from '@/hooks/useAuthentication'
 import axios from 'axios'
+import { useTranslations } from 'next-intl'
 
 interface AuthResponse {
     success: boolean
@@ -34,7 +35,7 @@ interface ErrorResponse {
 export const BungieLoginButton = () => {
     const [isConnecting, setIsConnecting] = useState(false)
     const [loginError, setLoginError] = useState<string | null>(null)
-
+    const t = useTranslations();
     // ✅ ULTRA-LÉGER: Hook optimisé pour les pages de login (0 requête API)
     const { isAuthenticated, isLoading: isCheckingAuth } = useAuthentication()
 
@@ -130,12 +131,7 @@ export const BungieLoginButton = () => {
 
     return (
         <div className="flex flex-col items-center space-y-4">
-            <Button
-                onClick={handleLogin}
-                disabled={isConnecting}
-                size={'lg'}
-                className='text-[var(--white_accent1)] bg-[var(--ThemeColorAccent)] hover:bg-[var(--ThemeColorAccent2)] transition-colors cursor-pointer disabled:opacity-50'
-            >
+            <Button onClick={handleLogin} disabled={isConnecting} className='text-[var(--white-1)] text-2xl cursor-pointer button__style__anom rounded-none py-6 px-6'>
                 {isConnecting ? (
                     <div className="flex items-center space-x-2">
                         <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -143,7 +139,7 @@ export const BungieLoginButton = () => {
                     </div>
                 ) : (
                     <div>
-                        <span>Connect to System</span>
+                        <span>{t('commun.buttons.bungie')}</span>
                     </div>
                 )}
             </Button>
@@ -152,11 +148,7 @@ export const BungieLoginButton = () => {
                 <div className="text-red-500 text-sm bg-red-50 px-4 py-2 rounded-md border border-red-200 max-w-md">
                     <div className="flex items-start justify-between">
                         <span className="flex-1">{displayError}</span>
-                        <button
-                            onClick={handleClearError}
-                            className="ml-2 text-red-600 hover:text-red-800 font-bold"
-                            aria-label="Fermer l'erreur"
-                        >
+                        <button onClick={handleClearError} className="ml-2 text-red-600 hover:text-red-800 font-bold" aria-label="Fermer l'erreur">
                             ×
                         </button>
                     </div>

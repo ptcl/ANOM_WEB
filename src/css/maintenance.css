@@ -188,7 +188,6 @@ input[type="range"]::-moz-range-thumb {
     height: 1.5rem;
     background: linear-gradient(90deg, var(--light-dark), transparent);
 }
-
 .deco__2 {
     position: absolute;
     bottom: 3%;

@@ -1,10 +1,24 @@
-.gradient__text__right {
+.gradient__text__vex__right {
     background: linear-gradient(50deg, var(--foreground) 40%, var(--vex-1) 99%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-.gradient__text__left {
+.gradient__text__vex__left {
     background: linear-gradient(-50deg, var(--foreground) 10%, var(--vex-1) 99%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+/* Variante pour les titres principaux avec l'image anom */
+.gradient__text__anom__right {
+    background: linear-gradient(50deg, var(--foreground) 40%, var(--anom-light) 99%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.gradient__text__anom__left {
+    background: linear-gradient(-50deg, var(--foreground) 40%, var(--anom-light) 99%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }

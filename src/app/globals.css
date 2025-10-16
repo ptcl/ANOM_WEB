@@ -231,6 +231,12 @@ footer {
   --vex-2: #B77F43;
   --vex-3: #B77F43;
   --vex-4: #926535;
+
+  /* Couleurs pour l'image anom.png */
+  --anom: #3A4CD1;
+  --anom-light: #6671C7;
+  --anom-dark: #2938AE;
+
 }
 
 /* Classes d'accent qui redéfinissent --accent */
@@ -301,6 +307,7 @@ footer {
   --light-dark: #4F4F4F;
   --light-dark-2: #808080;
   --light-dark-3: #737373;
+  --radius-sm: 0.25rem;
 
 }
 
@@ -334,8 +341,9 @@ footer {
 }
 
 .gradient__title,
-.gradient__vex,
-.gradient__danger {
+.gradient__title__vex,
+.gradient__title__danger,
+.gradient__title__anom {
   font-family: 'Grotesk', Arial, sans-serif;
   position: relative;
 }
@@ -365,7 +373,7 @@ footer {
   -webkit-text-stroke: 0px transparent;
 }
 
-.gradient__vex::before {
+.gradient__title__vex::before {
   content: attr(data-text);
   position: absolute;
   top: 0;
@@ -377,7 +385,7 @@ footer {
   -webkit-text-stroke: 1.5px transparent;
 }
 
-.gradient__vex::after {
+.gradient__title__vex::after {
   content: attr(data-text);
   position: absolute;
   top: 0;
@@ -389,7 +397,8 @@ footer {
   -webkit-background-clip: text;
   -webkit-text-stroke: 0px transparent;
 }
-.gradient__danger::before {
+
+.gradient__title__danger::before {
   content: attr(data-text);
   position: absolute;
   top: 0;
@@ -401,7 +410,7 @@ footer {
   -webkit-text-stroke: 1.5px transparent;
 }
 
-.gradient__danger::after {
+.gradient__title__danger::after {
   content: attr(data-text);
   position: absolute;
   top: 0;
@@ -414,6 +423,65 @@ footer {
   -webkit-text-stroke: 0px transparent;
 }
 
+.gradient__title__anom::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  color: transparent;
+  background: linear-gradient(to top, var(--foreground), var(--anom-light) 90%);
+  background-size: 100% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-stroke: 0px transparent;
+}
+
+.gradient__title__anom::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: transparent;
+  background: linear-gradient(to top, transparent 30%, var(--anom) 75%);
+  background-size: 100% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-stroke: 1.5px transparent;
+}
+
+.button__style__anom {
+  z-index: 1;
+  position: relative;
+  display: inline-flex;
+  -webkit-user-select: none;
+  user-select: none;
+  transition: .25s;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--anom);
+
+  &::after {
+    position: absolute;
+    content: "";
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid var(--anom-dark);
+    transition: .25s;
+  }
+
+  &:hover::after {
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-color: var(--anom-light);
+  }
+}
+
+
+
 .hover__underline {
   z-index: 4;
   cursor: pointer;
@@ -422,7 +490,6 @@ footer {
   transition: 0.3s ease-in-out;
   text-decoration: none;
   color: var(--light-dark);
-  ;
 
   &::after {
     content: '';
@@ -575,5 +642,59 @@ footer {
       background-color: var(--foreground);
       width: 100%;
     }
+  }
+}
+
+.decoration__container__right {
+
+  font-size: 1.8rem;
+  color: var(--light-dark);
+  z-index: 2;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -.75rem;
+    left: -2rem;
+    width: 25rem;
+    height: .25rem;
+    background: linear-gradient(90deg, transparent, var(--light-dark));
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0rem;
+    left: 5rem;
+    width: 12rem;
+    height: 1.5rem;
+    background: linear-gradient(90deg, var(--light-dark), transparent);
+  }
+}
+
+.decoration__container__left {
+
+  font-size: 1.8rem;
+  color: var(--light-dark);
+  z-index: 2;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -.75rem;
+    right: -5rem;
+    width: 25rem;
+    height: .25rem;
+    background: linear-gradient(90deg, var(--light-dark), transparent 80%);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: .5rem;
+    right: 2rem;
+    width: 12rem;
+    height: 1.5rem;
+    background: linear-gradient(-90deg, var(--light-dark), transparent);
   }
 }

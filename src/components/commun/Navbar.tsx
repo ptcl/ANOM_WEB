@@ -11,7 +11,6 @@ import { Menu, X } from 'lucide-react';
 export default function Navbar() {
     const t = useTranslations();
     const [scrolled, setScrolled] = React.useState(false);
-    const [mounted, setMounted] = React.useState(false);
     const [searchBarData, setSearchBarData] = useState<SearchBarData | null>(null);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
@@ -21,7 +20,6 @@ export default function Navbar() {
     useNavbarSearchEvents(setSearchBarData);
 
     useEffect(() => {
-        setMounted(true);
         const handleScroll = () => {
             setScrolled(window.scrollY > 10);
         };
@@ -61,14 +59,29 @@ export default function Navbar() {
         };
     }, [mobileMenuOpen]);
 
-    const shouldUseClassicGradient = scrolled || (mounted && ['/resources/'].includes(pathname));
+    const getGradientClass = (position: 'left' | 'right' | 'center' = 'center') => {
+        if (pathname === '/') {
+            if (position === 'left') return 'gradient__text__anom__left';
+            if (position === 'right') return 'gradient__text__anom__right';
+            return 'gradient__text__anom__right';
+        }
+        if (pathname.includes('/cipher') || pathname.includes('/vex')) {
+            if (position === 'left') return 'gradient__text__vex__left';
+            if (position === 'right') return 'gradient__text__vex__right';
+            return 'gradient__text__vex__right';
+        }
+        if (position === 'left') return 'gradient__text__anom__left';
+        if (position === 'right') return 'gradient__text__anom__right';
+        return 'gradient__text__anom__right';
+    };
+
     return (
-        <nav className={`fixed z-50 top-0 left-0 right-0 mx-auto transition-all duration-500 ease-in-out ${scrolled || searchBarData ? 'mt-2 sm:mt-3 md:mt-4 w-[90%] sm:w-[80%] md:w-[65%] max-w-5xl rounded-sm bg-black/20 backdrop-blur-xl border border-white/20 shadow-2xl shadow-black/10' : 'mt-0 w-full rounded-none bg-transparent border-transparent shadow-none'}`} style={{ left: '0', right: '0', transform: scrolled || searchBarData ? 'translateY(0)' : 'translateY(0)', backdropFilter: scrolled || searchBarData ? 'blur(20px) saturate(180%)' : 'none' }}>
+        <nav className={`fixed z-50 top-0 left-0 right-0 mx-auto transition-all duration-500 ease-in-out ${scrolled || searchBarData ? 'mt-2 sm:mt-3 md:mt-4 w-[90%] sm:w-[80%] md:w-[65%] max-w-5xl rounded-sm bg-black/20 backdrop-blur-2xl border border-white/20 shadow-2xl shadow-black/10 p-2' : 'p-0 mt-0 w-full rounded-none bg-transparent border-transparent shadow-none'}`} style={{ left: '0', right: '0', transform: scrolled || searchBarData ? 'translateY(0)' : 'translateY(0)', backdropFilter: scrolled || searchBarData ? 'blur(20px) saturate(180%)' : 'none' }}>
             <div className={`w-full transition-all duration-500 ease-in-out ${scrolled || searchBarData ? 'px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3' : 'px-4 sm:px-8 md:px-15 py-3 sm:py-3.5 md:py-4'}`}>
                 <div className=' flex items-center justify-between gap-2 sm:gap-3 md:gap-4 w-full transition-all duration-500 ease-in-out'>
                     <Link href={"/"} className='flex items-center gap-1.5 sm:gap-2 flex-shrink-0'>
                         <ComponentSvg variant="catCompact" height={24} width={24} className="sm:h-7 sm:w-7 md:h-7 md:w-7" />
-                        <h1 className={`Grotesk font-bold transition-all duration-300 ease-out ${scrolled ? 'text-lg sm:text-xl' : 'text-xl sm:text-2xl'} ${shouldUseClassicGradient ? 'gradient__text__classic' : 'gradient__text__right'}`}>
+                        <h1 className={`Grotesk font-bold transition-all duration-300 ease-out ${scrolled ? 'text-lg sm:text-xl' : 'text-xl sm:text-2xl'} ${getGradientClass('right')}`}>
                             {t('commun.links.anom')}
                         </h1>
                     </Link>
@@ -82,7 +95,7 @@ export default function Navbar() {
                     </div>
 
                     <div className='hidden md:flex items-center gap-6 font-normal cursor-pointer flex-shrink-0'>
-                        <Link href="/resources/news" className={`Grotesk text-base ${shouldUseClassicGradient ? 'gradient__text__classic' : 'gradient__text__left'} hover__underline__neutre`}>
+                        <Link href="/resources/news" className={`Grotesk text-base ${getGradientClass('left')} hover__underline__neutre`}>
                             {t('commun.links.news')}
                         </Link>
                         <Link href="/" className={`Grotesk text-base hover__underline__3`}>
@@ -122,18 +135,18 @@ export default function Navbar() {
 
                         <div className={`flex items-center gap-2 mb-12 transition-all duration-500 ${justOpened ? 'opacity-0 translate-x-[-30px]' : 'opacity-100 translate-x-0'}`}>
                             <ComponentSvg variant="catCompact" height={32} width={32} />
-                            <h1 className="font-ibm text-2xl font-bold gradient__text__classic">
+                            <h1 className={`font-ibm text-2xl font-bold ${getGradientClass('right')}`}>
                                 {t('commun.links.anom')}
                             </h1>
                         </div>
                         <div className="flex flex-col items-start gap-8">
-                            <Link href="/" className={`Grotesk text-3xl font-bold gradient__text__classic hover:scale-105 transition-all duration-500 ${justOpened ? 'opacity-0 translate-x-[-30px]' : 'opacity-100 translate-x-0'}`} style={{ transitionDelay: '100ms' }} onClick={closeMobileMenu}>
+                            <Link href="/" className={`Grotesk text-3xl font-bold ${getGradientClass('right')} hover:scale-105 transition-all duration-500 ${justOpened ? 'opacity-0 translate-x-[-30px]' : 'opacity-100 translate-x-0'}`} style={{ transitionDelay: '100ms' }} onClick={closeMobileMenu}>
                                 {t('commun.links.home')}
                             </Link>
-                            <Link href="/resources/news" className={`Grotesk text-3xl font-bold gradient__text__classic hover:scale-105 transition-all duration-500 ${justOpened ? 'opacity-0 translate-x-[-30px]' : 'opacity-100 translate-x-0'}`} style={{ transitionDelay: '200ms' }} onClick={closeMobileMenu}>
+                            <Link href="/resources/news" className={`Grotesk text-3xl font-bold ${getGradientClass('left')} hover:scale-105 transition-all duration-500 ${justOpened ? 'opacity-0 translate-x-[-30px]' : 'opacity-100 translate-x-0'}`} style={{ transitionDelay: '200ms' }} onClick={closeMobileMenu}>
                                 {t('commun.links.news')}
                             </Link>
-                            <Link href="/resources/faq" className={`Grotesk text-3xl font-bold gradient__text__classic hover:scale-105 transition-all duration-500 ${justOpened ? 'opacity-0 translate-x-[-30px]' : 'opacity-100 translate-x-0'}`} style={{ transitionDelay: '300ms' }} onClick={closeMobileMenu}>
+                            <Link href="/resources/faq" className={`Grotesk text-3xl font-bold ${getGradientClass('left')} hover:scale-105 transition-all duration-500 ${justOpened ? 'opacity-0 translate-x-[-30px]' : 'opacity-100 translate-x-0'}`} style={{ transitionDelay: '300ms' }} onClick={closeMobileMenu}>
                                 {t('commun.links.faq')}
                             </Link>
                         </div>

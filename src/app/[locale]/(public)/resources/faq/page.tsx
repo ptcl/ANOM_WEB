@@ -10,6 +10,7 @@ import { useStickyOnNavbar } from '@/hooks/useStickyOnNavbar';
 import { showNavbarSearch, hideNavbarSearch } from '@/lib/navbar-search-events';
 import { useEffect } from 'react';
 import ImageLueur from '@/components/commun/ImageLueur';
+import GradientTitle from '@/components/commun/GradientTitle';
 
 interface FAQQuestion {
   id: string;
@@ -128,14 +129,7 @@ export default function FAQPage() {
     <>
       <Container height='fit-title' textAlign='center'>
         <ImageLueur />
-        <section className='flex flex-col justify-center items-center text-center w-full mb-8'>
-          <h1 className='leading-8 md:leading-26 gradient__vex font-semibold text-4xl md:text-7xl lg:text-9xl uppercase text-transparent z-10 mx-auto' data-text={t('resources.faq.title')}>
-            {t('resources.faq.title')}
-          </h1>
-          <p className='Grotesk text-[var(--light-dark-3)] text-sm md:text-lg max-w-xl z-10 mx-auto mb-8'>
-            {t('resources.faq.subtitle')}
-          </p>
-        </section>
+        <GradientTitle title={t('resources.faq.title')} subtitle={t('resources.faq.subtitle')}/>
         <div className='w-full flex flex-col gap-4 px-4 max-w-2xl mx-auto justify-center items-center'>
           <div ref={elementRef} className="w-full transition-all duration-500 ease-out">
             <div className={`transition-all duration-500 ease-out ${isSticky ? 'opacity-0 transform scale-95 translate-y-2 pointer-events-none' : 'opacity-100 transform scale-100 translate-y-0'}`}>

@@ -142,7 +142,7 @@ const GlitchText = memo(function GlitchText({ text, glitchChars = DEFAULT_GLITCH
     }, [glitchState, baseStyle, glitchFont, glitchMode]);
 
     return (
-        <span className={`${className} ${hasGlitching ? 'animate-pulse' : ''}`} style={{ willChange: hasGlitching ? 'contents' : 'auto', transform: 'translate3d(0,0,0)' }}>
+        <span className={` ${className} ${hasGlitching ? 'animate-pulse' : ''}`} style={{ willChange: hasGlitching ? 'contents' : 'auto', height: '1em', display: 'inline-block' }} >
             {renderedContent}
         </span>
     );

@@ -1,5 +1,9 @@
 {
     "commun": {
+        "title":"titre",
+        "subtitle":"sous-titre",
+        "description":"description",
+        "loading": "Chargement...",
         "copy": "Copier",
         "return": "Retour",
         "notFound": "Page Non Trouvée",

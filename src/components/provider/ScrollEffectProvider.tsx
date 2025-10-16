@@ -12,11 +12,10 @@ export default function ScrollEffectProvider({ children }: { children: React.Rea
         const eased = Math.pow(progress, 1.5);
 
         const isMobile = window.innerWidth < 768;
-        const paddingMultiplier = isMobile && eased > 0.1 ? 0 : 1;
 
         setStyle({
-            padding: eased * 100 * paddingMultiplier,
-            radius: eased * 16,
+            padding: isMobile ? 0 : eased * 100,
+            radius: isMobile ? 0 : eased * 16,
         });
     }, []);
 
