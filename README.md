@@ -1,5 +1,15 @@
 # ANOM Protocol OS
 
+> **Ce projet est abandonné et n'est plus maintenu.**
+>
+> Le développement d'ANOM Protocol OS a été définitivement arrêté. Le projet reposait entièrement sur l'univers et l'écosystème de **Destiny / Bungie**. La baisse significative et continue de la popularité de la franchise, le déclin de l'engagement de la communauté, ainsi que les décisions stratégiques de Bungie (restructurations internes, réduction de contenu, incertitude sur l'avenir de la licence) ont rendu ce projet non viable sur le long terme.
+>
+> Il est possible que quelques mises à jour mineures soient poussées sur le repo pour finaliser certains aspects en l'état, mais aucune nouvelle fonctionnalité ni maintenance active ne sera assurée.
+>
+> Pour les curieux : 2-3 codes d'emblèmes sont cachés quelque part dans le repo. Bonne chasse.
+
+---
+
 <div align="center">
 
 ![ANOM Banner](public/img/protocol_text_glitch.png)

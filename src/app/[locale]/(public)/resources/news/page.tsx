@@ -101,13 +101,13 @@ export default function NewsPage() {
 
     return (
         <>
-            <Container height='fit-title' textAlign='center'>
+            <Container height='fit-title' textAlign='center' bgDefault>
                 <ImageLueur />
                 <section className='flex flex-col justify-center items-center text-center w-full mb-8'>
                     <h1 className='leading-8 md:leading-26 gradient__vex font-semibold text-4xl md:text-7xl lg:text-9xl uppercase text-transparent z-10 mx-auto' data-text={t('resources.news.title')}>
                         {t('resources.news.title')}
                     </h1>
-                    <p className='Grotesk text-[var(--light-dark-3)] text-sm md:text-lg max-w-xl z-10 mx-auto mb-8'>
+                    <p className='font-grotesk text-[var(--black-600)] text-sm md:text-lg max-w-xl z-10 mx-auto mb-8'>
                         {t('resources.news.subtitle')}
                     </p>
                 </section>
@@ -131,7 +131,7 @@ export default function NewsPage() {
                 </div>
             </Container>
 
-            <Container height='fit' pb>
+            <Container height='fit' pb bgDefault>
                 <section className='w-full max-w-6xl mx-auto z-10 relative px-4'>
                     {loading ? (
                         <NewsListSkeleton count={3} />
@@ -143,7 +143,7 @@ export default function NewsPage() {
                                         <span className="px-2 py-1 bg-blue-500/20 text-blue-300 text-xs rounded font-medium">
                                             {getCategoryLabel(article.category)}
                                         </span>
-                                        <span className="text-[var(--light-dark-3)] text-xs">
+                                        <span className="text-[var(--black-600)] text-xs">
                                             {article.readTime} {t('resources.news.minReading')}
                                         </span>
                                     </div>
@@ -152,12 +152,12 @@ export default function NewsPage() {
                                         {article.title}
                                     </h2>
 
-                                    <p className="text-[var(--light-dark-3)] text-sm mb-4 line-clamp-3">
+                                    <p className="text-[var(--black-600)] text-sm mb-4 line-clamp-3">
                                         {article.excerpt}
                                     </p>
 
                                     <div className="flex items-center justify-between">
-                                        <div className="text-[var(--light-dark-3)] text-xs">
+                                        <div className="text-[var(--black-600)] text-xs">
                                             <span>{formatDate(article.date)}</span>
                                             <span className="ml-2">{t('resources.news.by')} {article.author}</span>
                                         </div>
@@ -183,7 +183,7 @@ export default function NewsPage() {
                         </div>
                     ) : searchQuery ? (
                         <div className="text-center py-12 z-10 relative">
-                            <p className="text-[var(--light-dark-3)] text-lg">
+                            <p className="text-[var(--black-600)] text-lg">
                                 {t('resources.news.NoArticles')} {searchQuery}
                             </p>
                             <button onClick={() => setSearchQuery('')} className="mt-4 text-sm text-blue-400 hover:text-blue-300 underline">
@@ -192,7 +192,7 @@ export default function NewsPage() {
                         </div>
                     ) : (
                         <div className="text-center py-12 z-10 relative">
-                            <p className="text-[var(--light-dark-3)] text-lg">
+                            <p className="text-[var(--black-600)] text-lg">
                                 {t('resources.news.NoArticles')}
                             </p>
                         </div>

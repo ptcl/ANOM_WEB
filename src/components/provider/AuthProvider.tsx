@@ -17,54 +17,40 @@ const AuthContext = createContext<AuthContextType | null>(null)
 
 export const useAuthContext = () => {
     const context = useContext(AuthContext)
-    if (!context) {
-        throw new Error("useAuthContext doit être utilisé à l'intérieur d'un AuthProvider")
-    }
+    if (!context) throw new Error("useAuthContext doit être utilisé à l'intérieur d'un AuthProvider")
     return context
 }
 
 export function AuthProvider({ children }: { children: ReactNode }) {
     const router = useRouter()
     const pathname = usePathname()
-
-    // Utiliser notre hook d'authentification unifié
     const { isAuthenticated, isLoading, logout: authLogout } = useAuthentication()
 
     const checkAuth = useCallback(async (): Promise<boolean> => {
-        const token = sessionStorage.getItem('temp_auth_token')
+        const token = localStorage.getItem('protocol_token')
         return !!token
     }, [])
 
     const logout = useCallback(() => {
-        console.log('👋 Déconnexion depuis AuthProvider')
         authLogout()
+        localStorage.removeItem('protocol_token')
         router.push('/')
     }, [authLogout, router])
 
-    // ✅ SIMPLIFIÉ: Protection simple des routes
     useEffect(() => {
-        // Routes publiques : pas de vérification
-        if (PUBLIC_ROUTES.includes(pathname)) {
-            return
-        }
+        // Routes publiques : pas de vérif
+        if (PUBLIC_ROUTES.includes(pathname)) return
 
-        // ✅ SIMPLE: Vérification basique du token
-        const token = sessionStorage.getItem('temp_auth_token')
-        
+        const token = localStorage.getItem('protocol_token')
         if (!token) {
-            console.log('❌ Pas de token, redirection IMMÉDIATE vers /')
-            // ✅ Redirection immédiate + forcée
             window.location.replace('/')
             return
         }
 
-        console.log('✅ Token présent, accès autorisé à:', pathname)
-
-        // ✅ Vérification périodique simple du token (toutes les 5 minutes)
+        // Vérification périodique (5 min)
         const interval = setInterval(() => {
-            const currentToken = sessionStorage.getItem('temp_auth_token')
+            const currentToken = localStorage.getItem('protocol_token')
             if (!currentToken) {
-                console.log('⚠️ Token expiré, déconnexion')
                 logout()
             }
         }, 5 * 60 * 1000)

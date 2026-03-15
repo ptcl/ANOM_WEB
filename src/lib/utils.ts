@@ -4,6 +4,15 @@ import { twMerge } from "tailwind-merge"
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
+/**
+ * Vérifie si un cache est encore valide
+ * @param lastFetch - Timestamp du dernier fetch (null = jamais fetché)
+ * @param duration - Durée de validité en ms
+ */
+export function isCached(lastFetch: number | null, duration: number): boolean {
+  return !!lastFetch && Date.now() - lastFetch < duration
+}
+
 export function formatAgentDate(date: string | Date | undefined | null): string {
   if (!date) return 'UNKNOWN';
   let d: Date | null = null;
@@ -21,3 +30,4 @@ export function formatAgentDate(date: string | Date | undefined | null): string 
 
   return `${year}-${month}-${day}`;
 }
+

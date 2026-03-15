@@ -1,187 +1,152 @@
+// src/app/[locale]/identity/bungie/callback/page.tsx
 'use client'
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { useUserStore } from '@/store/userStore'
+import { useAgentStore } from '@/store/agentStore'
+import Container from '@/components/commun/container'
+import ImageLueur from '@/components/commun/ImageLueur'
+import { useTranslations } from 'next-intl'
+import Image from 'next/image'
+import ProgressBar from '@/components/commun/ProgressBar'
+import ComponentSvg from '@/components/svg/ComponentSvg'
+import GlitchText from '@/components/effect/GlitchText'
 
-// États possibles de l'authentification
 type AuthStatus = 'loading' | 'success' | 'error'
 
 export default function BungieCallbackPage() {
     const [status, setStatus] = useState<AuthStatus>('loading')
-    const [message, setMessage] = useState('Authentification en cours...')
+    const [message, setMessage] = useState('')
     const [username, setUsername] = useState('')
     const [errorMessage, setErrorMessage] = useState('')
-    const [processed, setProcessed] = useState(false) // ✅ Garde-fou contre les exécutions multiples
-    const router = useRouter()
+    const [loadingProgress, setLoadingProgress] = useState(0)
+    const [successProgress, setSuccessProgress] = useState(0)
 
-    // ✅ Utiliser les méthodes du store simplifié
-    const { initialize } = useUserStore()
+    const router = useRouter()
+    const t = useTranslations()
+    const { fetchAgent } = useAgentStore()
 
     useEffect(() => {
-        // ✅ Protection contre les exécutions multiples
-        if (processed) return
+        const timer = setInterval(() => {
+            setLoadingProgress((p) => (p < 90 ? p + Math.random() * 10 : p))
+        }, 150)
+        return () => clearInterval(timer)
+    }, [])
 
-        const processAuth = async () => {
-            setProcessed(true) // ✅ Marquer comme traité immédiatement
+    useEffect(() => {
+        const verifyAuth = async () => {
             try {
-                // Récupérer les paramètres de l'URL
-                const urlParams = new URLSearchParams(window.location.search)
-                const token = urlParams.get('token')
-                const error = urlParams.get('error')
+                const params = new URLSearchParams(window.location.search)
+                const token = params.get('token')
+                const success = params.get('success')
 
-                if (error) {
-                    setStatus('error')
-                    setErrorMessage(`Erreur d'authentification: ${error}`)
-                    setTimeout(() => router.push('/'), 3000)
-                    return
+                if (!success || !token) {
+                    throw new Error('Token manquant ou invalide')
                 }
 
-                if (!token) {
-                    setStatus('error')
-                    setErrorMessage('Token manquant dans la réponse')
-                    setTimeout(() => router.push('/'), 3000)
-                    return
+                // ✅ Stocke le token en localStorage
+                localStorage.setItem('protocol_token', token)
+
+                // ✅ Met à jour ton message et récupère le profil
+                setMessage(t('auth.verifying'))
+                await fetchAgent()
+
+                const currentAgent = useAgentStore.getState().agent
+                if (!currentAgent) throw new Error('Profil agent introuvable')
+
+                if (currentAgent.protocol?.hasSeenRecruitment === false) {
+                    const redirectUrl = '/recruitment'
+                    setTimeout(() => router.push(redirectUrl), 1500)
                 }
 
-                // ✅ Vérification basique du format du token
-                if (token.length < 10 || !token.includes('.')) {
-                    setStatus('error')
-                    setErrorMessage('Token invalide reçu')
-                    setTimeout(() => router.push('/'), 3000)
-                    return
-                }
-
-                console.log('🔑 Token valide reçu dans callback')
-
-                // Stocker le token TEMPORAIREMENT dans sessionStorage
-                sessionStorage.setItem('temp_auth_token', token)
-
-                setMessage('Récupération du profil agent...')
-
-                // ✅ Initialiser le store avec le nouveau token
-                await initialize()
-
-                // ✅ Petite attente pour s'assurer que le store est bien mis à jour
-                await new Promise(resolve => setTimeout(resolve, 200))
-
-                // Vérifier que l'authentification a réussi
-                const userState = useUserStore.getState()
-
-                if (!userState.isAuthenticated || !userState.agent) {
-                    console.error('❌ État après initialisation:', {
-                        isAuthenticated: userState.isAuthenticated,
-                        hasAgent: !!userState.agent,
-                        error: userState.error
-                    })
-
-                    setStatus('error')
-                    setErrorMessage(userState.error || 'Échec de récupération du profil agent')
-                    setTimeout(() => router.push('/'), 3000)
-                    return
-                }
-
-                // ✅ Authentification réussie
-                console.log('✅ Authentification réussie:', {
-                    agentName: userState.agent.protocol?.agentName,
-                    displayName: userState.agent.bungieUser?.displayName,
-                    hasSeenRecruitment: userState.agent.protocol?.hasSeenRecruitment,
-                    membershipId: userState.agent.bungieUser?.membershipId
-                })
-
+                setUsername(currentAgent.protocol?.agentName || 'ANOM')
                 setStatus('success')
-                setMessage('Authentification réussie ! Redirection...')
+                setMessage(t('auth.success'))
+                setLoadingProgress(100)
 
-                // Récupérer l'utilisateur pour afficher son nom
-                setUsername(userState.agent?.protocol?.agentName || userState.agent?.bungieUser?.displayName || 'Agent')
-
-                // ✅ DEBUG : État de l'agent
-                console.log('🔍 État agent pour redirection:', {
-                    hasSeenRecruitment: userState.agent?.protocol?.hasSeenRecruitment,
-                    agentName: userState.agent?.protocol?.agentName,
-                    currentPath: window.location.pathname,
-                    storedRedirect: sessionStorage.getItem('bungie_auth_redirect')
-                })
-
-                // Nettoyer l'URL (pour ne pas exposer le token)
-                window.history.replaceState({}, document.title, window.location.pathname)
-
-                // Décider de la redirection en fonction du statut de recrutement
-                let redirectUrl = '/desktop'
-
-                // Si l'utilisateur n'a pas encore vu la page de recrutement, le rediriger vers celle-ci
-                if (userState.agent?.protocol?.hasSeenRecruitment !== true) {
-                    redirectUrl = '/recruitment'
-                    console.log('🎯 Redirection vers recruitment (premier accès)')
-                } else {
-                    // Sinon, utiliser la redirection par défaut ou celle stockée
-                    redirectUrl = sessionStorage.getItem('bungie_auth_redirect') || '/desktop'
-                    console.log('🎯 Redirection vers:', redirectUrl)
-                }
-
+                // ✅ Redirection après succès
+                const redirectUrl = sessionStorage.getItem('bungie_auth_redirect') || '/desktop'
                 sessionStorage.removeItem('bungie_auth_redirect')
 
-                // ✅ Redirection simple qui fonctionne (comme avant)
-                console.log('🔄 Programmation de la redirection vers:', redirectUrl, 'dans 1.5s')
-                setTimeout(() => {
-                    console.log('🚀 Exécution de la redirection vers:', redirectUrl)
-                    router.push(redirectUrl)
-                }, 1500)
+                setTimeout(() => router.push(redirectUrl), 1500)
 
-            } catch (error) {
-                console.error('❌ Erreur lors du traitement du callback:', error)
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            } catch (err: any) {
+                console.error('❌ Callback error:', err)
                 setStatus('error')
-                setErrorMessage(`Erreur: ${error instanceof Error ? error.message : 'Erreur inconnue'}`)
+                setErrorMessage(err.message || 'Erreur inconnue')
+
                 setTimeout(() => router.push('/'), 3000)
             }
         }
 
-        processAuth()
-    }, [router, initialize, processed]) // ✅ Garde-fou contre les exécutions multiples
-
+        verifyAuth()
+    }, [router, fetchAgent, t])
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50">
-            <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full mx-4">
+        <Container bgDefault>
+            <ImageLueur showGlow={false} />
 
-                {/* Loading State */}
-                {status === 'loading' && (
-                    <div className="text-center">
-                        <div className="w-12 h-12 border-4 border-orange-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-                        <h2 className="text-xl font-semibold mb-2">Authentification en cours...</h2>
-                        <p className="text-gray-600">{message}</p>
+            {(status === 'loading' || status === 'success') && (
+                <div className="text-center flex flex-col items-center justify-center">
+                    <div className="w-64 h-64 mb-6 mx-auto relative">
+                        <Image
+                            src="/svg/anom_icon.svg"
+                            alt="Anom Icon"
+                            fill
+                            className={`object-contain ${status === 'loading' ? 'opacity-50' : ''}`}
+                        />
                     </div>
-                )}
 
-                {/* Success State */}
-                {status === 'success' && (
-                    <div className="text-center">
-                        <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                            </svg>
-                        </div>
-                        <h2 className="text-xl font-semibold mb-2 text-green-800">Connexion réussie !</h2>
-                        <p className="text-gray-600 mb-2">Bienvenue, <strong>{username}</strong></p>
-                        <p className="text-sm text-gray-500">{message}</p>
+                    {status === 'loading' ? (
+                        <GlitchText
+                            text={t('auth.processing')}
+                            glitchMode="chars"
+                            className="inline-block"
+                        />
+                    ) : (
+                        <p className="text-xl max-w-50 md:text-4xl md:max-w-xl mb-5 uppercase">
+                            {t('auth.welcomeback')}{' '}
+                            <GlitchText
+                                text={username}
+                                glitchMode="font"
+                                glitchFont="Vex"
+                                className="inline-block"
+                            />
+                        </p>
+                    )}
 
+                    <div className="w-full max-w-md mb-4 flex justify-center">
+                        <ProgressBar
+                            progress={status === 'loading' ? loadingProgress : successProgress}
+                            fillColor="bg-[var(--anom)]"
+                            backgroundColor="bg-gray-200"
+                            showPercentage={false}
+                            animated
+                            label={status === 'loading' ? 'Authentification en cours...' : 'Connexion établie'}
+                            className="mb-2 max-w-[300px]"
+                        />
                     </div>
-                )}
 
-                {/* Error State */}
-                {status === 'error' && (
-                    <div className="text-center">
-                        <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </div>
-                        <h2 className="text-xl font-semibold mb-2 text-red-800">Erreur d&apos;authentification</h2>
-                        <p className="text-gray-600 mb-4">{errorMessage}</p>
-                        <p className="text-sm text-gray-500">Redirection vers l&apos;accueil...</p>
-                    </div>
-                )}
+                    <p className="text-sm text-gray-600">{message}</p>
+                </div>
+            )}
 
-            </div>
-        </div>
+            {status === 'error' && (
+                <div className="text-center flex flex-col items-center justify-center">
+                    <ComponentSvg
+                        color="var(--danger)"
+                        width={128}
+                        height={128}
+                        variant="anomOff"
+                        className="mb-4"
+                    />
+                    <h2 className="text-xl md:text-3xl max-w-xs mb-2 text-[var(--danger)]">
+                        {t('auth.error')}
+                    </h2>
+                    <p className="text-xs text-gray-600">{errorMessage}</p>
+                    <p className="text-xs text-gray-700">{t('auth.redirecting')}</p>
+                </div>
+            )}
+        </Container>
     )
 }

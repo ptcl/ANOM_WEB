@@ -26,6 +26,18 @@
                 "1": "Trova",
                 "2": "risultato"
             }
+        },
+        "desktop": {
+            "window": {
+                "minimized": "Finestra minimizzata",
+                "active": "Finestra attiva"
+            },
+            "pinned": "Fissato alla barra"
+        },
+        "languages": {
+            "fr": "Français",
+            "en": "English",
+            "it": "Italiano"
         }
     },
     "anom": {

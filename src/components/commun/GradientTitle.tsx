@@ -107,7 +107,7 @@ export default function GradientTitle({ title, subtitle, titleKey = 'commun.titl
                 {displayTitle}
             </h1>
             {displaySubtitle && (
-                <p className='Grotesk text-[var(--light-dark-3)] text-sm md:text-lg max-w-xl z-10 mx-auto mt-2 md:mt-4'>
+                <p className='font-grotesk text-[var(--black-600)] text-sm md:text-lg max-w-xl z-10 mx-auto mt-2 md:mt-4'>
                     {displaySubtitle}
                 </p>
             )}

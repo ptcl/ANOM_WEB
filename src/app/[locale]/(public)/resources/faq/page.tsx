@@ -1,6 +1,7 @@
 'use client'
 
 import Container from '@/components/commun/container'
+import DOMPurify from 'dompurify'
 import React, { useState, useMemo } from 'react'
 import { useTranslations } from 'next-intl';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -127,9 +128,9 @@ export default function FAQPage() {
 
   return (
     <>
-      <Container height='fit-title' textAlign='center'>
+      <Container height='fit-title' textAlign='center' bgDefault>
         <ImageLueur />
-        <GradientTitle title={t('resources.faq.title')} subtitle={t('resources.faq.subtitle')}/>
+        <GradientTitle title={t('resources.faq.title')} subtitle={t('resources.faq.subtitle')} />
         <div className='w-full flex flex-col gap-4 px-4 max-w-2xl mx-auto justify-center items-center'>
           <div ref={elementRef} className="w-full transition-all duration-500 ease-out">
             <div className={`transition-all duration-500 ease-out ${isSticky ? 'opacity-0 transform scale-95 translate-y-2 pointer-events-none' : 'opacity-100 transform scale-100 translate-y-0'}`}>
@@ -141,13 +142,13 @@ export default function FAQPage() {
         </div>
 
       </Container>
-      <Container height='fit' pb textAlign='left'>
+      <Container height='fit' pb textAlign='left' bgDefault>
         <section className='w-full max-w-4xl mx-auto mb-12 z-10 relative '>
           <div className="border border-white/10 rounded-lg bg-black/20 backdrop-blur-sm p-6 text-center">
             <h2 className="text-white font-semibold text-lg mb-2">
               {t('resources.faq.intro.title')}
             </h2>
-            <p className="text-[var(--light-dark-3)] text-base">
+            <p className="text-[var(--black-600)] text-base">
               {t.rich('resources.faq.intro.description', {
                 bold: (chunks) => <strong className="font-medium">{chunks}</strong>
               })}
@@ -161,7 +162,7 @@ export default function FAQPage() {
             <div className="space-y-8">
               {searchQuery && filteredQuestions.length > 0 && (
                 <div className="text-center mb-6 z-10 relative">
-                  <p className="text-[var(--light-dark-3)] text-sm">
+                  <p className="text-[var(--black-600)] text-sm">
                     {filteredQuestions.length} {t('commun.searchBar.found.1')} {filteredQuestions.length > 1 ? 's' : ''} {t('commun.searchBar.found.2')} {filteredQuestions.length > 1 ? 's' : ''}
                     <span className="ml-2 text-blue-400">{t('commun.searchBar.scrollTo')}</span>
                   </p>
@@ -184,8 +185,8 @@ export default function FAQPage() {
                             </span>
                           </div>
                         </AccordionTrigger>
-                        <AccordionContent className="text-[var(--light-dark-3)] pt-4">
-                          <div dangerouslySetInnerHTML={{ __html: question.answer }} className="prose prose-invert max-w-none [&_mark]:bg-blue-500/20 [&_mark]:text-blue-300 [&_mark]:px-1 [&_mark]:py-0.5 [&_mark]:rounded [&_mark]:font-medium" />
+                        <AccordionContent className="text-[var(--black-600)] pt-4">
+                          <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(question.answer) }} className="prose prose-invert max-w-none [&_mark]:bg-[var(--protocol)]/20 [&_mark]:text-[var(--protocol)] [&_mark]:px-1 [&_mark]:py-0.5 [&_mark]:rounded [&_mark]:font-medium" />
                         </AccordionContent>
                       </AccordionItem>
                     ))}
@@ -195,7 +196,7 @@ export default function FAQPage() {
             </div>
           ) : searchQuery ? (
             <div className="text-center py-12 z-10 relative">
-              <p className="text-[var(--light-dark-3)] text-lg">
+              <p className="text-[var(--black-600)] text-lg">
                 {t('commun.searchBar.noResults')} {searchQuery}
               </p>
               <button onClick={() => setSearchQuery('')} className="mt-4 text-sm text-blue-400 hover:text-blue-300 underline">
@@ -204,7 +205,7 @@ export default function FAQPage() {
             </div>
           ) : (
             <div className="text-center py-12 z-10 relative">
-              <p className="text-[var(--light-dark-3)] text-lg">
+              <p className="text-[var(--black-600)] text-lg">
                 {t('commun.searchBar.loading')}
               </p>
             </div>
@@ -216,7 +217,7 @@ export default function FAQPage() {
             <h3 className="text-white font-semibold text-lg mb-2">
               {t('resources.faq.needHelp.title')}
             </h3>
-            <p className="text-[var(--light-dark-3)] text-sm">
+            <p className="text-[var(--black-600)] text-sm">
               {t('resources.faq.needHelp.subtitle')}
             </p>
           </div>

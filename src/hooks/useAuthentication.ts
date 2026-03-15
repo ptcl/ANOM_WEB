@@ -1,17 +1,8 @@
+// hooks/useAuthentication.ts
 'use client'
 
 import { useState, useEffect } from 'react'
-
-/**
- * 🔐 Hook d'authentification unifié et simplifié
- * 
- * Remplace: useAuth, useLoginAuth, useLogout
- * Fonctionnalités:
- * - ✅ Vérification token simple et rapide
- * - ✅ Déconnexion complète 
- * - ✅ Gestion SSR/hydratation
- * - ✅ Interface claire et cohérente
- */
+import { useAgentStore, invalidateAgentCache } from '@/store/agentStore'
 
 interface AuthState {
     isAuthenticated: boolean
@@ -31,14 +22,15 @@ export function useAuthentication(): AuthState & AuthActions {
         token: null
     })
 
-    // ✅ Vérifier le statut d'authentification
+    const clearAgent = useAgentStore(state => state.clearAgent)
+
     const checkAuthStatus = () => {
         if (typeof window === 'undefined') {
             setState(prev => ({ ...prev, isLoading: false }))
             return
         }
 
-        const token = sessionStorage.getItem('temp_auth_token')
+        const token = localStorage.getItem('protocol_token')
         setState({
             isAuthenticated: !!token,
             isLoading: false,
@@ -46,36 +38,28 @@ export function useAuthentication(): AuthState & AuthActions {
         })
     }
 
-    // ✅ Déconnexion complète
     const logout = (redirectTo: string = '/') => {
-        console.log('🚪 Déconnexion en cours...')
-        
-        // Nettoyer tous les tokens et données
-        sessionStorage.removeItem('temp_auth_token')
-        localStorage.removeItem('simple-user-data')
+        localStorage.removeItem('protocol_token')
         localStorage.removeItem('bungie_auth_state')
-        
-        // Mettre à jour l'état
+
+        clearAgent()
+        invalidateAgentCache()
+
         setState({
             isAuthenticated: false,
             isLoading: false,
             token: null
         })
-        
-        // Redirection
+
         window.location.href = redirectTo
-        console.log('✅ Déconnexion terminée, redirection vers:', redirectTo)
     }
 
-    // ✅ Actualiser le statut (pour les changements externes)
     const refreshAuthStatus = checkAuthStatus
 
-    // ✅ Initialisation côté client seulement
     useEffect(() => {
         checkAuthStatus()
     }, [])
 
-    // ✅ Écouter les changements de sessionStorage (multi-onglets)
     useEffect(() => {
         if (typeof window === 'undefined') return
 

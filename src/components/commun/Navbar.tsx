@@ -95,10 +95,10 @@ export default function Navbar() {
                     </div>
 
                     <div className='hidden md:flex items-center gap-6 font-normal cursor-pointer flex-shrink-0'>
-                        <Link href="/resources/news" className={`Grotesk text-base ${getGradientClass('left')} hover__underline__neutre`}>
+                        <Link href="/resources/news" className={`font-grotesk text-base ${getGradientClass('left')} hover__underline__neutre`}>
                             {t('commun.links.news')}
                         </Link>
-                        <Link href="/" className={`Grotesk text-base hover__underline__3`}>
+                        <Link href="/" className={`font-grotesk text-base hover__underline__3`}>
                             {t('commun.links.home')}
                         </Link>
                     </div>
@@ -140,13 +140,13 @@ export default function Navbar() {
                             </h1>
                         </div>
                         <div className="flex flex-col items-start gap-8">
-                            <Link href="/" className={`Grotesk text-3xl font-bold ${getGradientClass('right')} hover:scale-105 transition-all duration-500 ${justOpened ? 'opacity-0 translate-x-[-30px]' : 'opacity-100 translate-x-0'}`} style={{ transitionDelay: '100ms' }} onClick={closeMobileMenu}>
+                            <Link href="/" className={`font-grotesk text-3xl font-bold ${getGradientClass('right')} hover:scale-105 transition-all duration-500 ${justOpened ? 'opacity-0 translate-x-[-30px]' : 'opacity-100 translate-x-0'}`} style={{ transitionDelay: '100ms' }} onClick={closeMobileMenu}>
                                 {t('commun.links.home')}
                             </Link>
-                            <Link href="/resources/news" className={`Grotesk text-3xl font-bold ${getGradientClass('left')} hover:scale-105 transition-all duration-500 ${justOpened ? 'opacity-0 translate-x-[-30px]' : 'opacity-100 translate-x-0'}`} style={{ transitionDelay: '200ms' }} onClick={closeMobileMenu}>
+                            <Link href="/resources/news" className={`font-grotesk text-3xl font-bold ${getGradientClass('left')} hover:scale-105 transition-all duration-500 ${justOpened ? 'opacity-0 translate-x-[-30px]' : 'opacity-100 translate-x-0'}`} style={{ transitionDelay: '200ms' }} onClick={closeMobileMenu}>
                                 {t('commun.links.news')}
                             </Link>
-                            <Link href="/resources/faq" className={`Grotesk text-3xl font-bold ${getGradientClass('left')} hover:scale-105 transition-all duration-500 ${justOpened ? 'opacity-0 translate-x-[-30px]' : 'opacity-100 translate-x-0'}`} style={{ transitionDelay: '300ms' }} onClick={closeMobileMenu}>
+                            <Link href="/resources/faq" className={`font-grotesk text-3xl font-bold ${getGradientClass('left')} hover:scale-105 transition-all duration-500 ${justOpened ? 'opacity-0 translate-x-[-30px]' : 'opacity-100 translate-x-0'}`} style={{ transitionDelay: '300ms' }} onClick={closeMobileMenu}>
                                 {t('commun.links.faq')}
                             </Link>
                         </div>

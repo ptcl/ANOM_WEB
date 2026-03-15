@@ -27,7 +27,7 @@ export default function CategoryFilter({ categories, selectedCategory, onCategor
             "border border-white/20 backdrop-blur-sm cursor-pointer",
             selectedCategory === category
               ? "bg-white/20 text-white border-white/40"
-              : "bg-black/20 text-[var(--light-dark-3)] hover:bg-white/10 hover:text-white"
+              : "bg-black/20 text-[var(--black-600)] hover:bg-white/10 hover:text-white"
           )}
         >
           {getCategoryLabel(category)}

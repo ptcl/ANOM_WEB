@@ -10,13 +10,12 @@ import GradientTitle from '@/components/commun/GradientTitle';
 import { useTranslations } from 'next-intl';
 import { BungieLoginButton } from '@/components/auth/BungieLoginButton';
 import GlitchText from '@/components/effect/GlitchText';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { useMemo } from 'react';
 
 export default function HomePage() {
   const t = useTranslations();
   const MAINTENANCE_MODE = process.env.NEXT_PUBLIC_MAINTENANCE_MODE === 'true';
-  console.log('NEXT_PUBLIC_ENVIRONMENT:', process.env.NEXT_PUBLIC_ENVIRONMENT);
 
   const delayedFadeTransition = useMemo(() => ({
     duration: 0.8,
@@ -46,7 +45,7 @@ export default function HomePage() {
         <Footer />
         <ScrollEffectProvider >
           <section id="page_wrapper" suppressHydrationWarning>
-            <Container className="flex flex-col items-center justify-center min-h-screen gap-6">
+            <Container className="flex flex-col items-center justify-center min-h-screen gap-6" bgDefault>
               <motion.div className='decoration__container__right absolute top-20 left-2 md:top-20 md:left-10 ' initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={delayedFadeTransition} style={{ willChange: 'opacity' }}>
                 <GlitchText text='PROTOCOL' primaryFont='Grotesk' glitchFont='Vex' glitchMode='font' glitchProbability={0.01} />
               </motion.div>

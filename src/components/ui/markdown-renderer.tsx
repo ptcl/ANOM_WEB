@@ -1,4 +1,5 @@
 import React from 'react';
+import DOMPurify from 'dompurify';
 
 interface MarkdownRendererProps {
   content: string;
@@ -27,7 +28,7 @@ export function MarkdownRenderer({ content, className = '' }: MarkdownRendererPr
 
       const bodyHtml = dataRows.map(row => {
         const rowCells = row.slice(0, headerCells.length).map((cell: string) =>
-          `<td class="px-4 py-3 text-[var(--light-dark-2)] border-b border-gray-700/50">${cell}</td>`
+          `<td class="px-4 py-3 text-[var(--black-500)] border-b border-gray-700/50">${cell}</td>`
         ).join('');
         return `<tr class="hover:bg-gray-800/30 transition-colors">${rowCells}</tr>`;
       }).join('');
@@ -140,17 +141,17 @@ export function MarkdownRenderer({ content, className = '' }: MarkdownRendererPr
     html = html.replace(/`([^`]+)`/g, '<code class="bg-gray-800/80 text-blue-300 px-2 py-1 rounded text-sm font-mono border border-gray-700/50">$1</code>');
 
     // Blockquotes
-    html = html.replace(/^> (.*$)/gm, '<blockquote class="border-l-4 border-blue-500 pl-4 italic text-[var(--light-dark-3)] mb-4">$1</blockquote>');
+    html = html.replace(/^> (.*$)/gm, '<blockquote class="border-l-4 border-blue-500 pl-4 italic text-[var(--black-600)] mb-4">$1</blockquote>');
 
     // Listes à puces
     html = html.replace(/^- (.*$)/gm, '<li class="mb-1">$1</li>');
-    html = html.replace(/(<li.*<\/li>)/g, '<ul class="list-disc list-inside text-[var(--light-dark-2)] mb-4 ml-4">$1</ul>');
+    html = html.replace(/(<li.*<\/li>)/g, '<ul class="list-disc list-inside text-[var(--black-500)] mb-4 ml-4">$1</ul>');
 
     // Listes numérotées
     html = html.replace(/^\d+\. (.*$)/gm, '<li class="mb-1">$1</li>');
 
     // Paragraphes
-    html = html.replace(/^(?!<[hul]|<\/[hul]|<pre|<blockquote)(.+)$/gm, '<p class="text-[var(--light-dark-2)] leading-relaxed mb-4">$1</p>');
+    html = html.replace(/^(?!<[hul]|<\/[hul]|<pre|<blockquote)(.+)$/gm, '<p class="text-[var(--black-500)] leading-relaxed mb-4">$1</p>');
 
     // Nettoyer les paragraphes vides
     html = html.replace(/<p[^>]*><\/p>/g, '');
@@ -180,7 +181,7 @@ export function MarkdownRenderer({ content, className = '' }: MarkdownRendererPr
   return (
     <div
       className={`prose prose-lg prose-invert max-w-none ${className}`}
-      dangerouslySetInnerHTML={{ __html: markdownToHtml(content) }}
+      dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(markdownToHtml(content)) }}
     />
   );
 }

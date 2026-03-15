@@ -1,0 +1,632 @@
+[
+    {
+        "id": "step-0",
+        "text": "recruitment.steps.systemStatus.sleep",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-1",
+        "text": "recruitment.steps.systemStatus.networkActivity",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-2",
+        "text": "recruitment.steps.systemStatus.wakeProtocol",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-3",
+        "text": "",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "showProgress": false,
+        "isSpacing": true
+    },
+    {
+        "id": "step-4",
+        "text": "recruitment.steps.systemStatus.zenithOnline",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-5",
+        "text": "recruitment.steps.systemStatus.nodes",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-6",
+        "text": "recruitment.steps.systemStatus.encryption",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "showProgress": true,
+        "progressType": "access",
+        "isSpacing": false
+    },
+    {
+        "id": "step-7",
+        "text": "recruitment.steps.systemStatus.radiolaria",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 67,
+        "showProgress": true,
+        "isSpacing": false
+    },
+    {
+        "id": "step-8",
+        "text": "",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 67,
+        "showProgress": false,
+        "isSpacing": true
+    },
+    {
+        "id": "step-9",
+        "text": "recruitment.steps.systemStatus.intrusion",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-10",
+        "text": "recruitment.steps.systemStatus.intrusionDetails.1",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-11",
+        "text": "recruitment.steps.systemStatus.intrusionDetails.2",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-12",
+        "text": "recruitment.steps.systemStatus.intrusionDetails.3",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-13",
+        "text": "",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": true
+    },
+    {
+        "id": "step-14",
+        "text": "recruitment.steps.systemStatus.alert",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-15",
+        "text": "",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": true
+    },
+    {
+        "id": "step-16",
+        "text": "recruitment.steps.systemStatus.securityAlert",
+        "typingPreset": "terminal",
+        "useGlitch": true,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-17",
+        "text": "",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": true
+    },
+    {
+        "id": "step-18",
+        "text": "recruitment.steps.dialogue.am1_1",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-19",
+        "text": "recruitment.steps.dialogue.am1_2",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-20",
+        "text": "",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": true
+    },
+    {
+        "id": "step-21",
+        "text": "recruitment.steps.dialogue.ls7_1",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-22",
+        "text": "recruitment.steps.dialogue.ls7_2",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-23",
+        "text": "",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": true
+    },
+    {
+        "id": "step-24",
+        "text": "recruitment.steps.dialogue.analysis.1",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-25",
+        "text": "recruitment.steps.dialogue.analysis.2",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-26",
+        "text": "recruitment.steps.dialogue.analysis.3",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-27",
+        "text": "recruitment.steps.dialogue.analysis.4",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-28",
+        "text": "recruitment.steps.dialogue.analysis.5",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-29",
+        "text": "",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": true
+    },
+    {
+        "id": "step-30",
+        "text": "recruitment.steps.dialogue.am1_3",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-31",
+        "text": "recruitment.steps.dialogue.am1_4",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-32",
+        "text": "",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": true
+    },
+    {
+        "id": "step-33",
+        "text": "recruitment.steps.dialogue.ls7_3",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-34",
+        "text": "recruitment.steps.dialogue.ls7_4",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-35",
+        "text": "",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": true
+    },
+    {
+        "id": "step-36",
+        "text": "recruitment.steps.dialogue.cognitive.1",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-37",
+        "text": "recruitment.steps.dialogue.cognitive.2",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-38",
+        "text": "",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": true
+    },
+    {
+        "id": "step-39",
+        "text": "recruitment.steps.dialogue.am1_5",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-40",
+        "text": "recruitment.steps.dialogue.am1_6",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-41",
+        "text": "",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": true
+    },
+    {
+        "id": "step-42",
+        "text": "recruitment.steps.dialogue.ls7_5",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-43",
+        "text": "",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": true
+    },
+    {
+        "id": "step-44",
+        "text": "recruitment.steps.dialogue.contactProtocol.1",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-45",
+        "text": "recruitment.steps.dialogue.contactProtocol.2",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-46",
+        "text": "recruitment.steps.dialogue.contactProtocol.3",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-47",
+        "text": "recruitment.steps.dialogue.contactProtocol.4",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-48",
+        "text": "",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": true
+    },
+    {
+        "id": "step-49",
+        "text": "recruitment.steps.dialogue.am1_7",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-50",
+        "text": "recruitment.steps.dialogue.am1_8",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-51",
+        "text": "",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": true
+    },
+    {
+        "id": "step-52",
+        "text": "recruitment.steps.dialogue.ls7_6",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-53",
+        "text": "recruitment.steps.dialogue.ls7_7",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-54",
+        "text": "",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": true
+    },
+    {
+        "id": "step-55",
+        "text": "recruitment.steps.dialogue.anomTransmission.1",
+        "typingPreset": "terminal",
+        "useGlitch": true,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-56",
+        "text": "recruitment.steps.dialogue.anomTransmission.2",
+        "typingPreset": "terminal",
+        "useGlitch": true,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-57",
+        "text": "recruitment.steps.dialogue.anomTransmission.3",
+        "typingPreset": "terminal",
+        "useGlitch": true,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-58",
+        "text": "recruitment.steps.dialogue.anomTransmission.4",
+        "typingPreset": "terminal",
+        "useGlitch": true,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-59",
+        "text": "",
+        "typingPreset": "terminal",
+        "useGlitch": false,
+        "progress": 0,
+        "showProgress": false,
+        "isSpacing": true
+    },
+    {
+        "id": "step-60",
+        "text": "recruitment.steps.dialogue.am1_ls7_final.1",
+        "typingPreset": "human",
+        "useGlitch": true,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-61",
+        "text": "recruitment.steps.dialogue.am1_ls7_final.2",
+        "typingPreset": "human",
+        "useGlitch": true,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-62",
+        "text": "",
+        "typingPreset": "human",
+        "useGlitch": true,
+        "showProgress": false,
+        "isSpacing": true
+    },
+    {
+        "id": "step-63",
+        "text": "recruitment.steps.dialogue.stabilization.1",
+        "typingPreset": "human",
+        "useGlitch": false,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-64",
+        "text": "recruitment.steps.dialogue.stabilization.2",
+        "typingPreset": "human",
+        "useGlitch": false,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-65",
+        "text": "recruitment.steps.dialogue.stabilization.3",
+        "typingPreset": "human",
+        "useGlitch": false,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-66",
+        "text": "",
+        "typingPreset": "human",
+        "useGlitch": false,
+        "showProgress": false,
+        "isSpacing": true
+    },
+    {
+        "id": "step-67",
+        "text": "recruitment.steps.dialogue.warnings.1",
+        "typingPreset": "human",
+        "useGlitch": false,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-68",
+        "text": "recruitment.steps.dialogue.warnings.2",
+        "typingPreset": "human",
+        "useGlitch": false,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-69",
+        "text": "",
+        "typingPreset": "human",
+        "useGlitch": false,
+        "showProgress": false,
+        "isSpacing": true
+    },
+    {
+        "id": "step-70",
+        "text": "recruitment.steps.dialogue.ending.1",
+        "typingPreset": "human",
+        "useGlitch": false,
+        "showProgress": false,
+        "isSpacing": false
+    },
+    {
+        "id": "step-71",
+        "text": "recruitment.steps.dialogue.ending.2",
+        "typingPreset": "human",
+        "useGlitch": false,
+        "showProgress": false,
+        "isSpacing": false
+    }
+]

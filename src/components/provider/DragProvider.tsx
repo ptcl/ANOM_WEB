@@ -70,6 +70,10 @@ export function DragProvider({ children }: DragProviderProps) {
     e.preventDefault();
     e.stopPropagation();
 
+    // Désactiver l'image fantôme de drag natif du navigateur
+    const target = e.currentTarget as HTMLElement;
+    target.style.touchAction = 'none';
+
     setIsDragging(true);
     setCurrentDragId(elementId);
 
@@ -98,9 +102,7 @@ export function DragProvider({ children }: DragProviderProps) {
       constraints: { ...defaultConstraints, ...constraints }
     }
 
-    const target = e.currentTarget as HTMLElement;
     target.setPointerCapture(e.pointerId);
-
     target.classList.add('dragging');
 
     const handlePointerMove = (moveEvent: PointerEvent) => {
@@ -142,6 +144,7 @@ export function DragProvider({ children }: DragProviderProps) {
       setCurrentDragId(null);
 
       target.classList.remove('dragging');
+      target.style.touchAction = '';
 
       document.body.classList.remove('dragging');
       document.body.style.userSelect = '';

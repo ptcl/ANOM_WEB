@@ -6,7 +6,7 @@ import React from 'react'
 export default function page() {
     return (
         <>
-            <Container height='fit' pb textAlign='center'>
+            <Container height='fit' pb textAlign='center' bgDefault>
                 <ImageLueur />
                 <VexCustomFont />
             </Container>

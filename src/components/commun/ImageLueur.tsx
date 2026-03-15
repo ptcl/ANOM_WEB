@@ -2,6 +2,7 @@
 import React from 'react'
 import Image from 'next/image';
 
+
 interface ImageLueurProps {
     lueurImage?: string;
     patternImage?: string;
@@ -12,9 +13,23 @@ interface ImageLueurProps {
     patternQuality?: number;
     alt?: string;
     imageType?: 'auto' | 'anom' | 'vex' | 'neutre' | 'protocol' | 'custom';
+    showGlow?: boolean;      // Nouvelle option pour désactiver le glow
+    showPattern?: boolean;   // Nouvelle option pour désactiver le pattern
 }
 
-export default function ImageLueur({ lueurImage, patternImage = "/img/pattern/grid.png", lueurOpacity = 1, patternOpacity = 0.1, showDoubleLueur = true, lueurQuality = 50, patternQuality = 20, alt = "Background Effect", imageType = 'auto' }: ImageLueurProps) {
+export default function ImageLueur({ 
+    lueurImage, 
+    patternImage = "/img/pattern/grid.png", 
+    lueurOpacity = 1, 
+    patternOpacity = 0.07, 
+    showDoubleLueur = true, 
+    lueurQuality = 50, 
+    patternQuality = 20, 
+    alt = "Background Effect", 
+    imageType = 'auto',
+    showGlow = true,        // Par défaut, le glow est activé
+    showPattern = true      // Par défaut, le pattern est activé
+}: ImageLueurProps) {
     const [mounted, setMounted] = React.useState(false);
 
     React.useEffect(() => {
@@ -69,10 +84,20 @@ export default function ImageLueur({ lueurImage, patternImage = "/img/pattern/gr
     return (
         <>
             <div className='absolute inset-0 w-full h-full overflow-hidden pointer-events-none'>
-                <Image src={finalLueurImage} alt={alt} fill className='z-20 md:object-cover' style={{ objectFit: 'fill', objectPosition: 'center', opacity: lueurOpacity }} quality={lueurQuality} />
-                {showDoubleLueur && (
-                    <Image src={finalLueurImage} alt={alt} fill className='z-20 md:object-cover' style={{ objectFit: 'fill', objectPosition: 'center', opacity: lueurOpacity }} quality={lueurQuality} />)}
-                <Image src={patternImage} alt={alt} fill className="z-1 mask-radial-top object-cover" style={{ opacity: patternOpacity }} quality={patternQuality} />
+                {/* Affichage conditionnel du glow */}
+                {showGlow && (
+                    <>
+                        <Image src={finalLueurImage} alt={alt} fill className='z-20 md:object-cover' style={{ objectFit: 'fill', objectPosition: 'center', opacity: lueurOpacity }} quality={lueurQuality} />
+                        {showDoubleLueur && (
+                            <Image src={finalLueurImage} alt={alt} fill className='z-20 md:object-cover' style={{ objectFit: 'fill', objectPosition: 'center', opacity: lueurOpacity }} quality={lueurQuality} />
+                        )}
+                    </>
+                )}
+                
+                {/* Affichage conditionnel du pattern */}
+                {showPattern && (
+                    <Image src={patternImage} alt={alt} fill className="z-0 mask-radial-top object-cover" style={{ opacity: patternOpacity }} quality={patternQuality} />
+                )}
             </div>
         </>
     )

@@ -6,7 +6,19 @@ import type { Configuration as WebpackConfiguration } from 'webpack';
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['www.bungie.net', 'images.bungie.net', 'data.destinysets.com'],
+    domains: ['www.bungie.net', 'images.bungie.net', 'data.destinysets.com', 'cdn.jsdelivr.net', 'raw.githubusercontent.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.jsdelivr.net',
+        pathname: '/gh/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'raw.githubusercontent.com',
+        pathname: '/**',
+      },
+    ],
     formats: ['image/webp' as const, 'image/avif' as const],
     minimumCacheTTL: 31536000,
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
@@ -21,13 +33,13 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
   async headers() {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || ''
+    const apiUrl = process.env.NEXT_PUBLIC_ENVIRONMENT === 'sandbox' ? process.env.NEXT_PUBLIC_API_SANDBOX_URL : process.env.NEXT_PUBLIC_API_URL
     const clarityApiUrl = process.env.NEXT_PUBLIC_CLARITY_API_URL || 'http://localhost:3001'
     const isProduction = process.env.NODE_ENV === 'production'
 
     const cspPolicy = isProduction ? [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.vercel.live https://*.vercel-scripts.com https://*.cloudflareinsights.com https://static.cloudflareinsights.com https://vercel.live https://va.vercel-scripts.com *.vercel.app",
+      "script-src 'self' 'unsafe-inline' https://*.vercel.live https://*.vercel-scripts.com https://*.cloudflareinsights.com https://static.cloudflareinsights.com https://vercel.live https://va.vercel-scripts.com *.vercel.app",
       "style-src 'self' 'unsafe-inline' https:",
       "img-src 'self' data: https: https://images.bungie.net",
       "font-src 'self' data: https:",
@@ -38,12 +50,12 @@ const nextConfig = {
       "base-uri 'self'"
     ] : [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+      "script-src 'self' 'unsafe-inline'",
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: https: https://images.bungie.net",
       "font-src 'self' data:",
       `connect-src 'self' https://www.bungie.net ${apiUrl} ${clarityApiUrl} ws: wss:`,
-      "frame-src 'self' https://www.bungie.net/7 https://www.bungie.net/7/fr/Destiny https://data.destinysets.com https://www.openstreetmap.org https://www.youtube.com/ https://vercel.live https://*.vercel.live",
+      "frame-src 'self' https://cdn.jsdelivr.net https://www.bungie.net/7 https://www.bungie.net/7/fr/Destiny https://data.destinysets.com https://www.openstreetmap.org https://www.youtube.com/ https://vercel.live https://*.vercel.live",
       "object-src 'none'",
       "form-action 'self'",
       "base-uri 'self'"
@@ -102,6 +114,16 @@ const nextConfig = {
     fileLoaderRule.exclude = /\.svg$/i;
 
     return config;
+  },
+
+  // Proxy pour éviter les problèmes CORS
+  async rewrites() {
+    return [
+      {
+        source: '/api-proxy/:path*',
+        destination: `${process.env.NEXT_PUBLIC_API_URL}/:path*`
+      }
+    ]
   },
 }
 const withNextIntl = createNextIntlPlugin();

@@ -48,13 +48,13 @@ export default function NewsArticleClientPage() {
 
     if (!article) {
         return (
-            <Container className="bg-[#141414] overflow-hidden w-full min-h-screen relative flex flex-col">
+            <Container className="bg-[#141414] overflow-hidden w-full min-h-screen relative flex flex-col" bgDefault>
                 <ImageLueur lueurImage='/img/glow/danger.png' />
                 <section className='flex flex-col justify-center items-center text-center w-full py-20'>
                     <h1 className='leading-8 md:leading-26 gradient__danger font-semibold text-4xl md:text-7xl lg:text-9xl uppercase text-transparent z-10 mx-auto'>
                         404
                     </h1>
-                    <p className='Grotesk text-[var(--light-dark-3)] text-sm md:text-lg max-w-xl z-10 mx-auto text-white mt-4'>
+                    <p className='font-grotesk text-[var(--black-600)] text-sm md:text-lg max-w-xl z-10 mx-auto text-white mt-4'>
                         {t('resources.news.notFoundTitle')}
                     </p>
                     <Link
@@ -71,7 +71,7 @@ export default function NewsArticleClientPage() {
     const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
 
     return (
-        <Container className="bg-[#141414] overflow-hidden w-full min-h-screen relative flex flex-col">
+        <Container className="bg-[#141414] overflow-hidden w-full min-h-screen relative flex flex-col" bgDefault>
             <ArticleJsonLd article={article} locale={locale} baseUrl={baseUrl} />
             <ImageLueur />
 

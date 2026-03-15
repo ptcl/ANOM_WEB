@@ -1,0 +1,509 @@
+{
+  "workspaceFoldersFilePaths": [
+    "n:\\anom_web/"
+  ],
+  "symbols": [],
+  "activeFileDiagnostics": [
+    {
+      "start": {
+        "line": 40,
+        "character": 4
+      },
+      "end": {
+        "line": 40,
+        "character": 43
+      },
+      "message": "Unknown Configuration Setting",
+      "severity": 3
+    },
+    {
+      "start": {
+        "line": 42,
+        "character": 4
+      },
+      "end": {
+        "line": 44,
+        "character": 5
+      },
+      "message": "Unknown Configuration Setting",
+      "severity": 3
+    },
+    {
+      "start": {
+        "line": 156,
+        "character": 4
+      },
+      "end": {
+        "line": 156,
+        "character": 36
+      },
+      "message": "Unknown Configuration Setting",
+      "severity": 3
+    },
+    {
+      "start": {
+        "line": 164,
+        "character": 4
+      },
+      "end": {
+        "line": 164,
+        "character": 43
+      },
+      "message": "Unknown Configuration Setting",
+      "severity": 3
+    },
+    {
+      "start": {
+        "line": 177,
+        "character": 4
+      },
+      "end": {
+        "line": 177,
+        "character": 36
+      },
+      "message": "Unknown Configuration Setting",
+      "severity": 3
+    },
+    {
+      "start": {
+        "line": 178,
+        "character": 4
+      },
+      "end": {
+        "line": 178,
+        "character": 37
+      },
+      "message": "Unknown Configuration Setting",
+      "severity": 3
+    },
+    {
+      "start": {
+        "line": 182,
+        "character": 4
+      },
+      "end": {
+        "line": 182,
+        "character": 49
+      },
+      "message": "Unknown Configuration Setting",
+      "severity": 3
+    },
+    {
+      "start": {
+        "line": 8,
+        "character": 55
+      },
+      "end": {
+        "line": 8,
+        "character": 60
+      },
+      "message": "Incorrect type. Expected \"string\".",
+      "severity": 1
+    },
+    {
+      "start": {
+        "line": 8,
+        "character": 55
+      },
+      "end": {
+        "line": 8,
+        "character": 60
+      },
+      "message": "Value is not accepted. Valid values: \"auto\", \"always\", \"never\".",
+      "severity": 1
+    },
+    {
+      "start": {
+        "line": 174,
+        "character": 35
+      },
+      "end": {
+        "line": 174,
+        "character": 46
+      },
+      "message": "Value is not accepted. Valid values: null, \"vscode.json-language-features\", \"yzhang.markdown-all-in-one\", \"formulahendry.auto-rename-tag\", \"aaron-bond.better-comments\", \"axmz.color-assist\", \"GitHub.copilot-chat\", \"vscode.css-language-features\", \"docker.docker\", \"ClemensPeters.format-json\", \"Zignd.html-css-class-completion\", \"vscode.html-language-features\", \"redhat.java\", \"vscode.markdown-language-features\", \"vscode.markdown-math\", \"Angular.ng-template\", \"vscode.php-language-features\", \"YoavBls.pretty-ts-errors\", \"Prisma.prisma\", \"jock.svg\", \"vscode.typescript-language-features\", \"ms-azuretools.vscode-containers\", \"dbaeumer.vscode-eslint\", \"ecmel.vscode-html-css\", \"pflannery.vscode-versionlens\", \"Anthropic.claude-code\", \"adpyke.codesnap\", \"vscode.configuration-editing\", \"vscode.debug-auto-launch\", \"vscode.debug-server-ready\", \"Darkempire78.discord-tools\", \"icrawl.discord-vscode\", \"vscode.emmet\", \"usernamehw.errorlens\", \"dsznajder.es7-react-js-snippets\", \"PeterSchmalfeldt.explorer-exclude\", \"vscode.extension-editing\", \"vscode.git\", \"vscode.git-base\", \"vscode.github\", \"vscode.github-authentication\", \"eamodio.gitlens\", \"vscode.grunt\", \"vscode.gulp\", \"oderwat.indent-rainbow\", \"vscode.ipynb\", \"vscode.jake\", \"ms-vscode.js-debug\", \"ms-vscode.js-debug-companion\", \"ritwickdey.LiveServer\", \"PKief.material-icon-theme\", \"vscode.media-preview\", \"vscode.merge-conflict\", \"vscode.mermaid-chat-features\", \"vscode.microsoft-authentication\", \"leizongmin.node-module-intellisense\", \"vscode.npm\", \"christian-kohler.npm-intellisense\", \"christian-kohler.path-intellisense\", \"ReacTreeDev.reactree\", \"vscode.references-view\", \"vscode.search-result\", \"vscode.simple-browser\", \"burkeholland.simple-react-snippets\", \"vscode.terminal-suggest\", \"shardulm94.trailing-spaces\", \"vscode.tunnel-forwarding\", \"kamikillerto.vscode-colorize\", \"github.vscode-github-actions\", \"ms-vscode.vscode-js-profile-table\", \"ms-vsliveshare.vsliveshare\".",
+      "severity": 1
+    }
+  ],
+  "activeTextEditor": {
+    "selections": [
+      {
+        "anchor": {
+          "line": 0,
+          "character": 0
+        },
+        "active": {
+          "line": 206,
+          "character": 0
+        },
+        "isReversed": false
+      }
+    ],
+    "documentFilePath": "c:\\Users\\lucas\\AppData\\Roaming\\Code\\User\\settings.json",
+    "visibleRanges": [
+      {
+        "start": {
+          "line": 178,
+          "character": 0
+        },
+        "end": {
+          "line": 206,
+          "character": 0
+        }
+      }
+    ],
+    "languageId": "jsonc"
+  },
+  "debugConsoleOutput": "",
+  "terminalBuffer": "r=\"failed to dial to edge with quic: write udp [::]:58412->198.41.200.233:7844: wsasendto: A socket operation was attempted to an unreachable network.\" connIndex=2\r\n2026-02-21T17:55:52Z ERR Connection terminated error=\"failed to dial to edge with quic: write udp [::]:58413->198.41.192.27:7844: wsasendto: A socket operation was attempted to an unreachable network.\" connIndex=3\r\n2026-02-21T17:55:52Z INF Registered tunnel connection connIndex=0 connection=2974355e-0612-483c-b681-e98b022dd53b event=0 ip=198.41.200.43 location=mrs06 protocol=quic\r\n2026-02-21T17:55:53Z INF Registered tunnel connection connIndex=1 connection=355db479-018a-4e7a-93a5-646466184375 event=0 ip=198.41.192.7 location=mrs01 protocol=quic\r\n2026-02-21T17:56:11Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=3 event=0 ip=198.41.192.77\r\n2026-02-21T17:56:11Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=2 event=0 ip=198.41.200.23\r\n2026-02-21T17:56:11Z INF Registered tunnel connection connIndex=2 connection=d7fb68b7-e91f-4452-ad79-4dddc108cb6b event=0 ip=198.41.200.23 location=mrs06 protocol=quic\r\n2026-02-21T17:56:12Z INF Registered tunnel connection connIndex=3 connection=6038bbd0-271d-418f-91f2-de48ee419853 event=0 ip=198.41.192.77 location=mrs01 protocol=quic\r\n2026-02-21T20:00:54Z INF Initiating graceful shutdown due to signal interrupt ...\r\n2026-02-21T20:00:54Z ERR failed to run the datagram handler error=\"Application error 0x0 (remote)\" connIndex=3 event=0 ip=198.41.192.77\r\n2026-02-21T20:00:54Z ERR failed to run the datagram handler error=\"context canceled\" connIndex=0 event=0 ip=198.41.200.43\r\n2026-02-21T20:00:54Z ERR failed to run the datagram handler error=\"context canceled\" connIndex=1 event=0 ip=198.41.192.7\r\n2026-02-21T20:00:54Z ERR failed to run the datagram handler error=\"Application error 0x0 (remote)\" connIndex=2 event=0 ip=198.41.200.23\r\n2026-02-21T20:00:54Z ERR failed to serve tunnel connection error=\"accept stream listener encountered a failure while serving\" connIndex=3 event=0 ip=198.41.192.77\r\n2026-02-21T20:00:54Z ERR failed to serve tunnel connection error=\"accept stream listener encountered a failure while serving\" connIndex=2 event=0 ip=198.41.200.23\r\n2026-02-21T20:00:54Z ERR failed to serve tunnel connection error=\"accept stream listener encountered a failure while serving\" connIndex=1 event=0 ip=198.41.192.7\r\n2026-02-21T20:00:54Z ERR failed to serve tunnel connection error=\"accept stream listener encountered a failure while serving\" connIndex=0 event=0 ip=198.41.200.43\r\n2026-02-21T20:00:54Z ERR Serve tunnel error error=\"accept stream listener encountered a failure while serving\" connIndex=3 event=0 ip=198.41.192.77\r\n2026-02-21T20:00:54Z ERR Serve tunnel error error=\"accept stream listener encountered a failure while serving\" connIndex=2 event=0 ip=198.41.200.23\r\n2026-02-21T20:00:54Z ERR Serve tunnel error error=\"accept stream listener encountered a failure while serving\" connIndex=0 event=0 ip=198.41.200.43\r\n2026-02-21T20:00:54Z ERR Serve tunnel error error=\"accept stream listener encountered a failure while serving\" connIndex=1 event=0 ip=198.41.192.7\r\n2026-02-21T20:00:54Z INF Retrying connection in up to 1s connIndex=1 event=0 ip=198.41.192.7\r\n2026-02-21T20:00:54Z INF Retrying connection in up to 1s connIndex=2 event=0 ip=198.41.200.23\r\n2026-02-21T20:00:54Z INF Retrying connection in up to 1s connIndex=0 event=0 ip=198.41.200.43\r\n2026-02-21T20:00:54Z INF Retrying connection in up to 1s connIndex=3 event=0 ip=198.41.192.77\r\n2026-02-21T20:00:54Z ERR Connection terminated connIndex=1\r\n2026-02-21T20:00:54Z ERR Connection terminated connIndex=2\r\n2026-02-21T20:00:54Z ERR Connection terminated connIndex=0\r\n2026-02-21T20:00:54Z ERR Connection terminated connIndex=3\r\n2026-02-21T20:00:54Z ERR no more connections active and exiting\r\n2026-02-21T20:00:54Z INF Tunnel server stopped\r\n2026-02-21T20:00:54Z ERR icmp router terminated error=\"context canceled\"\r\n2026-02-21T20:00:54Z INF Metrics server stopped\r\nPS N:\\anom_web> ^C\r\nPS N:\\anom_web> ^C\r\nPS N:\\anom_web> ^C\r\nPS N:\\anom_web> \r\n *  History restored \r\n\r\nPS N:\\anom_web>\r\n *  History restored \r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nPS N:\\anom_web> ",
+  "terminalSelection": "",
+  "terminalShellType": "pwsh",
+  "repoContexts": [
+    {
+      "_repo": {
+        "rootUri": {
+          "$mid": 1,
+          "path": "/n:/anom_web",
+          "scheme": "file"
+        },
+        "inputBox": {},
+        "kind": "repository",
+        "state": {},
+        "ui": {}
+      },
+      "rootUri": {
+        "$mid": 1,
+        "path": "/n:/anom_web",
+        "scheme": "file"
+      },
+      "kind": "repository",
+      "headBranchName": "development",
+      "headCommitHash": "846c2d4b2fca65057f982e48892cd887a159e821",
+      "upstreamBranchName": "development",
+      "upstreamRemote": "origin",
+      "isRebasing": true,
+      "remotes": [
+        "origin"
+      ],
+      "remoteFetchUrls": [
+        "https://github.com/ptcl/ANOM_WEB.git"
+      ],
+      "worktrees": [
+        {
+          "name": "anom_web",
+          "path": "n:\\anom_web",
+          "ref": "refs/heads/development",
+          "detached": false,
+          "main": true
+        }
+      ],
+      "changes": {
+        "mergeChanges": [],
+        "indexChanges": [],
+        "workingTree": [
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {}
+        ],
+        "untrackedChanges": []
+      },
+      "_onDidChangeSignal": {
+        "_observers": {},
+        "debugName": "Observable Signal From Event"
+      },
+      "headBranchNameObs": {
+        "_observers": {},
+        "_debugNameData": {},
+        "_state": 0,
+        "_updateCount": 0,
+        "_dependencies": {},
+        "_dependenciesToBeRemoved": {},
+        "_isUpdating": false,
+        "_isComputing": false,
+        "_didReportChange": false,
+        "_isInBeforeUpdate": false,
+        "_isReaderValid": false,
+        "_removedObserverToCallEndUpdateOn": null
+      },
+      "headCommitHashObs": {
+        "_observers": {},
+        "_debugNameData": {},
+        "_state": 0,
+        "_updateCount": 0,
+        "_dependencies": {},
+        "_dependenciesToBeRemoved": {},
+        "_isUpdating": false,
+        "_isComputing": false,
+        "_didReportChange": false,
+        "_isInBeforeUpdate": false,
+        "_isReaderValid": false,
+        "_removedObserverToCallEndUpdateOn": null
+      },
+      "upstreamBranchNameObs": {
+        "_observers": {},
+        "_debugNameData": {},
+        "_state": 0,
+        "_updateCount": 0,
+        "_dependencies": {},
+        "_dependenciesToBeRemoved": {},
+        "_isUpdating": false,
+        "_isComputing": false,
+        "_didReportChange": false,
+        "_isInBeforeUpdate": false,
+        "_isReaderValid": false,
+        "_removedObserverToCallEndUpdateOn": null
+      },
+      "upstreamRemoteObs": {
+        "_observers": {},
+        "_debugNameData": {},
+        "_state": 0,
+        "_updateCount": 0,
+        "_dependencies": {},
+        "_dependenciesToBeRemoved": {},
+        "_isUpdating": false,
+        "_isComputing": false,
+        "_didReportChange": false,
+        "_isInBeforeUpdate": false,
+        "_isReaderValid": false,
+        "_removedObserverToCallEndUpdateOn": null
+      },
+      "isRebasingObs": {
+        "_observers": {},
+        "_debugNameData": {},
+        "_state": 0,
+        "_updateCount": 0,
+        "_dependencies": {},
+        "_dependenciesToBeRemoved": {},
+        "_isUpdating": false,
+        "_isComputing": false,
+        "_didReportChange": false,
+        "_isInBeforeUpdate": false,
+        "_isReaderValid": false,
+        "_removedObserverToCallEndUpdateOn": null
+      },
+      "_checkIsIgnored": {
+        "_waitingTimeMs": 1000,
+        "_queue": [],
+        "_timeout": null
+      },
+      "_isIgnored": {
+        "_map": {},
+        "_map2": {}
+      }
+    }
+  ],
+  "notebookDocumentFilePaths": [],
+  "textDocumentFilePaths": [
+    "package.json",
+    ".next/package.json",
+    ".next/types/package.json"
+  ]
+}

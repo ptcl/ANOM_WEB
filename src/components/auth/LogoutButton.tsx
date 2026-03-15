@@ -1,65 +1,60 @@
-/**
- * 🚀 OPTIMISÉ: LogoutButton ultra-rapide
- * 
- * Optimisations appliquées:
- * - ❌ Pas de useAuth() lourd (économie de ressources)
- * - ❌ Pas de router.push() + setTimeout (plus de race conditions)
- * - ✅ Redirection directe window.location.href (plus rapide)
- * - ✅ Nettoyage immédiat et complet des tokens
- * - ✅ Hook dédié useLogout() optimisé
- * 
- * Résultat: Déconnexion instantanée, 0 délai, plus fiable
- */
 'use client'
 
-import { Button } from '@/components/ui/button'
+import { useState } from 'react'
 import { useAuthentication } from '@/hooks/useAuthentication'
-
-interface LogoutButtonProps {
-    variant?: 'default' | 'outline' | 'ghost'
-    size?: 'sm' | 'md' | 'lg'
-    children?: React.ReactNode
+import { LogOut, AlertTriangle } from 'lucide-react'
+import { useTranslations } from 'next-intl'
+import { motion } from "motion/react"
+interface LogoutDropdownItemProps {
     className?: string
+    withConfirmation?: boolean
 }
 
-export const LogoutButton = ({ variant = 'outline', children, className }: LogoutButtonProps) => {
-    // ✅ OPTIMISÉ: Hook dédié ultra-rapide pour la déconnexion
+export const LogoutConfirm = ({ className, withConfirmation = true }: LogoutDropdownItemProps) => {
+    const t = useTranslations();
     const { logout } = useAuthentication()
+    const [isConfirming, setIsConfirming] = useState(false)
 
-    const handleLogout = () => {
-        // ✅ IMMÉDIAT: Nettoyage + redirection instantanée (plus de setTimeout!)
-        logout('/')
-    }
+    const handleClick = (e: React.MouseEvent) => {
+        if (!withConfirmation) {
+            logout('/')
+            return
+        }
 
-    return (
-        <Button
-            onClick={handleLogout}
-            variant={variant}
-            className={className}
-        >
-            {children || 'Se déconnecter'}
-        </Button>
-    )
-}
+        if (!isConfirming) {
+            e.preventDefault()
+            setIsConfirming(true)
 
-export const LogoutButtonWithConfirm = ({ variant = 'outline', children, className }: LogoutButtonProps) => {
-    // ✅ OPTIMISÉ: Hook dédié avec confirmation intégrée
-    const { logout } = useAuthentication()
-    
-    const logoutWithConfirm = (redirectTo?: string) => {
-        if (confirm('Êtes-vous sûr de vouloir vous déconnecter ?')) {
-            logout(redirectTo)
+            setTimeout(() => setIsConfirming(false), 2000)
+        } else {
+            logout('/')
         }
     }
 
-    const handleLogout = () => {
-        // ✅ SIMPLE: Confirmation + déconnexion en une seule fonction
-        logoutWithConfirm('/')
-    }
+    return (
+        <motion.div onClick={handleClick} className={`${className} relative cursor-pointer select-none flex items-center justify-center px-3 py-2 overflow-hidden rounded-md transition-all duration-300 bg-transparent hover:bg-[var(--black-3)] w-[180px]`} initial={false}>
+            <motion.div className="flex w-full" animate={{ x: isConfirming ? "-100%" : "0%" }} transition={{ duration: 0.3, ease: "easeInOut" }}>
+                <div className="flex items-center justify-center min-w-full">
+                    <LogOut className="mr-2 h-4 w-4" />
+                    {t('commun.buttons.logout')}
+                </div>
+                <div className="flex items-center justify-center min-w-full text-[var(--danger)]">
+                    <AlertTriangle className="mr-2 h-4 w-4 animate-pulse" />
+                    {t('commun.buttons.areYouSure')}
+                </div>
+            </motion.div>
+        </motion.div>
+    )
+}
+
+export const LogoutSimple = ({ className }: { className?: string }) => {
+    const { logout } = useAuthentication()
+    const t = useTranslations();
 
     return (
-        <Button onClick={handleLogout} variant={variant} className={className}>
-            {children || 'Se déconnecter'}
-        </Button>
+        <div onClick={() => logout('/')} className={className + ' cursor-pointer'}>
+            <LogOut className="mr-2 h-4 w-4" />
+            {t('commun.buttons.logout')}
+        </div>
     )
 }

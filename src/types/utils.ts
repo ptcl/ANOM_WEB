@@ -1,28 +1,22 @@
-import { IAgent } from "./agent"
-import { IChallenge } from "./challenge";
-
-export interface IChallengeResponse {
-    success: boolean;
-    challenges: IChallenge[];
-    count: number;
-}
-
+import type { IAgent } from "./agent"
+import { ReactNode } from "react";
 
 export interface AppInfo {
     id: string
     name: string
-    icon: string
+    icon: string | ReactNode
     position?: { x: number, y: number }
 }
 
 export type WindowInfo = {
     id: string
     title: string
-    icon: string
+    icon: string | ReactNode
     isOpen: boolean
     isMinimized: boolean
     position?: { x: number, y: number }
     size?: { width: number, height: number }
+    zIndex?: number
 }
 
 export interface JWTPayload {

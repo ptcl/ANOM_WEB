@@ -19,7 +19,7 @@ export default async function TermsPage({ params }: { params: Promise<{ locale: 
                         <h1 className='leading-8 md:leading-26 gradient__vex font-semibold text-4xl md:text-7xl lg:text-9xl uppercase text-transparent z-10 mx-auto' data-text={t('legal.title')}>
                             {t('legal.title')}
                         </h1>
-                        <p className='Grotesk text-[var(--light-dark-3)] text-sm md:text-lg max-w-xl z-10 mx-auto mb-8'>
+                        <p className='font-grotesk text-[var(--black-600)] text-sm md:text-lg max-w-xl z-10 mx-auto mb-8'>
                             {t('legal.subtitle')}
                         </p>
                     </section>
@@ -28,7 +28,7 @@ export default async function TermsPage({ params }: { params: Promise<{ locale: 
                 <Container height="fit" textAlign="left">
                     <div className="text-center py-12">
                         <h2 className="text-2xl font-bold text-white mb-4">{t('legal.noFound')}</h2>
-                        <p className="text-[var(--light-dark-3)] mb-6">
+                        <p className="text-[var(--black-600)] mb-6">
                             {t('legal.noFound')}
                         </p>
                         <Link href="/legal" className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-colors">
@@ -53,7 +53,7 @@ export default async function TermsPage({ params }: { params: Promise<{ locale: 
                     <h1 className='leading-8 md:leading-25 gradient__vex font-semibold text-4xl md:text-7xl lg:text-9xl uppercase text-transparent z-10 mx-auto' data-text={t('legal.cards.terms.title')}>
                         {t('legal.cards.terms.title')}
                     </h1>
-                    <p className='Grotesk text-[var(--light-dark-3)] text-sm md:text-lg max-w-xl z-10 mx-auto mb-8'>
+                    <p className='font-grotesk text-[var(--black-600)] text-sm md:text-lg max-w-xl z-10 mx-auto mb-8'>
                         {t('legal.cards.terms.description')}
                     </p>
                 </section>

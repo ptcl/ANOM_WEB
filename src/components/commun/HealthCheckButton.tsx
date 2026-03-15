@@ -20,7 +20,7 @@ const HealthCheckButton: React.FC = () => {
         setResponse(null);
 
         try {
-            const res = await fetch('https://api-dev.anom-archives.net/api/protocol/agents', {
+            const res = await fetch('/api-proxy/protocol/agents', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -39,7 +39,6 @@ const HealthCheckButton: React.FC = () => {
             } else {
                 setError('Erreur inconnue');
             }
-            console.error('❌ Health check failed:', err);
         } finally {
             setIsLoading(false);
         }

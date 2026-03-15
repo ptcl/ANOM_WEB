@@ -1,4 +1,6 @@
 export interface IAnnouncement {
+    _id?: string;
+    announcementId?: string;
     title: string;
     content: string;
     createdBy: string;
@@ -8,11 +10,7 @@ export interface IAnnouncement {
     priority: 'LOW' | 'MEDIUM' | 'HIGH' | 'URGENT';
     status: 'DRAFT' | 'PUBLISHED' | 'ARCHIVED';
     tags?: string[];
-    readBy: Array<{
-        agentId: string;
-        readAt: Date;
-    }>;
-    visibility: 'ALL' | 'FOUNDERS' | 'SPECIALISTS' | 'GROUP';
-    targetGroup?: 'PROTOCOL' | 'AURORA' | 'ZENITH';
+    readBy: Array<{ agentId: string; readAt: Date; }>;
+    visibility: 'ALL' | "AGENT" | "ECHO" | "ORACLE" | "ARCHITECT" | "FOUNDER" | "EMISSARY" | 'GROUP';
+    targetGroup?: string;
 }
-

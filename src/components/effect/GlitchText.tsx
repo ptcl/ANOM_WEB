@@ -130,11 +130,6 @@ const GlitchText = memo(function GlitchText({ text, glitchChars = DEFAULT_GLITCH
         transform: 'translate3d(0,0,0)'
     }), [langage, primaryFont, size]);
 
-    const hasGlitching = useMemo(() =>
-        glitchState.some(c => c.isGlitching),
-        [glitchState]
-    );
-
     const renderedContent = useMemo(() => {
         return glitchState.map((charState, index) => (
             <GlitchChar key={index} glitchChar={charState.glitchChar} useGlitchFont={charState.useGlitchFont || false} baseStyle={baseStyle} glitchFont={glitchFont} glitchMode={glitchMode} />
@@ -142,7 +137,7 @@ const GlitchText = memo(function GlitchText({ text, glitchChars = DEFAULT_GLITCH
     }, [glitchState, baseStyle, glitchFont, glitchMode]);
 
     return (
-        <span className={` ${className} ${hasGlitching ? 'animate-pulse' : ''}`} style={{ willChange: hasGlitching ? 'contents' : 'auto', height: '1em', display: 'inline-block' }} >
+        <span className={` ${className}}`} style={{ height: '20px', display: 'inline-block' }} >
             {renderedContent}
         </span>
     );

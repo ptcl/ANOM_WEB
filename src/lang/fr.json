@@ -1,8 +1,8 @@
 {
     "commun": {
-        "title":"titre",
-        "subtitle":"sous-titre",
-        "description":"description",
+        "title": "titre",
+        "subtitle": "sous-titre",
+        "description": "description",
         "loading": "Chargement...",
         "copy": "Copier",
         "return": "Retour",
@@ -30,6 +30,18 @@
                 "1": "Trouver",
                 "2": "résultat"
             }
+        },
+        "desktop": {
+            "window": {
+                "minimized": "Fenêtre minimisée",
+                "active": "Fenêtre active"
+            },
+            "pinned": "Épinglé à la barre"
+        },
+        "languages": {
+            "fr": "Français",
+            "en": "English",
+            "it": "Italiano"
         }
     },
     "anom": {
@@ -427,6 +439,22 @@
             "placeholderVex": "Collez le texte Vex ici...",
             "empty": "Le champ de saisie est vide",
             "tooLong": "Le message dépasse 5000 caractères"
+        }
+    },
+    "protocol": {
+        "contract": {
+            "stats": {
+                "total": "Contrats totaux",
+                "totalDescription": "Tous vos contrats créés",
+                "pending": "En attente",
+                "pendingDescription": "En attente de validation",
+                "validated": "Validés",
+                "validatedDescription": "Approuvés et actifs",
+                "cancelled": "Annulés",
+                "cancelledDescription": "Contrats annulés par vous",
+                "revoked": "Révoqués",
+                "revokedDescription": "Révoqués par un admin"
+            }
         }
     }
 }

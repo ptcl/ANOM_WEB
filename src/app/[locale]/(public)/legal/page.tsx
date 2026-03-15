@@ -9,12 +9,12 @@ export default function LegalPage() {
   return (
     <>
       <Container height='fit-title' textAlign='center'>
-        <ImageLueur/>
+        <ImageLueur />
         <section className='flex flex-col justify-center items-center text-center w-full mb-8'>
           <h1 className='leading-8 md:leading-26 gradient__vex font-semibold text-4xl md:text-7xl lg:text-9xl uppercase text-transparent z-10 mx-auto' data-text={t('legal.title')}>
             {t('legal.title')}
           </h1>
-          <p className='Grotesk text-[var(--light-dark-3)] text-sm md:text-lg max-w-xl z-10 mx-auto mb-8'>
+          <p className='font-grotesk text-[var(--black-300)] text-sm md:text-lg max-w-xl z-10 mx-auto mb-8'>
             {t('legal.subtitle')}
           </p>
         </section>
@@ -34,7 +34,7 @@ export default function LegalPage() {
                     {t('legal.cards.legalNotice.title')}
                   </h2>
                 </div>
-                <p className='text-[var(--light-dark-3)] text-sm leading-relaxed'>
+                <p className='text-[var(--black-300)] text-sm leading-relaxed'>
                   {t('legal.cards.legalNotice.description')}
                 </p>
                 <div className='mt-6 flex items-center text-blue-400 text-sm font-medium group-hover:text-blue-300 transition-colors'>
@@ -55,7 +55,7 @@ export default function LegalPage() {
                     {t('legal.cards.privacy.title')}
                   </h2>
                 </div>
-                <p className='text-[var(--light-dark-3)] text-sm leading-relaxed'>
+                <p className='text-[var(--black-300)] text-sm leading-relaxed'>
                   {t('legal.cards.privacy.description')}
                 </p>
                 <div className='mt-6 flex items-center text-green-400 text-sm font-medium group-hover:text-green-300 transition-colors'>
@@ -76,7 +76,7 @@ export default function LegalPage() {
                     {t('legal.cards.terms.title')}
                   </h2>
                 </div>
-                <p className='text-[var(--light-dark-3)] text-sm leading-relaxed'>
+                <p className='text-[var(--black-300)] text-sm leading-relaxed'>
                   {t('legal.cards.terms.description')}
                 </p>
                 <div className='mt-6 flex items-center text-purple-400 text-sm font-medium group-hover:text-purple-300 transition-colors'>

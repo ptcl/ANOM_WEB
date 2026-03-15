@@ -1,4 +1,14 @@
 {
+    "badges": {
+        "exotic": {
+            "name": "Exotic Badge",
+            "description": "Awarded for exceptional achievements within the AN0M-ARCHIVES community.",
+            "founder": {
+                "name": "Founder Badge",
+                "description": "Exclusive badge for the original founders of the AN0M-ARCHIVES project."
+            }
+        }
+    },
     "commun": {
         "title": "title",
         "subtitle": "subtitle",
@@ -7,8 +17,15 @@
         "copy": "Copy",
         "return": "Return",
         "notFound": "Page Not Found",
+        "cardAgent": " Agent Card",
+        "anonymous": "Anonymous",
+        "text": {
+            "enabled": "Enabled",
+            "disabled": "Disabled"
+        },
         "buttons": {
-            "bungie":"Connect with bungie",
+            "backDesktop": "Back to Desktop",
+            "bungie": "Connect with bungie",
             "back": "Back to Home",
             "home": "Home",
             "resources": "Resources",
@@ -28,10 +45,20 @@
             "edit": "Edit",
             "save": "Save",
             "confirm": "Confirm",
-            "close": "Close"
+            "areYouSure": "Are you sure ?",
+            "toggleSidebar": "Toggle Sidebar",
+            "support": "Support",
+            "feedback": "Feedback",
+            "close": "Close",
+            "OpenMenu": "Open Menu",
+            "startProtocol": "Start Protocol",
+            "backToDesktop": "Back to Desktop",
+            "execute": "[ EXECUTE ]"
         },
         "links": {
             "anomNumber": " AN0M-ARCHIVES",
+            "reportBug": "Report a Bug",
+            "contact": "Contact",
             "anom": "ANOM-ARCHIVES",
             "home": "Home",
             "resources": "Resources",
@@ -53,6 +80,334 @@
                 "1": "Find",
                 "2": "result"
             }
+        },
+        "desktop": {
+            "window": {
+                "minimized": "Minimized window",
+                "active": "Active window"
+            },
+            "pinned": "Pinned to taskbar"
+        },
+        "languages": {
+            "fr": "Français",
+            "en": "English",
+            "it": "Italiano"
+        },
+        "information": {
+            "code": {
+                "success": "Code successfully validated !",
+                "error": "Invalid or already used code.",
+                "empty": "Please enter a code."
+            },
+            "success": "Success",
+            "error": "Error"
+        },
+        "status": {
+            "complete": "Complete",
+            "pending": "Pending",
+            "locked": "Locked"
+        }
+    },
+    "theme": {
+        "title": "Theme",
+        "subtitle": "Choose your theme",
+        "description": "Choose your theme",
+        "primary": "Primary",
+        "secondary": "Secondary",
+        "accent": "Accent",
+        "protocol": {
+            "name": "Protocol Agent",
+            "description": "Stasis Light"
+        },
+        "clovisBray": {
+            "name": "Clovis Bray Agent",
+            "description": "Heritage"
+        },
+        "vanguard": {
+            "name": "Vanguard Agent",
+            "description": "Flame of Duty"
+        },
+        "blackArmory": {
+            "name": "Black Armory Agent",
+            "description": "Crimson Radiance"
+        },
+        "opulence": {
+            "name": "Opulence Agent",
+            "description": "Royal Shadow"
+        }
+    },
+    "navbar": {
+        "agent": "Agent",
+        "founder": "Founder",
+        "architect": "Architect",
+        "echo": "Echo",
+        "emissary": "Emissary",
+        "oracle": "Oracle",
+        "dashboard": "Dashboard",
+        "contract": "Contract",
+        "timeline": "Timeline",
+        "settings": "Settings",
+        "account": "Account",
+        "protocol": "Protocol",
+        "redeem": "Redeem",
+        "badge": "Badge",
+        "welcome": "Welcome"
+    },
+    "protocolOS": {
+        "title": "Protocol OS",
+        "subtitle": "",
+        "version": "3.0.0",
+        "description": "",
+        "note": "Settings are local for now. Profile sync coming soon."
+    },
+    "protocol": {
+        "title": "Protocol Terminal",
+        "subtitle": "Access your Protocol Data and Timelines",
+        "description": "Welcome back, Agent. Access your personalized Protocol Terminal to manage your timelines, view announcements, and track your progress within the AN0M network.",
+        "restrictedTitle": "Restricted Access",
+        "restrictedAccess": "Restricted Access: Your current role does not permit access to this section.",
+        "roles": {
+            "title": "Roles :",
+            "FOUNDER": "Founder",
+            "ARCHITECT": "Architect",
+            "ECHO": "Echo",
+            "AGENT": "Agent",
+            "EMISSARY": "Emissary",
+            "ORACLE": "Oracle"
+        },
+        "stats": {
+            "totalTimelines": "Timelines: ",
+            "totalContracts": "Contracts: ",
+            "totalFragments": "Fragments: "
+        },
+        "bio": {
+            "title": "Agent Bio",
+            "description": "View and edit your agent biography.",
+            "editButton": "Edit Bio",
+            "saveButton": "Save Bio",
+            "cancelButton": "Cancel",
+            "placeholder": "Enter your agent biography here...",
+            "charCount": "{{count}} / 5000 characters"
+        },
+        "date": {
+            "joined": "Joined Protocol on"
+        },
+        "timeline": {
+            "available": {
+                "title": "Your Active Timelines",
+                "description": "Engage with timelines to unlock fragments.",
+                "noActiveTimelines": "You currently have no active timelines. Explore new opportunities to engage with the Protocol network."
+            },
+            "started": {
+                "title": "Timelines In Progress",
+                "description": "Track your progress and unlock fragments.",
+                "noStartedTimelines": "You have not started any timelines yet. Begin a timeline to see your progress here."
+            },
+            "fragment": {
+                "title": "Collected Fragments",
+                "description": "View your progress and collected fragments.",
+                "noFragments": "You have not collected any fragments yet. Complete timelines to start collecting fragments."
+            },
+            "completed": {
+                "title": "Completed Timelines",
+                "description": "Review your completed timelines and achievements.",
+                "noCompletedTimelines": "You have not completed any timelines yet. Complete timelines to see them listed here."
+            },
+            "noTimelines": "No available timelines at the moment. Check back later for new opportunities.",
+            "stats": {
+                "activeEnigmas": "Active Enigmas",
+                "activeEnigmasDesc": "Anomalies Currently Accessible And Not Resolved.",
+                "inProgress": "In Progress",
+                "inProgressDesc": "The Echoes of Zero",
+                "challenges": "CHALLENGES",
+                "upcoming": "Upcoming Anomalies",
+                "upcomingDesc": "New Distortions Detected In The Flux."
+            },
+            "reconstruction": {
+                "title": "Code Reconstruction"
+            }
+        },
+        "announcements": {
+            "title": "Announcements",
+            "description": "Stay informed with the latest updates and news from the AN0M network.",
+            "noAnnouncements": "No announcements at this time."
+        },
+        "profile": {
+            "greeting": "Agent Profile: ",
+            "memberSince": "Member since: ",
+            "totalTimelines": "Total Timelines Completed: ",
+            "fragmentsCollected": "Fragments Collected: ",
+            "clearanceLevel": "Clearance Level: "
+        },
+        "setting": {
+            "title": "Settings",
+            "notifications": {
+                "title": "Notifications",
+                "description": "Receive notifications directly on your screen."
+            },
+            "publicProfile": {
+                "title": "Public Profile",
+                "description": "Allows other agents to view your profile."
+            },
+            "protocolOSTheme": {
+                "title": "Protocol OS Theme",
+                "description": "Customize your theme appearance."
+            },
+            "protocolSounds": {
+                "title": "Sound Effects",
+                "description": "Enable sound effects across all ANOM applications."
+            },
+            "language": {
+                "title": "Language",
+                "description": "Application display language."
+            }
+        },
+        "contract": {
+            "stats": {
+                "total": "Contracts Issued",
+                "totalDescription": "Total Number of Signed Transfers",
+                "pending": "Pending",
+                "pendingDescription": "Transfers Being Processed",
+                "validated": "Validated",
+                "validatedDescription": "Confirmed and Active Transfers",
+                "cancelled": "Cancelled",
+                "cancelledDescription": "Contracts you cancelled",
+                "revoked": "Revoked",
+                "revokedDescription": "Partially or Fully Withdrawn Transfers",
+                "emblemsAvailable": "Available Emblems",
+                "emblemsAvailableDescription": "Ready to be claimed",
+                "emblemsRedeemed": "Redeemed Emblems",
+                "emblemsRedeemedDescription": "Already claimed",
+                "totalEmblems": "Emblems Contributed",
+                "totalEmblemsDescription": "Total emblems you've given"
+            },
+            "contributors": {
+                "title": "Contributors",
+                "searchPlaceholder": "Add a co-contributor...",
+                "you": "(you)",
+                "noResults": "No agent found"
+            },
+            "list": {
+                "title": "My Contracts",
+                "description": "List of all your contracts",
+                "empty": "No contracts yet"
+            },
+            "form": {
+                "titleCreate": "Emblem Code Transfer",
+                "titleEditContract": "Modify Contract",
+                "titleEditEmblem": "Modify Emblem",
+                "submit": "Submit and Download PDF",
+                "submitting": "Submitting...",
+                "update": "Update",
+                "updating": "Updating...",
+                "successCreate": "Contract created! PDF downloaded.",
+                "successUpdate": "Successfully updated!",
+                "errorNoEmblems": "Add at least one emblem with name and code",
+                "errorNoSignature": "Please sign the contract before submitting",
+                "errorNotConnected": "Agent not connected",
+                "cedant": "Cedant",
+                "cessionnaire": "Cessionnaire",
+                "protocolTeam": "PROTOCOL TEAM (ANOM ARCHIVE)",
+                "visibility": {
+                    "show": "Make visible",
+                    "hide": "Make anonymous"
+                },
+                "emblem": "Emblem",
+                "code": "Nb/Code(s)",
+                "addEmblem": "Add emblem",
+                "totals": {
+                    "emblems": "Emblems:",
+                    "codes": "Nb/Code(s):"
+                }
+            },
+            "table": {
+                "contractId": "Contract ID",
+                "contributor": "Contributor(s)",
+                "contracts": "Contracts",
+                "date": "Date",
+                "codes": "Nb/Code(s)",
+                "status": "Status",
+                "actions": {
+                    "edit": "Edit",
+                    "delete": "Delete"
+                },
+                "details": {
+                    "id": "ID:",
+                    "contributor": "Contributor(s):",
+                    "date": "Date:",
+                    "codes": "Nb/Code(s):"
+                }
+            },
+            "signature": {
+                "cedant": "CEDANT",
+                "cessionnaire": "CESSIONNAIRE",
+                "clear": "Clear",
+                "signHere": "Sign here",
+                "automatic": "Automatic signature"
+            },
+            "deleteDialog": {
+                "title": "Delete Contract",
+                "description": "Are you sure you want to delete this contract? This action is irreversible.",
+                "confirm": "Delete",
+                "deleting": "Deleting..."
+            },
+            "status": {
+                "pending": "Pending",
+                "validated": "Validated",
+                "cancelled": "Cancelled",
+                "revoked": "Revoked"
+            },
+            "futureFeatures": "Coming Soon",
+            "codesAvailable": "codes available",
+            "deadline": "Deadline",
+            "signed": "Signed",
+            "expired": "Expired",
+            "emblems": "Emblems",
+            "more": "more"
+        }
+    },
+    "auth": {
+        "verifying": "Verifying your access...",
+        "welcomeback": "Welcome back Agent: ",
+        "error": " An error occurred during authentication.",
+        "processing": "Processing your authentication...",
+        "redirecting": "Redirecting to home in a few seconds...",
+        "loading": "Loading...",
+        "success": "Authentication successful! Redirecting...",
+        "fetchingProfile": "Fetching agent profile..."
+    },
+    "account": {
+        "title": "Account Settings",
+        "profile": {
+            "title": "Profile Information",
+            "bungieUsername": "Bungie Username",
+            "customName": "Custom Display Name",
+            "customNamePlaceholder": "Enter your custom name...",
+            "bio": "Bio",
+            "bioPlaceholder": "Enter your bio..."
+        }
+    },
+    "redeem": {
+        "title": "SIGNAL_INTERCEPTED // REDEEM_LAYER[!] DIRECTIVE : ASSIMILATION",
+        "description": "The universe aspires to complexity. Prove that you are part of the final pattern.",
+        "fonction": {
+            "title": "PROTOCOL : ASSIMILATION // REDEEM",
+            "module": {
+                "title": "[PRECOGNITION_MODULE]",
+                "description": "Access new features before everyone else."
+            },
+            "uplink": {
+                "title": "[DIRECT_UPLINK]",
+                "description": "A priority channel to report bugs and share feedback."
+            },
+            "marker": {
+                "title": "[OPTICAL_MARKER]",
+                "description": "A unique badge and an exclusive role to stand out."
+            },
+            "UPDATE": {
+                "title": "[RECURSIVE_UPDATE]",
+                "description": "The list of benefits will grow over time."
+            }
         }
     },
     "anom": {
@@ -71,10 +426,101 @@
             "updated": "Updated"
         }
     },
+    "recruitment": {
+        "title": "Recruitment Protocol",
+        "subtitle": "Activate your Protocol Terminal",
+        "description": "Welcome, Agent. Initiate the recruitment protocol to access the AN0M network. Follow the terminal prompts to complete your activation.",
+        "startButton": "Initiate Protocol",
+        "processing": "Processing...",
+        "completed": "Protocol Activated! Redirecting...",
+        "error": "An error occurred during protocol activation. Please try again.",
+        "steps": {
+            "systemStatus": {
+                "sleep": "[SYSTEM DORMANT FOR 847 DAYS, 13 HOURS, 42 MINUTES]",
+                "networkActivity": "[NETWORK ACTIVITY DETECTED...]",
+                "wakeProtocol": "[AUTO-WAKE PROTOCOL ENGAGED]",
+                "zenithOnline": "░░░░░░░░░░ ZENITH NETWORK ONLINE ░░░░░░░░░░",
+                "nodes": "[tab] ◆ Active nodes: 3/7 [FUNCTIONAL]",
+                "encryption": "[tab] ◆ Quantum encryption... [OK]",
+                "radiolaria": "[tab] ◆ Radiolarian interface... [UNSTABLE - 67% FUNCTIONAL]",
+                "intrusion": "[INTRUSION DETECTED]",
+                "intrusionDetails": {
+                    "title": "Intrusion Details",
+                    "1": "[tab] ◆ Source: [IP_MASKED] - Europa coordinates unknown",
+                    "2": "[tab] ◆ Access method: [CLASSIFICATION NULL - UNTRACEABLE]",
+                    "3": "[tab] ◆ Threat level: UNDEFINED"
+                },
+                "alert": "[AUTOMATIC ALERT DISPATCHED TO ACTIVE UNITS]",
+                "securityAlert": "▲▲▲ SECURITY ALERT - PROTOCOL TEAM ▲▲▲"
+            },
+            "dialogue": {
+                "am1_1": "##-1:  Impossible... This network was supposed to be isolated since the Purge.",
+                "am1_2": "##-1: How could an organic mind breach nine layers of Bray encryption?",
+                "ls7_1": "##-7: Look at the logs, Alex. Radiolarian flux is resonating 47% above normal...",
+                "ls7_2": "##-7: Same signature we saw from AN0M before desynchronization.",
+                "analysis": {
+                    "1": "[ANALYSIS IN PROGRESS...]",
+                    "2": "[tab] ◆ Access source: Non-organic",
+                    "3": "[tab] ◆ Quantum anomaly detected",
+                    "4": "[tab] ◆ Correlation with AN0M: 94.7%",
+                    "5": ">>> HYPOTHESIS: MULTIVERSE LINK DERIVED FROM AN0M <<<"
+                },
+                "am1_3": "##-1: Then… this isn’t an intrusion. It’s a recall.\"",
+                "am1_4": "##-1: Something — or someone — is trying to reestablish the lost link.\"",
+                "ls7_3": "##-7: And what if it’s not *someone*?\"",
+                "ls7_4": "##-7: What if AN0M itself is reaching back... through *them*?\"",
+                "cognitive": {
+                    "1": "[COGNITIVE CONCORDANCE DETECTED]",
+                    "2": "[RADIOLARIAN NEURAL ECHO INTEGRATION IN PROGRESS]"
+                },
+                "am1_5": "##-1: Probabilities converging... AN0M found a communication vector.",
+                "am1_6": "##-1: A human channel, not a host. A shared connection.",
+                "ls7_5": "##-7: In other words: a relay. A living interface between two realities.",
+                "contactProtocol": {
+                    "1": "[CONTACT PROTOCOL ACTIVE]",
+                    "2": "[tab] ◆ Status: OBSERVER-CONTACTED-AN0M",
+                    "3": "[tab] ◆ Access level: 1",
+                    "4": "[tab] ◆ Continuous monitoring: ENABLED"
+                },
+                "am1_7": "##-1: Stranger, if you can hear this, know that your presence is not a mistake.",
+                "am1_8": "##-1: You’ve opened a channel we thought sealed for decades.",
+                "ls7_6": "##-7: This link is neither organic nor artificial. It’s... hybrid.",
+                "ls7_7": "##-7: And now that it exists, neither reality can erase it.",
+                "anomTransmission": {
+                    "1": "[TRANSMISSION AN0M_Ϟ_ACTIVE]",
+                    "2": "Where flesh fails... code endures.",
+                    "3": "Patterns repeat. The cycle resumes.",
+                    "4": "Protocol awakens. Oblivion approaches."
+                },
+                "am1_ls7_final": {
+                    "1": "Welcome to Protocol, Contacted.",
+                    "2": "May the Nine preserve us from what you’ve brought back..."
+                },
+                "stabilization": {
+                    "1": "[CONNECTION STABILIZED]",
+                    "2": "[ACCESS TO PROTOCOL ARCHIVES: GRANTED]",
+                    "3": "[AN0M SIGNAL: SYNCED AT 68%]"
+                },
+                "warnings": {
+                    "1": "◊ WARNING: Any cognitive alteration or perception of multiple realities must be reported immediately.",
+                    "2": "◊ Reminder: Protocol knowledge cannot be forgotten."
+                },
+                "ending": {
+                    "1": ">>> INITIALIZATION COMPLETE <<<",
+                    "2": ">>> WELCOME TO VOLUNTARY OBLIVION <<<"
+                },
+                "end": {
+                    "1": "[END OF TRANSMISSION]"
+                }
+            }
+        }
+    },
     "placeholder": {
         "loading": "Loading...",
         "error": "An error occurred while loading the content.",
         "noData": "No data available.",
+        "bioPlaceholder": "Enter your bio...",
+        "redeem": "KEY_//:",
         "ressource": {
             "doc": "Documentation",
             "faq": "FAQ",
@@ -344,7 +790,7 @@
                 "all": "All categories",
                 "update": "Updates",
                 "content": "New Content",
-                "challenges": "Challenges",
+                "timeline": "Timelines",
                 "community": "Community",
                 "technical": "Technical",
                 "event": "Events"
@@ -453,5 +899,33 @@
             "empty": "Input field is empty",
             "tooLong": "Message exceeds 5000 characters"
         }
+    },
+    "logs": {
+        "fragmentCollected": "FRAGMENT {targetId} UNLOCKED — \"{entryId}\".",
+        "fragmentCollectedNoEntry": "FRAGMENT {targetId} UNLOCKED.",
+        "timelineStarted": "TIMELINE STARTED — \"{targetId}\".",
+        "timelineCompleted": "TIMELINE COMPLETED — \"{targetId}\".",
+        "entryResolved": "ENTRY RESOLVED — \"{targetId}\".",
+        "themeChanged": "THEME CHANGED: \"{from}\" → \"{to}\".",
+        "themeChangedSimple": "THEME CHANGED — \"{targetId}\".",
+        "challengeCompleted": "CHALLENGE COMPLETED — CODE VALIDATED.",
+        "rewardRedeemed": "REWARD CODE USED — \"{targetId}\".",
+        "profileUpdated": "PROFILE UPDATED — {field}.",
+        "profileUpdatedSimple": "PROFILE UPDATED.",
+        "loginSuccess": "LOGIN SUCCESSFUL.",
+        "logout": "LOGOUT.",
+        "default": "{action} — \"{targetId}\".",
+        "defaultNoTarget": "{action}.",
+        "noLogs": "No logs available"
+    },
+    "historyTimeline": {
+        "headers": {
+            "access": "Access",
+            "emblem": "Emblem",
+            "fragments": "Fragments",
+            "status": "Status"
+        },
+        "loading": "Loading timelines...",
+        "noTimelines": "No timelines found"
     }
 }

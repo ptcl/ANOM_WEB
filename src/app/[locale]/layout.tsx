@@ -7,6 +7,7 @@ import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { ibmPlexMono, neueHaasDisplay, satoshi } from '@/lib/fonts'
 import '@/css/optimizedFonts.css'
+import Script from 'next/script';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -30,8 +31,22 @@ export default async function LocaleLayout({ children, params }: { children: Rea
             {children}
           </ThemeProvider>
         </NextIntlClientProvider>
-        <Analytics />
-        <SpeedInsights />
+        {process.env.NEXT_PUBLIC_ENVIRONMENT === "production" && (
+          <>
+            <Analytics />
+            <SpeedInsights />
+            <Script async src="https://www.googletagmanager.com/gtag/js?id=G-DV0XL6G4FK" />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-DV0XL6G4FK');
+          `}
+            </Script>
+          </>
+        )}
       </body>
     </html>
   );

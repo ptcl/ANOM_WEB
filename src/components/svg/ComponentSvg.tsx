@@ -5,7 +5,7 @@ type SettingSvg = {
     width?: number
     height?: number
     color?: string
-    variant?: 'default' | 'primary' | 'secondary' | 'fragment' | 'card1' | 'cat' | 'catGradientBlack' | 'catCompact' | 'discord' | 'github' | 'X' | 'linkedin' | 'instagram' | 'facebook'
+    variant?: 'default' | 'primary' | 'secondary' | 'fragment' | 'card1' | 'cat' | 'catGradientBlack' | 'catCompact' | 'discord' | 'github' | 'X' | 'linkedin' | 'instagram' | 'facebook' | 'anomOff'
     className?: string
     text?: string
     smallText?: string
@@ -189,6 +189,44 @@ function X({ width = 64, height = 64, className, color = "currentColor" }: Setti
     )
 }
 
+function AnomOff({ width = 64, height = 64, className, color = "currentColor" }: SettingSvg) {
+    return (
+        <svg width={width} height={height} viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+            <path
+                d="M86.8469 176.175L56.5555 205.337L17.7118 178.928L31.4148 154.981L31.4484 154.849L32.0322 95.3903L60.1899 135.941L60.6471 152.215L86.8469 176.175Z"
+                fill={color} />
+            <path d="M61.0345 210.635L98.9097 231.209H77.3077L61.0345 210.635Z" fill={color} />
+            <path
+                d="M52.0688 54.6351L46.4412 63.9023L33.7983 51.2594L35.9067 1.93848L101.113 50.0915L94.7871 64.2698L37.7484 6.7326L52.0688 54.6351Z"
+                fill={color} />
+            <path d="M99.0147 116.476L67.3709 84.832L88.7583 80.0884L99.0147 116.476Z"
+                fill={color} />
+            <path
+                d="M103.451 231.018L103.464 231.036L58.5522 206.639L89.1044 177.229L110.102 173.158L109.699 198.541L129.34 214.435L103.451 231.018Z"
+                fill={color} />
+            <path d="M131.324 215.925L157.077 232.423L131.324 250.626L105.569 232.421L131.324 215.925Z" fill={color} />
+            <path
+                d="M103.412 50.6469L90.8248 78.8563L102.377 119.838L150.492 167.953L151.485 150.998L171.821 78.8563L159.234 50.6469L131.324 41.2162L103.412 50.6469Z"
+                fill={color} />
+            <path d="M197.885 215.347L196.144 213.605L201.611 210.635L197.885 215.347Z"
+                fill={color} />
+            <path
+                d="M194.429 211.89L156.454 173.916L173.544 177.229L204.094 206.639L194.429 211.89Z" fill={color} />
+            <path d="M173.89 80.091L229.8 92.487L200.7 134.397H179.96L154.375 149.314L173.89 80.091Z" fill={color} />
+            <path
+                d="M167.859 64.2698L161.533 50.0915L226.739 1.93848L230.389 87.2589L210.577 54.6351L224.9 6.7326L167.859 64.2698Z"
+                fill={color} />
+            <path
+                d="M244.934 178.928L206.093 205.34L175.799 176.172L201.999 152.215L202.456 135.944L230.616 95.3877L231.195 154.712L231.198 154.849L244.934 178.928Z"
+                fill={color} />
+            <path
+                d="M165.098 227.823L166.814 229.539L163.739 231.209H168.485L188.994 251.719C192.119 254.843 197.184 254.843 200.308 251.719C203.432 248.595 203.432 243.529 200.308 240.405L24.7194 64.8163C21.5952 61.6921 16.5298 61.6921 13.4056 64.8163C10.2815 67.9405 10.2815 73.0058 13.4056 76.13L39.846 102.57L61.9464 134.397H71.6724L112.396 175.12L112.07 195.586L128.863 191.588L130.793 193.517L112.553 197.862L131.324 213.05L141.827 204.552L143.481 206.205L133.308 214.435L159.198 231.018L159.188 231.034L165.098 227.823Z"
+                fill={color} />
+        </svg>
+    )
+}
+
+
 export default function ComponentSvg({ width = 100, height = 100, color = "currentColor", variant = 'default', text, smallText, gradient }: SettingSvg) {
     switch (variant) {
         case 'fragment':
@@ -205,6 +243,8 @@ export default function ComponentSvg({ width = 100, height = 100, color = "curre
             return <Discord width={width} height={height} color={color} />
         case 'X':
             return <X width={width} height={height} color={color} />
+        case 'anomOff':
+            return <AnomOff width={width} height={height} color={color} />
         default:
             return <Default width={width} height={height} color={color} gradient={gradient} />
     }

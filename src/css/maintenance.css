@@ -165,7 +165,7 @@ input[type="range"]::-moz-range-thumb {
     top: 1%;
     left: 2%;
     font-size: 1.8rem;
-    color: var(--light-dark);
+    color: var(--black-500);
     z-index: 2;
 }
 
@@ -176,7 +176,7 @@ input[type="range"]::-moz-range-thumb {
     left: -2rem;
     width: 25rem;
     height: .25rem;
-    background: linear-gradient(90deg, transparent, var(--light-dark));
+    background: linear-gradient(90deg, transparent, var(--black-500));
 }
 
 .deco__1::before {
@@ -186,14 +186,15 @@ input[type="range"]::-moz-range-thumb {
     left: 5rem;
     width: 12rem;
     height: 1.5rem;
-    background: linear-gradient(90deg, var(--light-dark), transparent);
+    background: linear-gradient(90deg, var(--black-500), transparent);
 }
+
 .deco__2 {
     position: absolute;
     bottom: 3%;
     right: 2%;
     font-size: 1.8rem;
-    color: var(--light-dark);
+    color: var(--black-500);
     z-index: 2;
 }
 
@@ -204,7 +205,7 @@ input[type="range"]::-moz-range-thumb {
     right: -5rem;
     width: 25rem;
     height: .25rem;
-    background: linear-gradient(90deg, var(--light-dark), transparent 80%);
+    background: linear-gradient(90deg, var(--black-500), transparent 80%);
 }
 
 
@@ -215,7 +216,7 @@ input[type="range"]::-moz-range-thumb {
     right: 2rem;
     width: 12rem;
     height: 1.5rem;
-    background: linear-gradient(-90deg, var(--light-dark), transparent);
+    background: linear-gradient(-90deg, var(--black-500), transparent);
 }
 
 
@@ -225,7 +226,7 @@ input[type="range"]::-moz-range-thumb {
     top: 3%;
     right: 2%;
     opacity: .25;
-    color: var(--light-dark);
+    color: var(--black-500);
     z-index: 2;
 }
 
@@ -234,6 +235,6 @@ input[type="range"]::-moz-range-thumb {
     top: 70%;
     left: 10%;
     opacity: .25;
-    color: var(--light-dark);
+    color: var(--black-500);
     z-index: 2;
 }

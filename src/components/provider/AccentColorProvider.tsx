@@ -1,55 +1,87 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useEffect } from "react";
+import { useAgentStore } from "@/store/agentStore";
+import { generateColorScale, COLOR_SCALE_STEPS } from "@/lib/colors";
 
-type AccentColor = "bray" | "protocol" | "red";
-
-interface AccentColorContextValue {
-    accent: AccentColor;
-    setAccent: (color: AccentColor) => void;
+interface ThemeContextValue {
+    activeTheme: string | undefined;
+    primary: string;
+    secondary: string;
+    accent: string;
 }
 
-const AccentColorContext = createContext<AccentColorContextValue | undefined>(undefined);
+const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
+
+// Couleurs par défaut (thème protocol)
+const DEFAULT_THEME = {
+    primary: "#959EE6",
+    secondary: "#172064",
+    accent: "#3A4BD1",
+};
 
 export function AccentColorProvider({ children }: { children: React.ReactNode }) {
-    const [accent, setAccentState] = useState<AccentColor>("protocol");
+    const { agent, agentTheme, fetchAgentTheme } = useAgentStore();
 
-    useEffect(() => {
-        const saved = localStorage.getItem("accent-color") as AccentColor | null;
-        const initial = saved ?? "protocol";
-        setAccentState(initial);
-        document.documentElement.classList.add(`accent-${initial}`);
-        if (!saved) localStorage.setItem("accent-color", initial);
+    const activeThemeObj = agent?.protocol?.settings?.activeTheme as unknown as {
+        themeId?: string;
+        primary?: string;
+        secondary?: string;
+        accent?: string;
+    } | undefined;
 
-        const onStorage = (e: StorageEvent) => {
-            if (e.key === "accent-color" && e.newValue) {
-                document.documentElement.classList.remove(`accent-${accent}`);
-                document.documentElement.classList.add(`accent-${e.newValue}`);
-                setAccentState(e.newValue as AccentColor);
-            }
-        };
-        window.addEventListener("storage", onStorage);
-
-        return () => window.removeEventListener("storage", onStorage);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    const setAccent = (color: AccentColor) => {
-        document.documentElement.classList.remove(`accent-${accent}`);
-        document.documentElement.classList.add(`accent-${color}`);
-        setAccentState(color);
-        localStorage.setItem("accent-color", color);
+    const colors = {
+        primary: activeThemeObj?.primary || DEFAULT_THEME.primary,
+        secondary: activeThemeObj?.secondary || DEFAULT_THEME.secondary,
+        accent: activeThemeObj?.accent || DEFAULT_THEME.accent,
     };
 
+    useEffect(() => {
+        if (!agentTheme && agent) {
+            fetchAgentTheme();
+        }
+    }, [agent, agentTheme, fetchAgentTheme]);
+
+    useEffect(() => {
+        const root = document.documentElement;
+
+        // Base colors (alias for 500)
+        root.style.setProperty('--theme-primary', colors.primary);
+        root.style.setProperty('--theme-secondary', colors.secondary);
+        root.style.setProperty('--theme-accent', colors.accent);
+
+        // Full scale 50→950 for each color
+        const scales = {
+            primary: generateColorScale(colors.primary),
+            secondary: generateColorScale(colors.secondary),
+            accent: generateColorScale(colors.accent),
+        };
+
+        for (const [name, scale] of Object.entries(scales)) {
+            for (const step of COLOR_SCALE_STEPS) {
+                root.style.setProperty(`--theme-${name}-${step}`, scale[step]);
+            }
+        }
+    }, [colors.primary, colors.secondary, colors.accent]);
+
     return (
-        <AccentColorContext.Provider value={{ accent, setAccent }}>
+        <ThemeContext.Provider value={{
+            activeTheme: activeThemeObj?.themeId,
+            ...colors
+        }}>
             {children}
-        </AccentColorContext.Provider>
+        </ThemeContext.Provider>
     );
 }
 
-export function useAccentColor() {
-    const ctx = useContext(AccentColorContext);
-    if (!ctx) throw new Error("useAccentColor must be used inside AccentColorProvider");
+export function useThemeColors() {
+    const ctx = useContext(ThemeContext);
+    if (!ctx) {
+        return {
+            activeTheme: undefined,
+            ...DEFAULT_THEME
+        };
+    }
     return ctx;
 }
+
